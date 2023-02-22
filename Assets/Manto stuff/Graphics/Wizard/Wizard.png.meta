@@ -673,7 +673,6 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Wizard_death_2: 1452264417
       Wizard_0: 158751474
       Wizard_death_0: 706671951
       Wizard_run_2: 1593775052
@@ -691,11 +690,12 @@ TextureImporter:
       Wizard_fight_3: 867885038
       Wizard_fight_1: -1886668242
       Wizard_1: -1920633604
-      Wizard_fight_4: -1257056209
+      Wizard_death_2: 1452264417
       Wizard_heal_0: -441468062
       Wizard_fight_5: -1097775027
-      Wizard_defence_4: 1404628139
+      Wizard_fight_4: -1257056209
       Wizard_defence_1: 1209159756
+      Wizard_defence_4: 1404628139
       Wizard_fight_0: 986470155
       Wizard_defence_2: 867651879
       Wizard_death_1: 164841974
