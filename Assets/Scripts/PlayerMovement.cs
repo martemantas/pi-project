@@ -6,16 +6,16 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float movementSpeed = 5f;   //greitis 
-    public float smoothingTime = 0.1f; //per kiek laiko sustos nuo mygtumo atleidimo
+    public float movementSpeed;   //greitis 
+    public float smoothingTime; //per kiek laiko sustos nuo mygtumo atleidimo
 
     private Vector2 movementInput;
     private Vector2 smoothedMovementInput;
     private Vector2 movementInputSmoothVelocity;
 
     public float dashSpeed;            //dash'o greitis
-    public float dashLength = 0.5f;    //kaip ilgai dashina
-    public float dashCooldown = 1f;    //dash'o cooldown
+    public float dashLength;    //kaip ilgai dashina
+    public float dashCooldown;    //dash'o cooldown
 
     private float activeMovementSpeed;
     private bool isDashing = false;
