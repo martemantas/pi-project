@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public AudioSource dashSound;
     private Rigidbody2D rb;
     public float movementSpeed;   //greitis 
     public float smoothingTime; //per kiek laiko sustos nuo mygtumo atleidimo
@@ -31,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Dash();
+
     }
 
     void FixedUpdate()
@@ -65,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (dashCooldownCounter <= 0 && dashCounter <= 0)
             {
+                dashSound.Play();
                 activeMovementSpeed = dashSpeed;
                 dashCounter = dashLength;
                 isDashing = true;
