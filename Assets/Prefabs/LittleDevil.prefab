@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3247833579151692251}
   - component: {fileID: 3247833579151692255}
   - component: {fileID: 3247833579151692254}
+  - component: {fileID: -6874921947734793970}
   m_Layer: 0
   m_Name: LittleDevil
   m_TagString: Untagged
@@ -118,7 +119,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.0008822591, y: -0.0018088459}
@@ -152,3 +153,17 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &-6874921947734793970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3247833579151692250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44c89d106e811a44e9ae415e9e9aa5d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0.5
+  attackPause: 0.5

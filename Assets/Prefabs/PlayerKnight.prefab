@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5912177598210255019}
   - component: {fileID: 5912177598210254996}
   - component: {fileID: 5912177598210255018}
+  - component: {fileID: -7258765477466124223}
   m_Layer: 6
   m_Name: PlayerKnight
   m_TagString: Player
@@ -151,3 +152,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.014652698, y: 0.0141957775}
   m_EdgeRadius: 0
+--- !u!114 &-7258765477466124223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5912177598210254999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eff5d0fd799557d4cbff80a204a44a4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  gameObject: {fileID: 5912177598210254999}
