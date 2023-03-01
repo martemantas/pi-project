@@ -23,10 +23,13 @@ public class PlayerMovement : MonoBehaviour
     private float dashCounter;
     private float dashCooldownCounter;
 
+    SpriteRenderer spriteRenderer; //character sprite -M
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         activeMovementSpeed = movementSpeed;
+        spriteRenderer = GetComponent<SpriteRenderer>(); // -M
     }
 
     void Update()
@@ -41,6 +44,17 @@ public class PlayerMovement : MonoBehaviour
             GetMovementDirection();
 
         rb.velocity = smoothedMovementInput * activeMovementSpeed;
+
+        // character pasisuka pagal vaiksciojimo krypti -M
+        if(movementInput.x < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (movementInput.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+        // -M
     }
 
 

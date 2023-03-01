@@ -18,10 +18,13 @@ public class EnemyController : MonoBehaviour
     private bool isInAttackRange;
     private bool isInCheckRange;
 
+    SpriteRenderer spriteRenderer; //enemy sprite -M
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player").transform;
+        spriteRenderer = GetComponent<SpriteRenderer>(); // -M
     }
 
     private void Update()
@@ -44,6 +47,17 @@ public class EnemyController : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
         }
+
+        // enemy pasisuka pagal vaiksciojimo krypti -M
+        if (movement.x < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (movement.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+        // -M
     }
 
     private void Move(Vector2 dir)

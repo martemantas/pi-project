@@ -12,10 +12,11 @@ GameObject:
   - component: {fileID: 5912177598210255017}
   - component: {fileID: 5912177598210255019}
   - component: {fileID: 5912177598210254996}
-  - component: {fileID: 5912177598210255018}
   - component: {fileID: -7258765477466124223}
   - component: {fileID: 187842817081163379}
   - component: {fileID: -1501166734989339952}
+  - component: {fileID: 5074428518717890219}
+  - component: {fileID: 7618166468840287029}
   m_Layer: 6
   m_Name: PlayerKnight
   m_TagString: Player
@@ -129,32 +130,6 @@ MonoBehaviour:
   dashSpeed: 5
   dashLength: 0.1
   dashCooldown: 0.3
---- !u!61 &5912177598210255018
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5912177598210254999}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.00081357034, y: -0.008035999}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.029296875, y: 0.0390625}
-    newSize: {x: 0.029296875, y: 0.0390625}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.014652698, y: 0.0141957775}
-  m_EdgeRadius: 0
 --- !u!114 &-7258765477466124223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,3 +337,35 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!58 &5074428518717890219
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5912177598210254999}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.007952655}
+  serializedVersion: 2
+  m_Radius: 0.0064478517
+--- !u!58 &7618166468840287029
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5912177598210254999}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.00087367895, y: -0.00843575}
+  serializedVersion: 2
+  m_Radius: 0.0066022696
