@@ -12,7 +12,12 @@ public class HealthController : MonoBehaviour
         health -= damagePoints;
         Debug.Log("Hit " + health);
         hitClip.Play();
-        if (health <= 0) {
+
+        if (health <= 0) 
+        {
+            if (this.gameObject.CompareTag("Player"))
+                GameObject.FindWithTag("GameOverScreen").GetComponent<GameOverScreen>().Setup();
+
             Destroy(this.gameObject);
         }
     }
