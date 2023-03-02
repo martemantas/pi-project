@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public AudioSource dashSound;
     private Rigidbody2D rb;
     public float movementSpeed;   //greitis 
     public float smoothingTime; //per kiek laiko sustos nuo mygtumo atleidimo
@@ -23,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private float dashCounter;
     private float dashCooldownCounter;
 
+
     SpriteRenderer spriteRenderer; //character sprite -M
 
     private void Awake()
@@ -30,18 +30,21 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         activeMovementSpeed = movementSpeed;
         spriteRenderer = GetComponent<SpriteRenderer>(); // -M
+        
     }
 
     void Update()
     {
         Dash();
-
+        
     }
 
     void FixedUpdate()
     {
         if (!isDashing)
+        {
             GetMovementDirection();
+        }
 
         rb.velocity = smoothedMovementInput * activeMovementSpeed;
 
@@ -60,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void GetMovementDirection()
     {
+        
         //gets inputs as a vector and normalize it so that 
         //the player would move diagonally, horizontally and vertically at the same speed
         movementInput.x = Input.GetAxisRaw("Horizontal");
@@ -71,9 +75,9 @@ public class PlayerMovement : MonoBehaviour
                                                     movementInput,
                                                     ref movementInputSmoothVelocity,
                                                     smoothingTime);
+        
     }
 
-    
     private void Dash()
     {
         //if "SPACE" is pressed changes speed (starts dash) 
@@ -81,10 +85,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if (dashCooldownCounter <= 0 && dashCounter <= 0)
             {
-                dashSound.Play();
+                
                 activeMovementSpeed = dashSpeed;
                 dashCounter = dashLength;
                 isDashing = true;
+                FindObjectOfType<AudioManager>().Play("PlayerDash");
             }
         }
         //counts how long the dash speed should last
@@ -96,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
                 activeMovementSpeed = movementSpeed;
                 dashCooldownCounter = dashCooldown;
                 isDashing = false;
+                
             }
         }
         //counts down dash cooldown
@@ -103,5 +109,6 @@ public class PlayerMovement : MonoBehaviour
         {
             dashCooldownCounter -= Time.deltaTime;
         }
+        
     }
 }
