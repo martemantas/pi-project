@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashCooldown;    //dash'o cooldown
 
     private float activeMovementSpeed;
-    private bool isDashing = false;
+    public bool isDashing = false;
     private float dashCounter;
     private float dashCooldownCounter;
 

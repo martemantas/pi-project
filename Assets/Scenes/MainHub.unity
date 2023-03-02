@@ -4782,6 +4782,11 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.0024747492}
   serializedVersion: 2
   m_Radius: 0.006971872
+--- !u!4 &1532382917 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5912177598210254997, guid: dd6e86f687174544db602ad3404f1247, type: 3}
+  m_PrefabInstance: {fileID: 1532922777}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1532922777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4879,7 +4884,7 @@ GameObject:
   - component: {fileID: 1703614557}
   - component: {fileID: 1703614556}
   - component: {fileID: 1703614555}
-  - component: {fileID: 1703614554}
+  - component: {fileID: 1703614558}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4887,18 +4892,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1703614554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703614553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!81 &1703614555
 AudioListener:
   m_ObjectHideFlags: 0
@@ -4965,6 +4958,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1703614558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703614553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e011b7345e7cab8419b396b90298829e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1532382917}
+  smoothing: 1
+  maxBounds: {x: 0, y: 0}
+  minBounds: {x: 0, y: 0}
 --- !u!1 &1736364269
 GameObject:
   m_ObjectHideFlags: 0
