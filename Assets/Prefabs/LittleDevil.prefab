@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0.5
-  attackPause: 0.5
+  attackPause: 2
 --- !u!61 &-5854474882307303446
 BoxCollider2D:
   m_ObjectHideFlags: 0
