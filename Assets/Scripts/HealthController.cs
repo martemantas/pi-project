@@ -30,8 +30,8 @@ public class HealthController : MonoBehaviour
         }
         //Debug.Log("Hit " + health);
         if (health <= 0) {
-        	GameObject.FindWithTag("GameOverScreen").GetComponent<GameOverScreen>().Setup();
             Destroy(this.gameObject);
+            GameObject.FindWithTag("GameOverScreen").GetComponent<GameOverScreen>().Setup();
             FindObjectOfType<AudioManager>().Play("PlayerDeath");
         }
     }
