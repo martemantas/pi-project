@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.3
   checkRadius: 5
-  attackRadius: 0.06
+  attackRadius: 0
   playerMask:
     serializedVersion: 2
     m_Bits: 64
