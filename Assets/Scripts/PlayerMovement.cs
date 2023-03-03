@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashSpeed;            //dash'o greitis
     public float dashLength;    //kaip ilgai dashina
     public float dashCooldown;    //dash'o cooldown
+    private bool isWalking = false;
 
     private float activeMovementSpeed;
     public bool isDashing = false;
@@ -47,6 +48,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         rb.velocity = smoothedMovementInput * activeMovementSpeed;
+        if (rb.velocity != Vector2.zero)
+            isWalking = true;
+        else
+            isWalking = false;
 
         // character pasisuka pagal vaiksciojimo krypti -M
         if(movementInput.x < 0)
