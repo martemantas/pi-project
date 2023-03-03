@@ -1669,6 +1669,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5982467248998881986, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5982467248998882044, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: m_Name
       value: SelectGhost
