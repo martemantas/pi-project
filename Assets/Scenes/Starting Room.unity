@@ -3404,7 +3404,7 @@ MonoBehaviour:
   sounds:
   - name: PlayerHit
     clip: {fileID: 8300000, guid: 38e3a83dc0ad2594ea8483b338608986, type: 3}
-    volume: 0.25
+    volume: 0.15
     pitch: 2
     loop: 0
     source: {fileID: 0}
@@ -3416,7 +3416,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: BackGround_Music1
     clip: {fileID: 8300000, guid: 5b92b38c4d9b86f40addd41fa112a7c0, type: 3}
-    volume: 0
+    volume: 0.01
     pitch: 3
     loop: 1
     source: {fileID: 0}
@@ -3427,10 +3427,10 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: PlayerWalk
-    clip: {fileID: 8300000, guid: 1e6298ca592fcab4ebbb9de55c791412, type: 3}
+    clip: {fileID: 8300000, guid: 6b960fcbc2174dc4e99134737cdc8169, type: 3}
     volume: 0.5
     pitch: 1
-    loop: 1
+    loop: 0
     source: {fileID: 0}
 --- !u!1 &1105164842
 GameObject:

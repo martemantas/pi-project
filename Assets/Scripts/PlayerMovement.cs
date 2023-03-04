@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isDashing = false;
     private float dashCounter;
     private float dashCooldownCounter;
+    
 
 
     SpriteRenderer spriteRenderer; //character sprite -M
@@ -31,13 +32,22 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         activeMovementSpeed = movementSpeed;
         spriteRenderer = GetComponent<SpriteRenderer>(); // -M
-        
+      
+
     }
 
     void Update()
     {
         Dash();
-        
+
+        if (isWalking)
+        {
+            FindObjectOfType<AudioManager>().PlayOnlyOnce("PlayerWalk");
+        }
+        if (!isWalking && FindObjectOfType<AudioManager>().GetSound("PlayerWalk").isPlaying)
+        {
+            FindObjectOfType<AudioManager>().Stop("PlayerWalk");
+        }
     }
 
     void FixedUpdate()
@@ -49,12 +59,16 @@ public class PlayerMovement : MonoBehaviour
 
         rb.velocity = smoothedMovementInput * activeMovementSpeed;
         if (rb.velocity != Vector2.zero)
+        {
             isWalking = true;
+            
+        }
         else
             isWalking = false;
 
+
         // character pasisuka pagal vaiksciojimo krypti -M
-        if(movementInput.x < 0)
+        if (movementInput.x < 0 )
         {
             spriteRenderer.flipX = true;
         }
