@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Dash();
 
-        if (isWalking)
+        if (AudioManager.WalkingKeysPressed() && rb.velocity.magnitude > 0 )
         {
             FindObjectOfType<AudioManager>().PlayOnlyOnce("PlayerWalk");
         }
@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
         {
             FindObjectOfType<AudioManager>().Stop("PlayerWalk");
         }
+
     }
 
     void FixedUpdate()

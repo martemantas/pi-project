@@ -63,9 +63,22 @@ public class AudioManager : MonoBehaviour
         }
         if (s.source.isPlaying == false)
         {
-            s.volume = UnityEngine.Random.Range(0.8f, 1);
-            s.pitch = UnityEngine.Random.Range(0.8f, 1.1f);
+            s.volume = UnityEngine.Random.Range(0.5f, 1);
+            s.pitch = UnityEngine.Random.Range(0.3f, 2.5f);
             s.source.Play();
         }
+    }
+    public static bool WalkingKeysPressed()
+    {
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+        {
+            return true;
+        }
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        {
+            return true;
+        }
+        return false;
+
     }
 }

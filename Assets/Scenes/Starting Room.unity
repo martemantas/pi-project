@@ -3427,7 +3427,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: PlayerWalk
-    clip: {fileID: 8300000, guid: 6b960fcbc2174dc4e99134737cdc8169, type: 3}
+    clip: {fileID: 8300000, guid: cbccd37e2a82bbb498c26c842aaf3d0b, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
