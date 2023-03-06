@@ -1,34 +1,23 @@
 using UnityEngine;
-using TMPro;
+using UnityEngine.SceneManagement;
 using System.Collections;
-using System;
+using TMPro;
 
-public class CharacterSwitch : MonoBehaviour
+public class SceneChanger : MonoBehaviour
 {
     public TextMeshProUGUI text;
     public GameObject player;
     public float fadeInTime = 0.2f;
     public float fadeOutTime = 0.2f;
     public KeyCode triggerKey = KeyCode.E;
-    public GameObject playerPrefab; // the prefab to switch to
-    public CircleCollider2D circleCollider; // the sprite mask the script is attached to
     private GameObject currentPlayer; // the current player object
-    public SpriteRenderer spriteRenderer;
-    public ParticleSystem particleSystem;
+
+    public int sceneID;
 
     private float lastPressTime;
     public float pressDelay = 1f;
 
     private Coroutine currentCoroutine;
-
-    private void Start()
-    {
-        // Get the CircleCollider2D component on the game object
-        circleCollider = GetComponent<CircleCollider2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        particleSystem = GetComponent<ParticleSystem>();
-    }
-
 
     private void Update()
     {
@@ -38,7 +27,7 @@ public class CharacterSwitch : MonoBehaviour
         {
             Debug.Log("E pressed");
             lastPressTime = Time.time;
-            SwitchPlayer();
+            ChangeScene(sceneID);
         }
     }
 
@@ -105,43 +94,16 @@ public class CharacterSwitch : MonoBehaviour
 
     private bool IsPlayerInsideMask()
     {
-        // check if the player is inside the circle collider
+        // check if the player is inside the box collider
         if (currentPlayer == null)
         {
             return false;
         }
-        return GetComponent<CircleCollider2D>().bounds.Contains(currentPlayer.transform.position);
+        return GetComponent<BoxCollider2D>().bounds.Contains(currentPlayer.transform.position);
     }
 
-
-    private void SwitchPlayer()
+    private void ChangeScene(int ID)
     {
-        // spawn the new player prefab at the current position of the old player
-        GameObject newPlayer = Instantiate(playerPrefab, currentPlayer.transform.position, Quaternion.identity);
-
-        LastDisabledObject.currentObject = newPlayer;
-
-        // destroy the old player
-        Destroy(currentPlayer);
-
-        if (LastDisabledObject.lastDisabledObject != null)
-        {
-            Collider2D otherCollider = LastDisabledObject.lastDisabledObject.GetComponent<Collider2D>();
-            otherCollider.enabled = true;
-            SpriteRenderer otherSpriteRenderer = LastDisabledObject.lastDisabledObject.GetComponent<SpriteRenderer>();
-            otherSpriteRenderer.enabled = true;
-        }
-
-        LastDisabledObject.lastDisabledObject = gameObject;
-
-        spriteRenderer.enabled = false;
-        circleCollider.enabled = false;
-
-        particleSystem.Play();
-
-        //text.gameObject.SetActive(false);
-
-        // disable the game object
-        //gameObject.SetActive(false);
+        SceneManager.LoadScene(ID);
     }
 }
