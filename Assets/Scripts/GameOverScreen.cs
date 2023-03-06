@@ -23,7 +23,7 @@ public class GameOverScreen : MonoBehaviour
     }
     
     public void Restart() {
-        SceneManager.LoadScene("Starting Room");
+        SceneManager.LoadScene("MainHub");
     }
 
     public IEnumerator FadeImageToFullAlpha(float t, Image i)

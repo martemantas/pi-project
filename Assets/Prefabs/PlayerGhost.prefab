@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 4987119648456333220}
   - component: {fileID: 1737717097105299790}
   - component: {fileID: 4021516204611693776}
-  - component: {fileID: 6806735243909251778}
   m_Layer: 6
   m_Name: PlayerGhost
   m_TagString: Player
@@ -128,6 +127,7 @@ MonoBehaviour:
   dashSpeed: 5
   dashLength: 0.1
   dashCooldown: 1
+  isDashing: 0
 --- !u!114 &4987119648456333220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,19 +174,3 @@ CircleCollider2D:
   m_Offset: {x: 0.00087367895, y: -0.00843575}
   serializedVersion: 2
   m_Radius: 0.0066022696
---- !u!58 &6806735243909251778
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899074607574101874}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.0024747492}
-  serializedVersion: 2
-  m_Radius: 0.006971872
