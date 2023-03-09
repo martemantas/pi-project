@@ -6,6 +6,8 @@ public class HealthController : MonoBehaviour
 {
     public float health = 3f;
     public GameObject gameObject;
+    public string hitSound;
+    public string deathSound;
 
     public void Damage(float damagePoints)
     {
@@ -14,19 +16,21 @@ public class HealthController : MonoBehaviour
             if (gameObject.GetComponent<PlayerMovement>().isDashing != true)
             {
                 health -= damagePoints;
-                FindObjectOfType<AudioManager>().Play("PlayerHit");
+                FindObjectOfType<AudioManager>().Play(hitSound);
             }
         }
         else
         {
             health -= damagePoints;
-            FindObjectOfType<AudioManager>().Play("PlayerHit");
+            FindObjectOfType<AudioManager>().Play(hitSound);
         }
         if (health <= 0)
         {
             Destroy(this.gameObject);
-            GameObject.FindWithTag("GameOverScreen").GetComponent<GameOverScreen>().Setup();
-            FindObjectOfType<AudioManager>().Play("PlayerDeath");
+            if(this.gameObject.CompareTag("Player"))
+                GameObject.FindWithTag("GameOverScreen").GetComponent<GameOverScreen>().Setup();
+            FindObjectOfType<AudioManager>().Play(deathSound);
         }
+        Debug.Log("Hit: " + this.gameObject.name + " " + health);
     }
 }

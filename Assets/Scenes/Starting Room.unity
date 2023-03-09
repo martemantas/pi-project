@@ -5275,6 +5275,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerKnight
       objectReference: {fileID: 0}
+    - target: {fileID: 6169246674185318924, guid: dd6e86f687174544db602ad3404f1247, type: 3}
+      propertyPath: attackRange
+      value: 0.15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd6e86f687174544db602ad3404f1247, type: 3}
 --- !u!1 &1797919905

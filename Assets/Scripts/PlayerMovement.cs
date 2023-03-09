@@ -27,6 +27,10 @@ public class PlayerMovement : MonoBehaviour
 
     SpriteRenderer spriteRenderer; //character sprite -M
 
+    public Vector2 getMovementInput() {
+        return movementInput;
+    }
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();

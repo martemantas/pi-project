@@ -27,6 +27,11 @@ public class EnemyController : MonoBehaviour
 
     private List<Transform> enemies;
 
+    // Enemy attack
+    public float damage = 0.5f;
+    public float attackPause;
+    private float attackPauseCounter;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -99,5 +104,28 @@ public class EnemyController : MonoBehaviour
     private void Move(Vector2 dir)
     {
         rb.MovePosition((Vector2)transform.position + (dir * speed * Time.deltaTime));
+    }
+
+    // Enemy attack
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (attackPauseCounter > 0)
+        {
+            attackPauseCounter -= Time.deltaTime;
+        }
+
+        if (other.CompareTag("Player") && attackPauseCounter <= 0)
+        {
+            var playerHealth = other.GetComponent<HealthController>();
+            if (playerHealth != null)
+            {
+                playerHealth.Damage(damage);
+                attackPauseCounter = attackPause;
+            }
+        }
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        attackPauseCounter = 0;
     }
 }
