@@ -5880,6 +5880,24 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Death
+    clip: {fileID: 8300000, guid: 40bd3465437d24a42abd7bbc65cc9e6b, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerAttack
+    clip: {fileID: 8300000, guid: 750586f25bbb1d94aa3a3cda539bdbbf, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SwordHitFlesh
+    clip: {fileID: 8300000, guid: 33c85a49710e4e34da78ba2a4d4f0fb8, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &284801327
 Transform:
   m_ObjectHideFlags: 0

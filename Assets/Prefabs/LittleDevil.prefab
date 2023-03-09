@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 3247833579151692254}
   - component: {fileID: -8331149853103268655}
   - component: {fileID: -5854474882307303446}
-  - component: {fileID: 6080032821410425518}
   m_Layer: 0
   m_Name: LittleDevil
   m_TagString: Enemy
@@ -174,8 +173,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   gameObject: {fileID: 3247833579151692250}
-  hitSound: PlayerHit
-  deathSound: PlayerDeath
+  hitSound: SwordHitFlesh
+  deathSound: Death
+  sound: PlayerAttack
 --- !u!61 &-5854474882307303446
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -202,19 +202,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.009784585, y: 0.0052344026}
   m_EdgeRadius: 0
---- !u!114 &6080032821410425518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3247833579151692250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eff5d0fd799557d4cbff80a204a44a4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
-  gameObject: {fileID: 0}
-  hitSound: 
-  deathSound: 

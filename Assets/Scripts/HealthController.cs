@@ -8,9 +8,11 @@ public class HealthController : MonoBehaviour
     public GameObject gameObject;
     public string hitSound;
     public string deathSound;
+    public string sound;
 
     public void Damage(float damagePoints)
     {
+        int digit = Random.Range(0, 100);
         if (gameObject.GetComponent<PlayerMovement>() != null)
         {
             if (gameObject.GetComponent<PlayerMovement>().isDashing != true)
@@ -29,7 +31,15 @@ public class HealthController : MonoBehaviour
             Destroy(this.gameObject);
             if(this.gameObject.CompareTag("Player"))
                 GameObject.FindWithTag("GameOverScreen").GetComponent<GameOverScreen>().Setup();
-            FindObjectOfType<AudioManager>().Play(deathSound);
+            if (digit >= 75)
+            {
+                FindObjectOfType<AudioManager>().Play(sound);
+            }
+            else
+            {
+                FindObjectOfType<AudioManager>().Play(deathSound);
+            }
+            
         }
         Debug.Log("Hit: " + this.gameObject.name + " " + health);
     }

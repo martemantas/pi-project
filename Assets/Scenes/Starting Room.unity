@@ -3716,6 +3716,18 @@ PrefabInstance:
       propertyPath: attackPause
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: DopplerLevel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3247833579151692249, guid: f568796043d38cc4a966900b9555864b, type: 3}
       propertyPath: m_RootOrder
       value: 1
