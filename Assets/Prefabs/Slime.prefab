@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 5654097140766332744}
   - component: {fileID: 7999575271658920519}
   - component: {fileID: 5594955175663079804}
-  - component: {fileID: 3964682425864531000}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Enemy
@@ -176,6 +175,7 @@ MonoBehaviour:
   gameObject: {fileID: 5654097140766332748}
   hitSound: PlayerHit
   deathSound: PlayerDeath
+  sound: 
 --- !u!61 &5594955175663079804
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -202,19 +202,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.013951205, y: 0.007456621}
   m_EdgeRadius: 0
---- !u!114 &3964682425864531000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5654097140766332748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eff5d0fd799557d4cbff80a204a44a4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
-  gameObject: {fileID: 0}
-  hitSound: 
-  deathSound: 
