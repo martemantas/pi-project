@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
         if (AudioManager.WalkingKeysPressed() && rb.velocity.magnitude > 0 )
         {
             FindObjectOfType<AudioManager>().PlayOnlyOnce("PlayerWalk");
+            MoneyManager.MoneyChange(10);
         }
         if (!isWalking && FindObjectOfType<AudioManager>().GetSound("PlayerWalk").isPlaying)
         {
