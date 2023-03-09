@@ -155,15 +155,15 @@ MonoBehaviour:
   characters:
   - name: Ghost
     isBought: 0
-    price: 2000000
+    price: 200000
     character: {fileID: 899074607574101874, guid: a7194ef12cd6ff84697069f8ceaf070a, type: 3}
-  - name: PillarOfSalt
+  - name: sculptur
     isBought: 0
     price: 2147483647
-    character: {fileID: 732114089}
-  - name: UwU
+    character: {fileID: 8509608437199887048, guid: 67d3d89c73dc3044f872d15870fdb8b1, type: 3}
+  - name: PillarOfSalt
     isBought: 0
-    price: 0
+    price: 200
     character: {fileID: 3247833579151692250, guid: f568796043d38cc4a966900b9555864b, type: 3}
   - name: knight
     isBought: 1
@@ -179,14 +179,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 221443488}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.060058087, y: -0, z: -0, w: 0.9981949}
   m_LocalPosition: {x: -0.090861425, y: -0.25758618, z: 0.08619143}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 6.886, y: 0, z: 0}
 --- !u!1 &224226793
 GameObject:
   m_ObjectHideFlags: 0
@@ -11356,11 +11356,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
---- !u!1 &732114089 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8509608437199887048, guid: 02bd3b342767ffe46b9122683b9018f3, type: 3}
-  m_PrefabInstance: {fileID: 535744434}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &768911547
 GameObject:
   m_ObjectHideFlags: 0
@@ -11575,7 +11570,7 @@ PrefabInstance:
     - target: {fileID: 5982467248998881985, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: newHero
       value: 
-      objectReference: {fileID: 8509608437199887048, guid: 02bd3b342767ffe46b9122683b9018f3, type: 3}
+      objectReference: {fileID: 3247833579151692250, guid: f568796043d38cc4a966900b9555864b, type: 3}
     - target: {fileID: 5982467248998881985, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: heroName
       value: PillarOfSalt
