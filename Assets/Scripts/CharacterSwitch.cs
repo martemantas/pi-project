@@ -5,22 +5,29 @@ using System;
 
 public class CharacterSwitch : MonoBehaviour
 {
-    public TextMeshProUGUI text;
-    public GameObject player;
+    public TextMeshProUGUI ePrompt;
+    
+    private GameObject player;
     public float fadeInTime = 0.2f;
     public float fadeOutTime = 0.2f;
     public KeyCode triggerKey = KeyCode.E;
-    public GameObject playerPrefab; // the prefab to switch to
-    public CircleCollider2D circleCollider; // the sprite mask the script is attached to
+    public GameObject newHero; // the prefab to switch to
+    private CircleCollider2D circleCollider; // the sprite mask the script is attached to
     private GameObject currentPlayer; // the current player object
-    public SpriteRenderer spriteRenderer;
-    public ParticleSystem particleSystem;
+    private SpriteRenderer spriteRenderer;
+    private ParticleSystem particleSystem;
+    
+
+    // 
+    public TMP_Text buyPrompt;
 
     private float lastPressTime;
     public float pressDelay = 1f;
 
     private Coroutine currentCoroutine;
+ 
 
+    
     private void Start()
     {
         // Get the CircleCollider2D component on the game object
@@ -29,12 +36,21 @@ public class CharacterSwitch : MonoBehaviour
         particleSystem = GetComponent<ParticleSystem>();
     }
 
-
     private void Update()
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
-        if (text.gameObject.activeSelf && Input.GetKeyDown(triggerKey) && IsPlayerInsideMask() && Time.time - lastPressTime > pressDelay)
+        if (buyPrompt.gameObject.activeSelf && Input.GetKeyDown(triggerKey) && Time.time - lastPressTime > pressDelay && IsPlayerInsideMask())
+        {
+            lastPressTime = Time.time;
+            if (!FindAnyObjectByType<MoneyManager>().TryBuy(newHero))
+            {
+                
+            }
+            currentCoroutine = StartCoroutine(FadeOut(buyPrompt));
+        }
+
+        if (ePrompt.gameObject.activeSelf && Input.GetKeyDown(triggerKey) && IsPlayerInsideMask() && Time.time - lastPressTime > pressDelay)
         {
             Debug.Log("E pressed");
             lastPressTime = Time.time;
@@ -42,16 +58,25 @@ public class CharacterSwitch : MonoBehaviour
         }
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        buyPrompt.text = "This hero costs " + FindAnyObjectByType<MoneyManager>().INeedAHero(newHero).price + ", press [E] to buy";
         if (collision.gameObject == player)
         {
             if (currentCoroutine != null)
             {
                 StopCoroutine(currentCoroutine);
             }
-            currentCoroutine = StartCoroutine(FadeIn());
-
+            if (!FindAnyObjectByType<MoneyManager>().INeedAHero(newHero).isBought)
+            {
+                currentCoroutine = StartCoroutine(FadeIn(buyPrompt));
+            }
+            if (FindAnyObjectByType<MoneyManager>().INeedAHero(newHero).isBought)
+            {
+                currentCoroutine = StartCoroutine(FadeIn(ePrompt));
+            }
+            
             // set the currentPlayer object to the player that entered the collider
             currentPlayer = collision.gameObject;
         }
@@ -65,11 +90,18 @@ public class CharacterSwitch : MonoBehaviour
             {
                 StopCoroutine(currentCoroutine);
             }
-            currentCoroutine = StartCoroutine(FadeOut());
+            if (!FindAnyObjectByType<MoneyManager>().INeedAHero(newHero).isBought)
+            {
+                currentCoroutine = StartCoroutine(FadeOut(buyPrompt));
+            }
+            if (FindAnyObjectByType<MoneyManager>().INeedAHero(newHero).isBought)
+            {
+                currentCoroutine = StartCoroutine(FadeOut(ePrompt));
+            }
         }
     }
 
-    private IEnumerator FadeIn()
+    private IEnumerator FadeIn(TMP_Text prompt)
     {
         // wait until the player is outside the collider
         while (IsPlayerInsideMask())
@@ -77,30 +109,30 @@ public class CharacterSwitch : MonoBehaviour
             yield return null;
         }
         // activate the text and start fading it in
-        text.gameObject.SetActive(true);
+        prompt.gameObject.SetActive(true);
         float t = 0f;
-        Color color = text.color;
+        Color color = prompt.color;
         while (t < fadeInTime)
         {
             t += Time.deltaTime;
             color.a = Mathf.Lerp(0f, 1f, t / fadeInTime);
-            text.color = color;
+            prompt.color = color;
             yield return null;
         }
     }
 
-    private IEnumerator FadeOut()
+    private IEnumerator FadeOut(TMP_Text prompt)
     {
         float t = 0f;
-        Color color = text.color;
+        Color color = prompt.color;
         while (t < fadeOutTime)
         {
             t += Time.deltaTime;
             color.a = Mathf.Lerp(1f, 0f, t / fadeOutTime);
-            text.color = color;
+            prompt.color = color;
             yield return null;
         }
-        text.gameObject.SetActive(false);
+        prompt.gameObject.SetActive(false);
     }
 
     private bool IsPlayerInsideMask()
@@ -117,7 +149,7 @@ public class CharacterSwitch : MonoBehaviour
     private void SwitchPlayer()
     {
         // spawn the new player prefab at the current position of the old player
-        GameObject newPlayer = Instantiate(playerPrefab, currentPlayer.transform.position, Quaternion.identity);
+        GameObject newPlayer = Instantiate(newHero, currentPlayer.transform.position, Quaternion.identity);
 
         LastDisabledObject.currentObject = newPlayer;
 
