@@ -44,6 +44,11 @@ public class AudioManager : MonoBehaviour
             return;
         }
         s.source.Play();
+
+        if(PauseMenu.GameIsPaused)
+        {
+            s.source.pitch *= .5f;
+        }
     }
     public AudioSource GetSound(string name)
     {
