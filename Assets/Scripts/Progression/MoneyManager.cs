@@ -13,18 +13,32 @@ public class MoneyManager : MonoBehaviour
     public TMP_Text buyingsuccesfull;
     private float fadeInTime = 0.2f;
     private float fadeOutTime = 0.2f;
-    // Start is called before the first frame update
-    void Awake()
+    public static MoneyManager instance;
+
+    void Awake() //shouold remove second MoneyManager if it appears on scene
     {
-        DontDestroyOnLoad(gameObject);
+
+        if (instance == null)   
+            instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject); // makes it so this object would persist trough scenes
     }
 
     void Update()
     {
-        moneyText.text = "Money: " + playerCoins.ToString();
+        moneyText.text = "Money: " + playerCoins.ToString(); //should constantly update 
     }
 
-
+    /// <summary>
+    /// tries to buy a hero by its gameObject
+    /// </summary>
+    /// <param name="hero">which hero you are searching for</param>
+    /// <returns>true if bought</returns>
     public bool TryBuy(GameObject hero)
     {
         foreach (UnlockableCharacters foundcharacter in characters)
@@ -48,8 +62,12 @@ public class MoneyManager : MonoBehaviour
         Debug.Log("should not be included");
         return false;
     }
-
-    public bool TryBuy(string heroNAme)
+    /// <summary>
+    /// tries to buy a hero by it's name
+    /// </summary>
+    /// <param name="heroNAme">hero you are searching for</param>
+    /// <returns>true if bought</returns>
+    public bool TryBuy(string heroNAme) 
     {
         foreach (UnlockableCharacters foundcharacter in characters)
         {
@@ -71,7 +89,7 @@ public class MoneyManager : MonoBehaviour
         return false;
     }
 
-    public static void MoneyChange(int amount)
+    public static void MoneyChange(int amount) //changes your current money by the given amount
     {
         playerCoins += amount;
         if (playerCoins < 0)
@@ -80,7 +98,7 @@ public class MoneyManager : MonoBehaviour
         }
     }
 
-    public UnlockableCharacters INeedAHero(GameObject hero)
+    public UnlockableCharacters INeedAHero(GameObject hero) // finds and returns a hero by a gameObject
     {
         foreach (UnlockableCharacters foundcharacter in characters)
         {
@@ -93,7 +111,7 @@ public class MoneyManager : MonoBehaviour
         return null;
     }
 
-    public UnlockableCharacters INeedAHero(string heroNAme)
+    public UnlockableCharacters INeedAHero(string heroNAme) //finds and returns a hero by a name
     {
         foreach (UnlockableCharacters foundcharacter in characters)
         {
@@ -135,7 +153,7 @@ public class MoneyManager : MonoBehaviour
         }
         prompt.gameObject.SetActive(false);
     }
-    private IEnumerator Wait(TMP_Text prompt, float seconds)
+    private IEnumerator Wait(TMP_Text prompt, float seconds) //waits for t seconds an then stops showing text
     {
         float t = 0f;
         while (t < seconds)

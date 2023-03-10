@@ -5865,8 +5865,8 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: BackGround_Music1
     clip: {fileID: 8300000, guid: 5b92b38c4d9b86f40addd41fa112a7c0, type: 3}
-    volume: 0.022
-    pitch: 3
+    volume: 0.05
+    pitch: 2
     loop: 1
     source: {fileID: 0}
   - name: PlayerDeath

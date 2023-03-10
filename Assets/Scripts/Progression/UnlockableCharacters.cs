@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class UnlockableCharacters
+public class UnlockableCharacters //name says it all
 {
     public string name;
     public bool isBought;

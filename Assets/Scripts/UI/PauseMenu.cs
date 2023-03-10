@@ -7,6 +7,9 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
+    //
+    public List<AudioSource> allAudioSources;
+    public List<bool> allAudioSourcesRunningState;
 
     void Update()
     {
@@ -26,6 +29,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        FindObjectOfType<AudioManager>().PauseSounds(true);
     }
 
     void Pause()
@@ -33,6 +37,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        FindObjectOfType<AudioManager>().PauseSounds(false);
     }
 
     public void LoadMenu()
@@ -46,4 +51,6 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("Quit");
         Application.Quit();
     }
+    
+
 }

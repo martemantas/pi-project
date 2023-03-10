@@ -1,13 +1,16 @@
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
     public static AudioManager instance;
+    public List<AudioSource> allAudioSources;
+    public List<bool> allAudioSourcesRunningState;
     // Start is called before the first frame update
-    void Awake()
+    void Awake() // deletes second AudioManager if it appears
     {
 
         if (instance == null) 
@@ -20,7 +23,7 @@ public class AudioManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        foreach (Sound s in sounds)
+        foreach (Sound s in sounds) // loads every audiocomponent with chosen parameters
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
@@ -30,12 +33,51 @@ public class AudioManager : MonoBehaviour
             s.source.loop = s.loop;
         }
     }
-   
+    public void PauseSounds(bool paused)
+    {
+        allAudioSources = new List<AudioSource>(FindObjectsOfType<AudioSource>());
+        foreach (AudioSource a in allAudioSources)
+        {
+            allAudioSourcesRunningState.Add(a.isPlaying);
+        }
+
+        if (paused)
+        {
+            for (int i = 0; i < allAudioSources.Count; i++)
+            {
+                if (allAudioSourcesRunningState[i])
+                {
+                    allAudioSources[i].UnPause();
+                }
+
+            }
+
+        }
+        else
+        {
+            allAudioSourcesRunningState = new List<bool>();
+
+            foreach (AudioSource a in allAudioSources)
+            {
+                allAudioSourcesRunningState.Add(a.isPlaying);
+                if (a.isPlaying)
+                {
+                    a.Pause();
+                }
+            }
+            
+
+        }
+    }
     private void Start()
     {
-        Play("BackGround_Music1");
+        Play("BackGround_Music1"); //I guess it plays music on start, idk
     }
-    public void Play(string name)
+    /// <summary>
+    /// plays a sound
+    /// </summary>
+    /// <param name="name">name of a sound to play</param>
+    public void Play(string name) 
     {
         Sound s =Array.Find(sounds, sound => sound.name == name);
         if (s == null)
@@ -50,6 +92,16 @@ public class AudioManager : MonoBehaviour
             s.source.pitch *= .5f;
         }
     }
+    public void Pause()
+    {
+        
+    }
+
+    /// <summary>
+    /// finds and returns a sound
+    /// </summary>
+    /// <param name="name">name of the sound to find</param>
+    /// <returns>Sound class object , null if not found</returns>
     public AudioSource GetSound(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
@@ -60,6 +112,11 @@ public class AudioManager : MonoBehaviour
         }
         return s.source;
     }
+
+    /// <summary>
+    /// stops playing that sound
+    /// </summary>
+    /// <param name="name">name of the sound</param>
     public void Stop(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
@@ -70,7 +127,10 @@ public class AudioManager : MonoBehaviour
         }
         s.source.Stop();
     }
-
+    /// <summary>
+    /// Plays only once, won't play if it is playing already
+    /// </summary>
+    /// <param name="name">name of the Sound</param>
     public void PlayOnlyOnce(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
@@ -86,17 +146,28 @@ public class AudioManager : MonoBehaviour
             s.source.Play();
         }
     }
-    public static bool WalkingKeysPressed()
+    /// <summary>
+    /// bool method, just to check when Player tries to walk
+    /// </summary>
+    /// <returns>true if keys are pressed</returns>
+    public static bool WalkingKeysPressed(bool pause)
     {
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+        if (pause)
         {
-            return true;
+            return false;
         }
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        else
         {
-            return true;
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+            {
+                return true;
+            }
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+            {
+                return true;
+            }
+            return false;
         }
-        return false;
 
     }
 }
