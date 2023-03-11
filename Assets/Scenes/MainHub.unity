@@ -35311,6 +35311,18 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5982467248998881986, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5982467248998881986, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5982467248998881986, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5982467248998881986, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.725
       objectReference: {fileID: 0}
@@ -35367,9 +35379,29 @@ PrefabInstance:
       value: SelectPotato
       objectReference: {fileID: 0}
     - target: {fileID: 5982467248998882045, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5982467248998882045, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
+      propertyPath: m_Size.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 5982467248998882045, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
+      propertyPath: m_Size.y
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 5982467248998882045, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -640643038, guid: ed5b9d75f1197344eb5f72edea7b0e41, type: 3}
+      objectReference: {fileID: -275895495, guid: 1d600f494e00b134e8d27b3214bbf501, type: 3}
+    - target: {fileID: 5982467248998882045, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5982467248998882045, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
 --- !u!1001 &6806735245396774012
@@ -35379,6 +35411,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 899074607574101836, guid: a7194ef12cd6ff84697069f8ceaf070a, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 899074607574101836, guid: a7194ef12cd6ff84697069f8ceaf070a, type: 3}
       propertyPath: m_SortingOrder
       value: 5

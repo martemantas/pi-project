@@ -98,13 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23601f8d8d518c04f8c55db75c9e538e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
-  player: {fileID: 0}
+  ePrompt: {fileID: 0}
   fadeInTime: 0.2
   fadeOutTime: 0.2
   triggerKey: 101
-  playerPrefab: {fileID: 5912177598210254999, guid: dd6e86f687174544db602ad3404f1247, type: 3}
-  circleCollider: {fileID: 0}
+  newHero: {fileID: 0}
+  buyPrompt: {fileID: 0}
   pressDelay: 1
 --- !u!58 &5982467248998881987
 CircleCollider2D:
