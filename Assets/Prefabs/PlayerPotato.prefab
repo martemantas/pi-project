@@ -16,8 +16,9 @@ GameObject:
   - component: {fileID: 6169246674185318924}
   - component: {fileID: -5951299682004256324}
   - component: {fileID: -6648286126582518642}
+  - component: {fileID: 9025489551221422073}
   m_Layer: 6
-  m_Name: PlayerKnight
+  m_Name: PlayerPotato
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 695474797, guid: 9014b6f79db8c0842adfdb572225e77e, type: 3}
+  m_Sprite: {fileID: -640643038, guid: ed5b9d75f1197344eb5f72edea7b0e41, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -146,6 +147,7 @@ MonoBehaviour:
   gameObject: {fileID: 5912177598210254999}
   hitSound: PlayerHit
   deathSound: PlayerDeath
+  sound: 
 --- !u!114 &6169246674185318924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,8 +180,8 @@ BoxCollider2D:
   m_Offset: {x: -0.00091833435, y: -0.003725576}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5595815, y: 0.22294617}
-    oldSize: {x: 0.029296875, y: 0.0390625}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.04, y: 0.04}
     newSize: {x: 0.029296875, y: 0.0390625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -204,8 +206,8 @@ BoxCollider2D:
   m_Offset: {x: -0.0008324967, y: 0.00590292}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5595815, y: 0.22294617}
-    oldSize: {x: 0.029296875, y: 0.0390625}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.04, y: 0.04}
     newSize: {x: 0.029296875, y: 0.0390625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -214,6 +216,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.018601391, y: 0.028662667}
   m_EdgeRadius: 0
+--- !u!95 &9025489551221422073
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5912177598210254999}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5924e0314e12f5c4997a45f2f39c659f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &6988891368890685207
 GameObject:
   m_ObjectHideFlags: 0
