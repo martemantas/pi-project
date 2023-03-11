@@ -7,7 +7,9 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
-    //
+    public GameObject PauseMain;
+    public GameObject PauseSettings;
+
     public List<AudioSource> allAudioSources;
     public List<bool> allAudioSourcesRunningState;
 
@@ -27,6 +29,7 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
+        PauseSettings.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
         FindObjectOfType<AudioManager>().PauseSounds(true);
@@ -44,6 +47,20 @@ public class PauseMenu : MonoBehaviour
     {
         Resume();
         SceneManager.LoadScene("TitleScreen");
+    }
+
+    public void SettingsMenu()
+    {
+        if (PauseMain.activeSelf)
+        {
+            PauseMain.SetActive(false);
+            PauseSettings.SetActive(true);
+        }
+        else
+        {
+            PauseMain.SetActive(true);
+            PauseSettings.SetActive(false);
+        }
     }
 
     public void QuitGame()

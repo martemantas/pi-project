@@ -12,6 +12,18 @@ EditorBuildSettings:
     path: Assets/Scenes/MainHub.unity
     guid: 925a86c49c9d8d64d9b6c4277e70c47c
   - enabled: 1
+    path: Assets/Scenes/DungeonRooms/OutsideMain.unity
+    guid: a368bcfc4a4f5c742a9c8c944573a46f
+  - enabled: 1
     path: Assets/Scenes/Starting Room.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/DungeonRooms/OutsideStart.unity
+    guid: f25769b280f543447bfa5f080d6f5db6
+  - enabled: 1
+    path: Assets/Scenes/DungeonRooms/OutsideEmpty.unity
+    guid: 6ecdc7e402ae42c4287fd12ae8f299a9
+  - enabled: 1
+    path: Assets/Scenes/DungeonRooms/OutsideEnd.unity
+    guid: c647d8b848857e1489d33e0eabf8ce0f
   m_configObjects: {}
