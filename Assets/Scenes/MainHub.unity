@@ -5899,6 +5899,8 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  allAudioSources: []
+  allAudioSourcesRunningState: 
 --- !u!4 &284801327
 Transform:
   m_ObjectHideFlags: 0
@@ -33465,7 +33467,7 @@ ParticleSystem:
           time: 0
           value: 0
           inSlope: 0
-          outSlope: 1
+          outSlope: 0
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
@@ -33474,7 +33476,7 @@ ParticleSystem:
           time: 1
           value: 1
           inSlope: 1
-          outSlope: 0
+          outSlope: 1
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
@@ -35044,6 +35046,26 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!95 &1938810734
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938810723}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 256657c610e54a84c878fbe6b5720d19, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1001 &1951195310
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35342,8 +35364,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5982467248998882044, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: m_Name
-      value: SelectKnight
+      value: SelectPotato
       objectReference: {fileID: 0}
+    - target: {fileID: 5982467248998882045, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -640643038, guid: ed5b9d75f1197344eb5f72edea7b0e41, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
 --- !u!1001 &6806735245396774012
