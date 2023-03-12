@@ -389,6 +389,10 @@ PrefabInstance:
       value: BigBad
       objectReference: {fileID: 0}
     - target: {fileID: 8458326664779695758, guid: 77667f70a8b8bf44ebfbd5af2440ca63, type: 3}
+      propertyPath: inRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8458326664779695758, guid: 77667f70a8b8bf44ebfbd5af2440ca63, type: 3}
       propertyPath: scaler
       value: 0.2
       objectReference: {fileID: 0}

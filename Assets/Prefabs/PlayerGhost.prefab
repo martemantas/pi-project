@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4987119648456333220}
   - component: {fileID: 1737717097105299790}
   - component: {fileID: 4021516204611693776}
+  - component: {fileID: -7992670018568818692}
   m_Layer: 6
   m_Name: PlayerGhost
   m_TagString: Player
@@ -142,6 +143,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   gameObject: {fileID: 899074607574101874}
+  hitSound: 
+  deathSound: 
+  sound: 
 --- !u!58 &1737717097105299790
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -174,3 +178,23 @@ CircleCollider2D:
   m_Offset: {x: 0.00087367895, y: -0.00843575}
   serializedVersion: 2
   m_Radius: 0.0066022696
+--- !u!95 &-7992670018568818692
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899074607574101874}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b38bac7dfdc5cfd4ab9dc903c13b605c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

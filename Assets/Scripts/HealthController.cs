@@ -10,6 +10,15 @@ public class HealthController : MonoBehaviour
     public string deathSound;
     public string sound;
 
+    // -M
+    private Animator anim;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+    //
+
     public void Damage(float damagePoints)
     {
         int digit = Random.Range(0, 100);
@@ -18,6 +27,7 @@ public class HealthController : MonoBehaviour
             if (gameObject.GetComponent<PlayerMovement>().isDashing != true)
             {
                 health -= damagePoints;
+                anim.Play("Hit"); // -M
                 FindObjectOfType<AudioManager>().Play(hitSound);
             }
         }
@@ -42,7 +52,7 @@ public class HealthController : MonoBehaviour
             {
                 FindObjectOfType<AudioManager>().Play(deathSound);
             }
-            
+
         }
         Debug.Log("Hit: " + this.gameObject.name + " " + health);
     }
