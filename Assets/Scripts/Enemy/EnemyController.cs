@@ -22,7 +22,6 @@ public class EnemyController : MonoBehaviour
 
     private bool isInAttackRange;
     private bool isInCheckRange;
-    public bool inRoom = false;
 
     SpriteRenderer spriteRenderer; //enemy sprite -M
 
@@ -52,39 +51,29 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if (inRoom)
+        isInCheckRange = Physics2D.OverlapCircle(transform.position, checkRadius, playerMask);
+        isInAttackRange = Physics2D.OverlapCircle(transform.position, attackRadius, playerMask);
+
+        direction = target.position - transform.position;
+        direction.Normalize();
+        movement = direction;
+
+        Vector3 avoidance = Vector3.zero;
+        foreach (Transform enemy in enemies)
         {
+            // calculate the distance to the other enemy
+            Vector3 enemyDirection = enemy.position - transform.position;
+            float enemyDistance = enemyDirection.magnitude;
 
-
-            isInCheckRange = Physics2D.OverlapCircle(transform.position, checkRadius, playerMask);
-            isInAttackRange = Physics2D.OverlapCircle(transform.position, attackRadius, playerMask);
-
-            direction = target.position - transform.position;
-            direction.Normalize();
-            movement = direction;
-
-            Vector3 avoidance = Vector3.zero;
-            foreach (Transform enemy in enemies)
+            // check if the other enemy is within the avoidance distance
+            if (enemyDistance <= avoidDistance)
             {
-                // calculate the distance to the other enemy
-                Vector3 enemyDirection = enemy.position - transform.position;
-                float enemyDistance = enemyDirection.magnitude;
-
-                // check if the other enemy is within the avoidance distance
-                if (enemyDistance <= avoidDistance)
-                {
-                    // calculate the avoidance force
-                    avoidance += -enemyDirection.normalized * avoidanceForce / enemyDistance;
-                }
+                // calculate the avoidance force
+                avoidance += -enemyDirection.normalized * avoidanceForce / enemyDistance;
             }
-            avoidance.Normalize();
-            avoidVector = avoidance;
         }
-        else
-        {
-            movement = Vector2.zero;
-            avoidVector = Vector2.zero;
-        }
+        avoidance.Normalize();
+        avoidVector = avoidance;
     }
 
     private void FixedUpdate()

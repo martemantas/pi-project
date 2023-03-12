@@ -30,6 +30,15 @@ public class RoomController : MonoBehaviour
         instance = this;
     }
 
+    void Start()
+    {
+        /*LoadRoom("Start", 0, 0);
+        LoadRoom("Empty", 0, 1);
+        LoadRoom("Empty", 0, -1);
+        LoadRoom("Empty", 1, 0);
+        LoadRoom("Empty", -1, 0);*/
+    }
+
     void Update()
     {
         UpdateRoomQueue();
@@ -42,19 +51,18 @@ public class RoomController : MonoBehaviour
             return;
         }
 
-        if (loadRoomQueue.Count == 0)
+        if(loadRoomQueue.Count == 0)
         {
             if (!spawnedBossRoom)
             {
                 StartCoroutine(SpawnBossRoom());
             }
-            else if (spawnedBossRoom && !updatedRooms)
+            else if(spawnedBossRoom && !updatedRooms)
             {
-                foreach (Room room in loadedRooms)
+                foreach(Room room in loadedRooms)
                 {
                     room.RemoveUnconnectedDoors();
                 }
-                UpdateRooms();
                 updatedRooms = true;
             }
             return;
@@ -70,7 +78,7 @@ public class RoomController : MonoBehaviour
     {
         spawnedBossRoom = true;
         yield return new WaitForSeconds(0.5f);
-        if (loadRoomQueue.Count == 0)
+        if(loadRoomQueue.Count == 0)
         {
             Room bossRoom = loadedRooms[loadedRooms.Count - 1];
             Room tempRoom = new Room(bossRoom.X, bossRoom.Y);
@@ -83,7 +91,7 @@ public class RoomController : MonoBehaviour
 
     public void LoadRoom(string name, int x, int y)
     {
-        if (DoesRoomExist(x, y))
+        if(DoesRoomExist(x, y))
         {
             return;
         }
@@ -102,7 +110,7 @@ public class RoomController : MonoBehaviour
 
         AsyncOperation loadRoom = SceneManager.LoadSceneAsync(roomName, LoadSceneMode.Additive);
 
-        while (loadRoom.isDone == false)
+        while(loadRoom.isDone == false)
         {
             yield return null;
         }
@@ -149,86 +157,9 @@ public class RoomController : MonoBehaviour
         return loadedRooms.Find(item => item.X == x && item.Y == y);
     }
 
-    public string GetRandomRoomName()
-    {
-        string[] possibleRooms = new string[]
-        {
-            "Basic1",
-            "Basic2"
-        };
-
-        return possibleRooms[Random.Range(0, possibleRooms.Length)];
-    }
-
     public void OnPlayerEnterRoom(Room room)
     {
         CameraController.instance.currRoom = room;
         currRoom = room;
-
-        StartCoroutine(RoomCoroutine());
-    }
-
-    public IEnumerator RoomCoroutine()
-    {
-        yield return new WaitForSeconds(0.2f);
-        UpdateRooms();
-    }
-
-    public void UpdateRooms()
-    {
-        foreach (Room room in loadedRooms)
-        {
-            if (currRoom != room)
-            {
-                EnemyController[] enemies = room.GetComponentsInChildren<EnemyController>();
-                if (enemies != null)
-                {
-                    foreach (EnemyController enemy in enemies)
-                    {
-                        enemy.inRoom = false;
-                    }
-
-                    foreach (Door door in room.GetComponentsInChildren<Door>())
-                    {
-                        door.doorCollider.SetActive(false);
-                    }
-                }
-                else
-                {
-                    foreach (Door door in room.GetComponentsInChildren<Door>())
-                    {
-                        door.doorCollider.SetActive(false);
-                    }
-                }
-            }
-            else
-            {
-                EnemyController[] enemies = room.GetComponentsInChildren<EnemyController>();
-                if (enemies.Length > 0)
-                {
-                    foreach (EnemyController enemy in enemies)
-                    {
-                        enemy.inRoom = true;
-                    }
-
-                    foreach (Door door in room.GetComponentsInChildren<Door>())
-                    {
-                        door.doorCollider.SetActive(true);
-                    }
-                }
-                else
-                {
-                    foreach (Door door in room.GetComponentsInChildren<Door>())
-                    {
-                        door.doorCollider.SetActive(false);
-                        if (door != null)
-                        {
-                            SpriteRenderer doorSprite = door.doorSprite.GetComponent<SpriteRenderer>();
-                            doorSprite.color = Color.black;
-                        }
-                    }
-                }
-            }
-        }
     }
 }

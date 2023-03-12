@@ -24,11 +24,6 @@ public class Room : MonoBehaviour
 
     public List<Door> doors = new List<Door>();
 
-    public Wall leftWall;
-    public Wall rightWall;
-    public Wall topWall;
-    public Wall bottomWall;
-
     void Start()
     {
         if(RoomController.instance == null)
@@ -57,25 +52,6 @@ public class Room : MonoBehaviour
             }
         }
 
-        Wall[] ws = GetComponentsInChildren<Wall>();
-        foreach (Wall w in ws)
-        {
-            switch (w.wallType)
-            {
-                case Wall.WallType.right:
-                    rightWall = w;
-                    break;
-                case Wall.WallType.left:
-                    leftWall = w;
-                    break;
-                case Wall.WallType.top:
-                    topWall = w;
-                    break;
-                case Wall.WallType.bottom:
-                    bottomWall = w;
-                    break;
-            }
-        }
         RoomController.instance.RegisterRoom(this);
     }
 
@@ -94,33 +70,23 @@ public class Room : MonoBehaviour
         {
             switch (door.doorType)
             {
+
+
                 case Door.DoorType.right:
                     if (GetRight() == null)
-                    {
                         door.gameObject.SetActive(false);
-                        rightWall.wallCollider.SetActive(true);
-                    }  
                     break;
                 case Door.DoorType.left:
                     if (GetLeft() == null)
-                    {
                         door.gameObject.SetActive(false);
-                        leftWall.wallCollider.SetActive(true);
-                    }
                     break;
                 case Door.DoorType.top:
                     if (GetTop() == null)
-                    {
                         door.gameObject.SetActive(false);
-                        topWall.wallCollider.SetActive(true);
-                    }
                     break;
                 case Door.DoorType.bottom:
                     if (GetBottom() == null)
-                    {
                         door.gameObject.SetActive(false);
-                        bottomWall.wallCollider.SetActive(true);
-                    }
                     break;
             }
         }
