@@ -31,6 +31,10 @@ public class EnemyController : MonoBehaviour
     public float damage = 0.5f;
     public float attackPause;
     private float attackPauseCounter;
+    private float rangePauseCounter;
+    public GameObject bullet;
+    public float bulletSpeed;
+    public float bulletDamage;
 
     private void Start()
     {
@@ -99,6 +103,16 @@ public class EnemyController : MonoBehaviour
             spriteRenderer.flipX = false;
         }
         // -M
+        if (bullet != null)
+        {
+            if (!isInAttackRange)
+                rangePauseCounter = 0;
+            if (rangePauseCounter > 0)
+                rangePauseCounter -= Time.deltaTime;
+            if (rangePauseCounter <= 0 && isInAttackRange)
+                RangeAttack();
+        }
+
     }
 
     private void Move(Vector2 dir)
@@ -127,5 +141,14 @@ public class EnemyController : MonoBehaviour
     void OnTriggerExit2D(Collider2D other)
     {
         attackPauseCounter = 0;
+    }
+
+    void RangeAttack() {
+        rangePauseCounter = attackPause;
+        GameObject newBullet = Instantiate(bullet, this.transform.position, Quaternion.identity); 
+        if(bulletSpeed > 0)
+            newBullet.GetComponent<BulletController>().speed = bulletSpeed;
+        if(bulletDamage > 0)
+            newBullet.GetComponent<BulletController>().damage = bulletDamage;
     }
 }

@@ -579,6 +579,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8537739144007813912, guid: 1352d0286b462ce4bae21b88e2450899, type: 3}
+      propertyPath: PauseMain
+      value: 
+      objectReference: {fileID: 1041173367}
+    - target: {fileID: 8537739144007813912, guid: 1352d0286b462ce4bae21b88e2450899, type: 3}
+      propertyPath: PauseSettings
+      value: 
+      objectReference: {fileID: 1041173366}
     - target: {fileID: 8537739144007813913, guid: 1352d0286b462ce4bae21b88e2450899, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -669,6 +677,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1352d0286b462ce4bae21b88e2450899, type: 3}
+--- !u!1 &1041173366 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6880066194002385024, guid: 1352d0286b462ce4bae21b88e2450899, type: 3}
+  m_PrefabInstance: {fileID: 1041173365}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1041173367 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8537739143407498960, guid: 1352d0286b462ce4bae21b88e2450899, type: 3}
+  m_PrefabInstance: {fileID: 1041173365}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1071492610
 GameObject:
   m_ObjectHideFlags: 0
