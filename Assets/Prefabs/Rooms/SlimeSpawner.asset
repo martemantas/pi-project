@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 165a78c586bfb6b4ba91f048755e2546, type: 3}
+  m_Name: SlimeSpawner
+  m_EditorClassIdentifier: 
+  itemToSpawn: {fileID: 5654097140766332748, guid: 77c989a346feb11459c2ea577f4b01f6, type: 3}
+  minSpawn: 1
+  maxSpawn: 2
