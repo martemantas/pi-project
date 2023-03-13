@@ -15,10 +15,8 @@ public class CharacterSwitch : MonoBehaviour
     private CircleCollider2D circleCollider; // the sprite mask the script is attached to
     private GameObject currentPlayer; // the current player object
     private SpriteRenderer spriteRenderer;
-    private ParticleSystem particleSystem;
+    private ParticleSystem particles1;
     
-
-    // 
     public TMP_Text buyPrompt;
 
     private float lastPressTime;
@@ -33,7 +31,7 @@ public class CharacterSwitch : MonoBehaviour
         // Get the CircleCollider2D component on the game object
         circleCollider = GetComponent<CircleCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        particleSystem = GetComponent<ParticleSystem>();
+        particles1 = GetComponent<ParticleSystem>();
     }
 
     private void Update()
@@ -151,8 +149,6 @@ public class CharacterSwitch : MonoBehaviour
         // spawn the new player prefab at the current position of the old player
         GameObject newPlayer = Instantiate(newHero, currentPlayer.transform.position, Quaternion.identity);
 
-        LastDisabledObject.currentObject = newPlayer;
-
         // destroy the old player
         Destroy(currentPlayer);
 
@@ -169,11 +165,6 @@ public class CharacterSwitch : MonoBehaviour
         spriteRenderer.enabled = false;
         circleCollider.enabled = false;
 
-        particleSystem.Play();
-
-        //text.gameObject.SetActive(false);
-
-        // disable the game object
-        //gameObject.SetActive(false);
+        particles1.Play();
     }
 }

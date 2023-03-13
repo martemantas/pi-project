@@ -1,31 +1,28 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class CheckPicked : MonoBehaviour
 {
-    private GameObject currentPlayer;
-    public GameObject playerPrefab;
-    public GameObject player;
+    public GameObject currentPlayer;
+    public List<GameObject> playerPrefabs;
+    public int prefabID = 0;
 
-    // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
-        Debug.Log("veikia");
-        player = GameObject.FindGameObjectWithTag("Player");
-        SwitchToPicked();
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    private void SwitchToPicked()
+    void OnDisable()
     {
-        if(LastDisabledObject.currentObject != null)
-        {
-            Debug.Log("Yra");
-            // spawn the new player prefab at the current position of the old player
-            GameObject newPlayer = Instantiate(playerPrefab, currentPlayer.transform.position, Quaternion.identity);
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
-            // destroy the old player
-            Destroy(player);
-        }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        currentPlayer = GameObject.FindGameObjectWithTag("Player");
+        Destroy(currentPlayer);
+        GameObject newPlayer = Instantiate(playerPrefabs[prefabID], currentPlayer.transform.position, Quaternion.identity);
     }
 }

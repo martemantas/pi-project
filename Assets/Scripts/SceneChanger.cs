@@ -104,6 +104,10 @@ public class SceneChanger : MonoBehaviour
 
     private void ChangeScene(int ID)
     {
+        // Save the current player object as the last disabled object
+        LastDisabledObject.lastDisabledObject = currentPlayer;
+        // Save the name of the current player object
+        PlayerPrefs.SetString(player.name, currentPlayer.name);
         SceneManager.LoadScene(ID);
     }
 }
