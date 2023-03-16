@@ -157,8 +157,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   scaler: 0.4
+  inRoom: 0
   damage: 1
   attackPause: 1
+  bullet: {fileID: 0}
+  bulletSpeed: 0
+  bulletDamage: 0
+  knockBackTime: 0.5
 --- !u!114 &7999575271658920519
 MonoBehaviour:
   m_ObjectHideFlags: 0

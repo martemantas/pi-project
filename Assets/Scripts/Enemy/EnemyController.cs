@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -37,6 +39,11 @@ public class EnemyController : MonoBehaviour
     public float bulletSpeed;
     public float bulletDamage;
 
+    private bool knockBackImunity = false;
+    public float knockBackTime;
+    private float knockBackCounter;
+    private float speedBackup;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -52,18 +59,32 @@ public class EnemyController : MonoBehaviour
                 enemies.Add(enemy.transform);
             }
         }
+        knockBackImunity = false;
+        knockBackCounter = knockBackTime;
+        speedBackup = speed;
+        if (knockBackTime <= 0)
+            knockBackTime = 0.5f;
     }
 
     private void Update()
     {
         if (inRoom)
         {
-
-
             isInCheckRange = Physics2D.OverlapCircle(transform.position, checkRadius, playerMask);
             isInAttackRange = Physics2D.OverlapCircle(transform.position, attackRadius, playerMask);
 
             direction = target.position - transform.position;
+            if (knockBackImunity && knockBackCounter > 0)
+            {
+                knockBackCounter -= Time.deltaTime;
+                direction *= -1;
+            }
+            if (knockBackCounter <= 0 && knockBackImunity)
+            {
+                knockBackCounter = knockBackTime;
+                knockBackImunity = false;
+                speed = speedBackup;
+            }
             direction.Normalize();
             movement = direction;
 
@@ -93,7 +114,7 @@ public class EnemyController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(isInCheckRange && !isInAttackRange) // juda link player
+        if (isInCheckRange && !isInAttackRange) // juda link player
         {
             Move(movement*(1-scaler)+avoidVector*scaler);
         }
@@ -157,9 +178,17 @@ public class EnemyController : MonoBehaviour
     void RangeAttack() {
         rangePauseCounter = attackPause;
         GameObject newBullet = Instantiate(bullet, this.transform.position, Quaternion.identity); 
-        if(bulletSpeed > 0)
+        newBullet.GetComponent<BulletController>().setDirection(target.transform.position - this.transform.position);
+        newBullet.GetComponent<BulletController>().setParent(this.gameObject);
+        if (bulletSpeed > 0)
             newBullet.GetComponent<BulletController>().speed = bulletSpeed;
         if(bulletDamage > 0)
             newBullet.GetComponent<BulletController>().damage = bulletDamage;
+    }
+    public void setKnockBackImunity(bool value) { 
+        this.knockBackImunity = value;
+    }
+    public void backupSpeed() {
+        speedBackup = speed;
     }
 }

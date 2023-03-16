@@ -148,3 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1.5
   damage: 0.5
+  isExplosive: 0
+  explosionRadius: 0
+  explosionTime: 0
+  explosion: {fileID: 1892453045458226189, guid: 75ca74e7e7f312c43a14d367948f7ced, type: 3}

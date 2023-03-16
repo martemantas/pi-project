@@ -224,7 +224,7 @@ public class RoomController : MonoBehaviour
                         if (door != null)
                         {
                             SpriteRenderer doorSprite = door.doorSprite.GetComponent<SpriteRenderer>();
-                            doorSprite.color = Color.black;
+                            doorSprite.color = Color.black; 
                         }
                     }
                 }
