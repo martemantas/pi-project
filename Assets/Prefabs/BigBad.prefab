@@ -157,6 +157,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   scaler: 0.2
+  inRoom: 0
   damage: 5
   attackPause: 2
   bullet: {fileID: 7686794606472135238, guid: 1b356139b095ad14c8005ae67ff1735e, type: 3}
@@ -177,7 +178,7 @@ MonoBehaviour:
   health: 10
   gameObject: {fileID: 8458326664779695754}
   hitSound: PlayerHit
-  deathSound: PlayerDeath
+  deathSound: Death
   sound: 
 --- !u!61 &8458326664779695756
 BoxCollider2D:

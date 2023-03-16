@@ -10,6 +10,7 @@ public class Room : MonoBehaviour
     public int Y;
 
     private bool updatedDoors = false;
+    public bool IsCleared = false;
 
     public Room(int x, int y)
     {

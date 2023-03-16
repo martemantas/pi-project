@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
     public List<AudioSource> allAudioSources;
     public List<bool> allAudioSourcesRunningState;
+    public static bool paused;
     // Start is called before the first frame update
     void Awake() // deletes second AudioManager if it appears
     {
@@ -72,6 +73,10 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         Play("BackGround_Music1"); //I guess it plays music on start, idk
+    }
+    public void Destroy()
+    {
+        Destroy(gameObject);
     }
     /// <summary>
     /// plays a sound
@@ -150,9 +155,9 @@ public class AudioManager : MonoBehaviour
     /// bool method, just to check when Player tries to walk
     /// </summary>
     /// <returns>true if keys are pressed</returns>
-    public static bool WalkingKeysPressed(bool pause)
+    public static bool WalkingKeysPressed()
     {
-        if (pause)
+        if (paused)
         {
             return false;
         }

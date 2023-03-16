@@ -10,6 +10,7 @@ public class GameOverScreen : MonoBehaviour
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI titleText;
     public Button restartButton;
+    public TextMeshProUGUI moneyText;
 
     public void Setup() {
         gameOverScreen.SetActive(true);
@@ -17,12 +18,18 @@ public class GameOverScreen : MonoBehaviour
         StartCoroutine(FadeImageToFullAlpha(0.5f, gameOverScreen.GetComponent<Image>()));
         StartCoroutine(FadeTextToFullAlpha(0.5f, timeText));
         StartCoroutine(FadeTextToFullAlpha(0.5f, titleText));
+        StartCoroutine(FadeTextToFullAlpha(0.5f, moneyText));
         StartCoroutine(FadeImageToFullAlpha(0.5f, restartButton.image));
 
         timeText.text = string.Format("You lived for {0:0.00} minutes", Time.timeSinceLevelLoad / 60);
+        moneyText.text = string.Format("You've got " + MoneyManager.gottenCoins.ToString() + " coins");
+
     }
     
     public void Restart() {
+        MoneyManager.MoneyChange(MoneyManager.gottenCoins);
+        MoneyManager.ResetMoney();
+        FindObjectOfType<AudioManager>().Destroy();
         SceneManager.LoadScene("MainHub");
     }
 

@@ -169,7 +169,6 @@ MonoBehaviour:
     isBought: 1
     price: 0
     character: {fileID: 5912177598210254999, guid: dd6e86f687174544db602ad3404f1247, type: 3}
-  moneyText: {fileID: 556349560}
   buyingFailed: {fileID: 768911549}
   buyingsuccesfull: {fileID: 0}
 --- !u!4 &221443490
@@ -5922,7 +5921,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: PlayerAttack
+  - name: Death2
     clip: {fileID: 8300000, guid: 750586f25bbb1d94aa3a3cda539bdbbf, type: 3}
     volume: 0.6
     pitch: 1
@@ -16058,7 +16057,7 @@ GameObject:
   - component: {fileID: 556349560}
   m_Layer: 5
   m_Name: Money
-  m_TagString: Untagged
+  m_TagString: MoneyText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16080,7 +16079,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 105, y: -38.199997}
+  m_AnchoredPosition: {x: 105, y: -38.200012}
   m_SizeDelta: {x: 171.3, y: 36.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &556349560
@@ -45617,9 +45616,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingsButton
       objectReference: {fileID: 0}
+    - target: {fileID: 1759805562899011152, guid: 1352d0286b462ce4bae21b88e2450899, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 4334207838296645708, guid: 1352d0286b462ce4bae21b88e2450899, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 450.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4334207838296645708, guid: 1352d0286b462ce4bae21b88e2450899, type: 3}
       propertyPath: m_AnchoredPosition.y

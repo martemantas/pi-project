@@ -8,16 +8,17 @@ public class MoneyManager : MonoBehaviour
     public UnlockableCharacters[] characters;
     [HideInInspector]
     private static int playerCoins;
-    public  TMP_Text moneyText;
+   // public  TMP_Text moneyText;
     public TMP_Text buyingFailed;
     public TMP_Text buyingsuccesfull;
     private float fadeInTime = 0.2f;
     private float fadeOutTime = 0.2f;
     public static MoneyManager instance;
+    public static int gottenCoins;
 
     void Awake() //shouold remove second MoneyManager if it appears on scene
     {
-
+        playerCoins = PlayerPrefs.GetInt("Money", 0);
         if (instance == null)   
             instance = this;
         else
@@ -27,13 +28,17 @@ public class MoneyManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject); // makes it so this object would persist trough scenes
+        
     }
 
     void Update()
     {
-        moneyText.text = "Money: " + playerCoins.ToString(); //should constantly update 
+        if (GameObject.FindGameObjectWithTag("MoneyText") != null)
+        {
+            GameObject.FindGameObjectWithTag("MoneyText").GetComponent<TextMeshProUGUI>().text = "Money: " + playerCoins.ToString(); //should constantly update 
+        }
+      //  Debug.Log("loaded" + playerCoins + " " + PlayerPrefs.GetInt("Money", 0));
     }
-
     /// <summary>
     /// tries to buy a hero by its gameObject
     /// </summary>
@@ -52,8 +57,9 @@ public class MoneyManager : MonoBehaviour
             }
             if (foundcharacter.character == hero && foundcharacter.price > playerCoins)
             {
-                StartCoroutine(FadeIn(buyingFailed));
-                StartCoroutine(Wait(buyingFailed, 1));
+                
+                StartCoroutine(FadeIn(GameObject.FindGameObjectWithTag("MoneyText").GetComponent<TextMeshProUGUI>()));
+                StartCoroutine(Wait(GameObject.FindGameObjectWithTag("MoneyText").GetComponent<TextMeshProUGUI>(), 1));
                 
                 Debug.Log("No money ");
                 return false;
@@ -61,6 +67,15 @@ public class MoneyManager : MonoBehaviour
         }
         Debug.Log("should not be included");
         return false;
+    }
+
+    public static int MoneyGainOnRun(int amount)
+    {
+       return gottenCoins += amount;
+    }
+    public static void ResetMoney()
+    {
+        gottenCoins = 0;
     }
     /// <summary>
     /// tries to buy a hero by it's name
@@ -96,6 +111,9 @@ public class MoneyManager : MonoBehaviour
         {
             playerCoins = 0;
         }
+        PlayerPrefs.SetInt("Money", playerCoins);
+        PlayerPrefs.Save();
+        Debug.Log("Issaugota" + playerCoins);
     }
 
     public UnlockableCharacters INeedAHero(GameObject hero) // finds and returns a hero by a gameObject
@@ -163,4 +181,5 @@ public class MoneyManager : MonoBehaviour
         }
         prompt.gameObject.SetActive(false);
     }
+
 }

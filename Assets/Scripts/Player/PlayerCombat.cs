@@ -42,7 +42,7 @@ public class PlayerCombat : MonoBehaviour
             {
                 if (lastDirection != attackDirection)
                     //attackArea.rotation = Quaternion.EulerRotation(0,0,Mathf.Acos(attackDirection.x) * Mathf.Rad2Deg);
-                    attackArea.RotateAround(this.gameObject.transform.position, Vector3.fwd, Mathf.Acos(attackDirection.x) * Mathf.Rad2Deg);
+                    attackArea.RotateAround(this.gameObject.transform.position, Vector3.forward, Mathf.Acos(attackDirection.x) * Mathf.Rad2Deg);
                 lastDirection = attackDirection;
             }
            

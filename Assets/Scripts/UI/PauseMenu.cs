@@ -33,6 +33,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
         FindObjectOfType<AudioManager>().PauseSounds(true);
+        AudioManager.paused = false;
     }
 
     void Pause()
@@ -41,11 +42,15 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
         FindObjectOfType<AudioManager>().PauseSounds(false);
+        AudioManager.paused = true;
     }
 
     public void LoadMenu()
     {
         Resume();
+        MoneyManager.MoneyChange(MoneyManager.gottenCoins);
+        Debug.Log(MoneyManager.gottenCoins + "Coins");
+        MoneyManager.ResetMoney();
         SceneManager.LoadScene("TitleScreen");
     }
 

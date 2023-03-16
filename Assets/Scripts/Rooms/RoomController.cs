@@ -24,6 +24,8 @@ public class RoomController : MonoBehaviour
     bool isLoadingRoom = false;
     bool spawnedBossRoom = false;
     bool updatedRooms = false;
+    //public Tile chest;
+    //public GameObject openChest;
 
     void Awake()
     {
@@ -203,6 +205,7 @@ public class RoomController : MonoBehaviour
             }
             else
             {
+                
                 EnemyController[] enemies = room.GetComponentsInChildren<EnemyController>();
                 if (enemies.Length > 0)
                 {
@@ -218,13 +221,32 @@ public class RoomController : MonoBehaviour
                 }
                 else
                 {
-                    foreach (Door door in room.GetComponentsInChildren<Door>())
+                    if (!room.IsCleared)
                     {
-                        door.doorCollider.SetActive(false);
-                        if (door != null)
+                        //Instantiate(chest, room.GetRoomCenter());
+                        room.IsCleared = true;
+                        MoneyManager.MoneyGainOnRun(200);
+
+                        foreach (Door door in room.GetComponentsInChildren<Door>())
                         {
-                            SpriteRenderer doorSprite = door.doorSprite.GetComponent<SpriteRenderer>();
-                            doorSprite.color = Color.black; 
+                            door.doorCollider.SetActive(false);
+                            if (door != null)
+                            {
+                                SpriteRenderer doorSprite = door.doorSprite.GetComponent<SpriteRenderer>();
+                                doorSprite.color = Color.black;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (Door door in room.GetComponentsInChildren<Door>())
+                        {
+                            door.doorCollider.SetActive(false);
+                            if (door != null)
+                            {
+                                SpriteRenderer doorSprite = door.doorSprite.GetComponent<SpriteRenderer>();
+                                doorSprite.color = Color.black;
+                            }
                         }
                     }
                 }

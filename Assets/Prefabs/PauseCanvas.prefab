@@ -2260,8 +2260,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -311.8}
-  m_SizeDelta: {x: 386.5286, y: 100}
+  m_AnchoredPosition: {x: 12.5521, y: -313.369}
+  m_SizeDelta: {x: 449.2894, y: 107.8451}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6066893062276996520
 CanvasRenderer:
@@ -3553,6 +3553,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 8537739143407498960}
+  PauseMain: {fileID: 0}
+  PauseSettings: {fileID: 0}
   allAudioSources: []
   allAudioSourcesRunningState: 
 --- !u!1 &8537739144036611912

@@ -180,7 +180,7 @@ MonoBehaviour:
   gameObject: {fileID: 3247833579151692250}
   hitSound: SwordHitFlesh
   deathSound: Death
-  sound: PlayerAttack
+  sound: Death2
 --- !u!61 &-5854474882307303446
 BoxCollider2D:
   m_ObjectHideFlags: 0
