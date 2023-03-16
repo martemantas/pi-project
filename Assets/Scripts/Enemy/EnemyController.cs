@@ -27,6 +27,7 @@ public class EnemyController : MonoBehaviour
     public bool inRoom = false;
 
     SpriteRenderer spriteRenderer; //enemy sprite -M
+    private Animator anim;
 
     private List<Transform> enemies;
 
@@ -49,6 +50,7 @@ public class EnemyController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player").transform;
         spriteRenderer = GetComponent<SpriteRenderer>(); // -M
+        anim = GetComponent<Animator>();
 
         enemies = new List<Transform>();
         GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
@@ -150,6 +152,7 @@ public class EnemyController : MonoBehaviour
     private void Move(Vector2 dir)
     {
         rb.MovePosition((Vector2)transform.position + (dir * speed * Time.deltaTime));
+        anim.SetBool("spotted", true);
     }
 
     // Enemy attack
@@ -167,8 +170,17 @@ public class EnemyController : MonoBehaviour
             {
                 playerHealth.Damage(damage);
                 attackPauseCounter = attackPause;
+
+                StartCoroutine(getDamageAnimation());
             }
         }
+    }
+
+    IEnumerator getDamageAnimation()
+    {
+        anim.SetBool("isHit", true);
+        yield return new WaitForSeconds(3000f);
+        anim.SetBool("isHit", false);
     }
     void OnTriggerExit2D(Collider2D other)
     {

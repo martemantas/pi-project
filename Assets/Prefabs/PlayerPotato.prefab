@@ -169,8 +169,8 @@ MonoBehaviour:
   attackPause: 0.5
   specialPause: 5
   bullet: {fileID: 7686794606472135238, guid: 1b356139b095ad14c8005ae67ff1735e, type: 3}
-  bulletSpeed: 0
-  bulletDamage: 0
+  bulletSpeed: 5
+  bulletDamage: 1
   explosive: {fileID: 7686794606472135238, guid: 1b356139b095ad14c8005ae67ff1735e, type: 3}
   explosionRadius: 0.5
   explosionTime: 3

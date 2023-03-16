@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d58a35fcf98a6444924d61d3d20a9b7, type: 3}
   m_Name: New Loot
   m_EditorClassIdentifier: 
-  lootSprite: {fileID: 0}
+  lootSprite: {fileID: 21300000, guid: 6239dcf7a57b15a4c9613cf641815eec, type: 3}
   lootName: levelXp
   dropChance: 100
