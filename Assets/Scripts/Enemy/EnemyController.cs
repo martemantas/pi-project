@@ -93,15 +93,19 @@ public class EnemyController : MonoBehaviour
             Vector3 avoidance = Vector3.zero;
             foreach (Transform enemy in enemies)
             {
-                // calculate the distance to the other enemy
-                Vector3 enemyDirection = enemy.position - transform.position;
-                float enemyDistance = enemyDirection.magnitude;
-
-                // check if the other enemy is within the avoidance distance
-                if (enemyDistance <= avoidDistance)
+                
+                if (enemy != null)
                 {
-                    // calculate the avoidance force
-                    avoidance += -enemyDirection.normalized * avoidanceForce / enemyDistance;
+                    // calculate the distance to the other enemy
+                    Vector3 enemyDirection = enemy.position - transform.position;
+                    float enemyDistance = enemyDirection.magnitude;
+
+                    // check if the other enemy is within the avoidance distance
+                    if (enemyDistance <= avoidDistance)
+                    {
+                        // calculate the avoidance force
+                        avoidance += -enemyDirection.normalized * avoidanceForce / enemyDistance;
+                    }
                 }
             }
             avoidance.Normalize();
