@@ -61,7 +61,7 @@ public class CharacterSwitch : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        buyPrompt.text = "This hero costs " + FindAnyObjectByType<MoneyManager>().INeedAHero(newHero).price + ", press [E] to buy";
+        buyPrompt.text = "This hero costs " + FindAnyObjectByType<MoneyManager>().INeedAHero(newHero).price + '\n' + " press [E] to buy";
         if (collision.gameObject == player)
         {
             if (currentCoroutine != null)

@@ -9,6 +9,8 @@ TagManager:
   - Grass
   - MenuPanel
   - Room
+  - MoneyText
+  - buyingText
   layers:
   - Default
   - TransparentFX
