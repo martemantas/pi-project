@@ -68,12 +68,15 @@ public class PlayerMovement : MonoBehaviour
         {
             isWalking = true;
             animator.SetBool("isWalking", true); // -M
-            
+            //animator.SetBool("isShooting", false); // -M
+
         }
         else
         {
             isWalking = false;
             animator.SetBool("isWalking", false); // -M
+            animator.SetBool("isShooting", false); // -M
+
         }
 
 

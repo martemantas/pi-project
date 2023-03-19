@@ -29,6 +29,13 @@ public class PlayerCombat : MonoBehaviour
     public float explosionRadius = 0.5f;
     public float explosionTime = 3.0f;
 
+    private Animator animator; //-M
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>(); // -M
+    }
+
     void Update()
     {
         //changes the possition of attack point according to the direction of player movement
@@ -90,6 +97,9 @@ public class PlayerCombat : MonoBehaviour
             if (bulletDamage > 0)
                 newBullet.GetComponent<BulletController>().damage = bulletDamage;
             attackPauseCounter = attackPause;
+            animator.SetBool("isShooting", true); // -M
+            Debug.Log("shooooooot");
+
         }
     }
     void SpecialKnockAttack() {
