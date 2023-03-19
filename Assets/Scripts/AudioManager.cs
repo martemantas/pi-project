@@ -5,11 +5,15 @@ using System.Collections.Generic;
 
 public class AudioManager : MonoBehaviour
 {
+    [SerializeField] private AudioMixerGroup SoundVolume;
+
     public Sound[] sounds;
     public static AudioManager instance;
-    public List<AudioSource> allAudioSources;
-    public List<bool> allAudioSourcesRunningState;
-    public static bool paused;
+    [SerializeField] public List<AudioSource> allAudioSources;
+    [SerializeField] public List<bool> allAudioSourcesRunningState;
+    [SerializeField] public static bool paused;
+    public float volume { private get;  set; }
+
     // Start is called before the first frame update
     void Awake() // deletes second AudioManager if it appears
     {
@@ -32,6 +36,24 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+            switch (s.audioType)
+            {
+                case Sound.AudioTypes.soundEffect:
+                    s.source.outputAudioMixerGroup = SoundVolume;
+                    break;
+                case Sound.AudioTypes.music:
+                    s.source.outputAudioMixerGroup = SoundVolume;
+                    break;
+            }
+        }
+
+
+    }
+    public void ChangeSound(float volume)
+    {
+        foreach (Sound s in sounds)
+        {
+            s.source.volume *= volume;
         }
     }
     public void PauseSounds(bool paused)
@@ -66,14 +88,13 @@ public class AudioManager : MonoBehaviour
                     a.Pause();
                 }
             }
-            
-
         }
     }
     private void Start()
     {
         Play("BackGround_Music1"); //I guess it plays music on start, idk
     }
+
     public void Destroy()
     {
         Destroy(gameObject);
@@ -97,9 +118,9 @@ public class AudioManager : MonoBehaviour
             s.source.pitch *= .5f;
         }
     }
-    public void Pause()
+    public void UpdateMixerVolume()
     {
-        
+        SoundVolume.audioMixer.SetFloat("soundVolume", MathF.Log10(AudioOptionsManager.musicVolume) * 20);
     }
 
     /// <summary>

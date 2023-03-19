@@ -5863,6 +5863,7 @@ GameObject:
   - component: {fileID: 284801327}
   - component: {fileID: 284801326}
   - component: {fileID: 284801328}
+  - component: {fileID: 284801329}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -5882,52 +5883,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73995d9e05658bc4bb2fae59623d4dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundVolume: {fileID: 7760397696277296701, guid: 84282aaa20d1fd2498cb23d9a35ebc0f, type: 2}
   sounds:
-  - name: PlayerHit
+  - audioType: 0
+    name: PlayerHit
     clip: {fileID: 8300000, guid: 38e3a83dc0ad2594ea8483b338608986, type: 3}
-    volume: 0.15
+    volume: 0.4
     pitch: 2
     loop: 0
     source: {fileID: 0}
-  - name: PlayerDash
+  - audioType: 0
+    name: PlayerDash
     clip: {fileID: 8300000, guid: 8091513d108d7b34da0fffcf02067797, type: 3}
-    volume: 0.2
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: BackGround_Music1
+  - audioType: 1
+    name: BackGround_Music1
     clip: {fileID: 8300000, guid: 5b92b38c4d9b86f40addd41fa112a7c0, type: 3}
-    volume: 0.05
+    volume: 0.2
     pitch: 2
     loop: 1
     source: {fileID: 0}
-  - name: PlayerDeath
+  - audioType: 0
+    name: PlayerDeath
     clip: {fileID: 8300000, guid: 73f2fa346638c974d8b79536d0721c23, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: PlayerWalk
-    clip: {fileID: 8300000, guid: cbccd37e2a82bbb498c26c842aaf3d0b, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Death
-    clip: {fileID: 8300000, guid: 40bd3465437d24a42abd7bbc65cc9e6b, type: 3}
-    volume: 0.1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Death2
-    clip: {fileID: 8300000, guid: 750586f25bbb1d94aa3a3cda539bdbbf, type: 3}
     volume: 0.6
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: SwordHitFlesh
-    clip: {fileID: 8300000, guid: 33c85a49710e4e34da78ba2a4d4f0fb8, type: 3}
+  - audioType: 0
+    name: PlayerWalk
+    clip: {fileID: 8300000, guid: cbccd37e2a82bbb498c26c842aaf3d0b, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioType: 0
+    name: Death
+    clip: {fileID: 8300000, guid: 40bd3465437d24a42abd7bbc65cc9e6b, type: 3}
     volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioType: 0
+    name: Death2
+    clip: {fileID: 8300000, guid: 750586f25bbb1d94aa3a3cda539bdbbf, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioType: 0
+    name: SwordHitFlesh
+    clip: {fileID: 8300000, guid: 33c85a49710e4e34da78ba2a4d4f0fb8, type: 3}
+    volume: 0.6
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -5968,6 +5978,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &284801329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284801325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b4a53f069a1894f8b01a3817bfbbdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicslider: {fileID: 0}
 --- !u!1 &362344929
 GameObject:
   m_ObjectHideFlags: 0
@@ -45638,6 +45661,26 @@ PrefabInstance:
     - target: {fileID: 1759805562899011152, guid: 1352d0286b462ce4bae21b88e2450899, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -355
+      objectReference: {fileID: 0}
+    - target: {fileID: 3320953315482914160, guid: 1352d0286b462ce4bae21b88e2450899, type: 3}
+      propertyPath: m_MaxValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3320953315482914160, guid: 1352d0286b462ce4bae21b88e2450899, type: 3}
+      propertyPath: m_MinValue
+      value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 3320953315482914160, guid: 1352d0286b462ce4bae21b88e2450899, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 284801329}
+    - target: {fileID: 3320953315482914160, guid: 1352d0286b462ce4bae21b88e2450899, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnMusicSliderValueChange
+      objectReference: {fileID: 0}
+    - target: {fileID: 3320953315482914160, guid: 1352d0286b462ce4bae21b88e2450899, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AudioOptionsManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4334207838296645708, guid: 1352d0286b462ce4bae21b88e2450899, type: 3}
       propertyPath: m_AnchoredPosition.x

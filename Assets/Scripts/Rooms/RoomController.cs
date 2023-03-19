@@ -223,7 +223,6 @@ public class RoomController : MonoBehaviour
                 {
                     if (!room.IsCleared)
                     {
-                        //Instantiate(chest, room.GetRoomCenter());
                         room.IsCleared = true;
                         MoneyManager.MoneyGainOnRun(200);
 
