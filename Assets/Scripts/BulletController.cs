@@ -15,6 +15,7 @@ public class BulletController : MonoBehaviour
     public float explosionTime;
     private float explosionTimeCounter;
     public GameObject explosion;
+    public ParticleSystem expl;
 
     public void setDirection(Vector2 dir) { 
         this.direction = dir;
@@ -82,8 +83,7 @@ public class BulletController : MonoBehaviour
         }
     }
     private void Explode() {
-        //GameObject explosion = (GameObject)Resources.Load("Explosion", typeof(GameObject));
-        //explosion.GetComponentInChildren<ParticleSystem>().GetComponent<ParticleSystem>().Play();
+        PlayParticles();
         Collider2D[] enemies = Physics2D.OverlapCircleAll(this.gameObject.transform.position, explosionRadius);
         string lastName = "";
         foreach (Collider2D enemy in enemies)
@@ -94,6 +94,11 @@ public class BulletController : MonoBehaviour
                 lastName = enemy.name;
             }
         }
-        Destroy(this.gameObject);
+        
+        Destroy(this.gameObject); //fix because no particles
+    }
+    private void PlayParticles() {
+        explosion.GetComponent<ParticleSystem>().Play();
+        Debug.Log(explosion.GetComponent<ParticleSystem>().isPlaying);
     }
 }
