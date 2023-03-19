@@ -21,6 +21,12 @@ public class CheckPicked : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (LastDisabledObject.currentObject != -1)
+        {
+            prefabID = LastDisabledObject.currentObject;
+            Debug.Log(prefabID);
+        }
+
         currentPlayer = GameObject.FindGameObjectWithTag("Player");
         Destroy(currentPlayer);
         GameObject newPlayer = Instantiate(playerPrefabs[prefabID], currentPlayer.transform.position, Quaternion.identity);
