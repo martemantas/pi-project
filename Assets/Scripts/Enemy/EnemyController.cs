@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
     public LayerMask playerMask; //zaidejo layer
     public float scaler = 0.3f;
 
-    private Transform target;
+    public Transform target;
     private Rigidbody2D rb;
     private Vector2 movement;
     private Vector3 direction;
