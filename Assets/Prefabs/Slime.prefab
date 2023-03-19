@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5654097140766332744}
   - component: {fileID: 5594955175663079804}
   - component: {fileID: -2754155503862667788}
+  - component: {fileID: -5087055931509162248}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Enemy
@@ -207,3 +208,23 @@ MonoBehaviour:
   hitSound: SwordHitFlesh
   deathSound: Death
   sound: Death2
+--- !u!95 &-5087055931509162248
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5654097140766332748}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

@@ -23,6 +23,8 @@ public class CharacterSwitch : MonoBehaviour
     public float pressDelay = 1f;
 
     private Coroutine currentCoroutine;
+
+    public int prefabID;
  
 
     
@@ -59,7 +61,7 @@ public class CharacterSwitch : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        buyPrompt.text = "This hero costs " + FindAnyObjectByType<MoneyManager>().INeedAHero(newHero).price + ", press [E] to buy";
+        buyPrompt.text = "This hero costs " + FindAnyObjectByType<MoneyManager>().INeedAHero(newHero).price + '\n' + " press [E] to buy";
         if (collision.gameObject == player)
         {
             if (currentCoroutine != null)
@@ -159,6 +161,8 @@ public class CharacterSwitch : MonoBehaviour
             SpriteRenderer otherSpriteRenderer = LastDisabledObject.lastDisabledObject.GetComponent<SpriteRenderer>();
             otherSpriteRenderer.enabled = true;
         }
+
+        LastDisabledObject.currentObject = prefabID;
 
         LastDisabledObject.lastDisabledObject = gameObject;
 

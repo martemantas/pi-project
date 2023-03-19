@@ -9,8 +9,8 @@ public class MoneyManager : MonoBehaviour
     [HideInInspector]
     private static int playerCoins;
    // public  TMP_Text moneyText;
-    public TMP_Text buyingFailed;
-    public TMP_Text buyingsuccesfull;
+    private GameObject buyStatus;
+   // private GameObject buyingsuccesfull;
     private float fadeInTime = 0.2f;
     private float fadeOutTime = 0.2f;
     public static MoneyManager instance;
@@ -19,7 +19,7 @@ public class MoneyManager : MonoBehaviour
     void Awake() //shouold remove second MoneyManager if it appears on scene
     {
         playerCoins = PlayerPrefs.GetInt("Money", 0);
-        if (instance == null)   
+        if (instance == null)
             instance = this;
         else
         {
@@ -27,8 +27,12 @@ public class MoneyManager : MonoBehaviour
             return;
         }
 
-        DontDestroyOnLoad(gameObject); // makes it so this object would persist trough scenes
+    //    DontDestroyOnLoad(gameObject); // makes it so this object would persist trough scenes
         
+    }
+    private void Start()
+    {
+        buyStatus = FindInActiveObjectByTag("buyingText");
     }
 
     void Update()
@@ -37,30 +41,55 @@ public class MoneyManager : MonoBehaviour
         {
             GameObject.FindGameObjectWithTag("MoneyText").GetComponent<TextMeshProUGUI>().text = "Money: " + playerCoins.ToString(); //should constantly update 
         }
-      //  Debug.Log("loaded" + playerCoins + " " + PlayerPrefs.GetInt("Money", 0));
     }
+
+    GameObject FindInActiveObjectByTag(string tag)
+    {
+
+        Transform[] objs = Resources.FindObjectsOfTypeAll<Transform>() as Transform[];
+        for (int i = 0; i < objs.Length; i++)
+        {
+            if (objs[i].hideFlags == HideFlags.None)
+            {
+                if (objs[i].CompareTag(tag))
+                {
+                    return objs[i].gameObject;
+                }
+            }
+        }
+        return null;
+    }
+
+
+
     /// <summary>
     /// tries to buy a hero by its gameObject
     /// </summary>
     /// <param name="hero">which hero you are searching for</param>
     /// <returns>true if bought</returns>
     public bool TryBuy(GameObject hero)
-    {
+    { 
         foreach (UnlockableCharacters foundcharacter in characters)
         {
             if (foundcharacter.character == hero && foundcharacter.price <= playerCoins)
             {
                 playerCoins -= foundcharacter.price;
-                foundcharacter.isBought = true;
+                foundcharacter.isBought = true; //    buyingSuccess
+
+                buyStatus.GetComponent<TextMeshProUGUI>().text = "You now own this hero!"; buyStatus.GetComponent<TextMeshProUGUI>().color = Color.yellow;
+                StartCoroutine(FadeIn(buyStatus.GetComponent<TextMeshProUGUI>()));
+                StartCoroutine(Wait(buyStatus.GetComponent<TextMeshProUGUI>(), 2));
+
                 Debug.Log("Hero is bought"); return true;
 
             }
             if (foundcharacter.character == hero && foundcharacter.price > playerCoins)
             {
-                
-                StartCoroutine(FadeIn(GameObject.FindGameObjectWithTag("MoneyText").GetComponent<TextMeshProUGUI>()));
-                StartCoroutine(Wait(GameObject.FindGameObjectWithTag("MoneyText").GetComponent<TextMeshProUGUI>(), 1));
-                
+                int debt = foundcharacter.price - playerCoins;
+                buyStatus.GetComponent<TextMeshProUGUI>().text = "You can't buy this hero, yet" + '\n' + "You are " + debt + " coins short"; buyStatus.GetComponent<TextMeshProUGUI>().color = Color.red;
+                StartCoroutine(FadeIn(buyStatus.GetComponent<TextMeshProUGUI>()));
+                StartCoroutine(Wait(buyStatus.GetComponent<TextMeshProUGUI>(), 2));
+
                 Debug.Log("No money ");
                 return false;
             }
@@ -90,13 +119,20 @@ public class MoneyManager : MonoBehaviour
             {
                 playerCoins -= foundcharacter.price;
                 foundcharacter.isBought = true;
+
+                buyStatus.GetComponent<TextMeshProUGUI>().text = "You now own this hero!"; buyStatus.GetComponent<TextMeshProUGUI>().color = Color.yellow;
+                StartCoroutine(FadeIn(buyStatus.GetComponent<TextMeshProUGUI>()));
+                StartCoroutine(Wait(buyStatus.GetComponent<TextMeshProUGUI>(), 2));
                 Debug.Log("Hero is bought"); return true;
             }
             if (foundcharacter.name == heroNAme && foundcharacter.price > playerCoins)
             {
-                StartCoroutine(FadeIn(buyingFailed));
-                StartCoroutine(Wait(buyingFailed, 1));
+                int debt = foundcharacter.price - playerCoins;
+                buyStatus.GetComponent<TextMeshProUGUI>().text = "You can't buy this hero, yet" + '\n' + "You are " + debt + " coins short"; buyStatus.GetComponent<TextMeshProUGUI>().color = Color.red;
+                StartCoroutine(FadeIn(buyStatus.GetComponent<TextMeshProUGUI>()));
+                StartCoroutine(Wait(buyStatus.GetComponent<TextMeshProUGUI>(), 2));
 
+                Debug.Log("No money ");
                 return false;
             }  
         }
@@ -104,7 +140,7 @@ public class MoneyManager : MonoBehaviour
         return false;
     }
 
-    public static void MoneyChange(int amount) //changes your current money by the given amount
+    public static void AddMoney(int amount) //changes your current money by the given amount
     {
         playerCoins += amount;
         if (playerCoins < 0)
@@ -115,6 +151,18 @@ public class MoneyManager : MonoBehaviour
         PlayerPrefs.Save();
         Debug.Log("Issaugota" + playerCoins);
     }
+    public static void RemoveMoney(int amount)
+    {
+        playerCoins -= amount;
+        if (playerCoins < 0)
+        {
+            playerCoins = 0;
+        }
+        PlayerPrefs.SetInt("Money", playerCoins);
+        PlayerPrefs.Save();
+        Debug.Log("Issaugota" + playerCoins);
+    }
+
 
     public UnlockableCharacters INeedAHero(GameObject hero) // finds and returns a hero by a gameObject
     {

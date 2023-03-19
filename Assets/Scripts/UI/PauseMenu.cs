@@ -48,7 +48,7 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         Resume();
-        MoneyManager.MoneyChange(MoneyManager.gottenCoins);
+        MoneyManager.AddMoney(MoneyManager.gottenCoins);
         Debug.Log(MoneyManager.gottenCoins + "Coins");
         MoneyManager.ResetMoney();
         SceneManager.LoadScene("TitleScreen");

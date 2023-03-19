@@ -27,7 +27,7 @@ public class GameOverScreen : MonoBehaviour
     }
     
     public void Restart() {
-        MoneyManager.MoneyChange(MoneyManager.gottenCoins);
+        MoneyManager.AddMoney(MoneyManager.gottenCoins);
         MoneyManager.ResetMoney();
         FindObjectOfType<AudioManager>().Destroy();
         SceneManager.LoadScene("MainHub");
