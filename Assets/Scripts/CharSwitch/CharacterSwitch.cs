@@ -6,7 +6,7 @@ using System;
 public class CharacterSwitch : MonoBehaviour
 {
     public TextMeshProUGUI ePrompt;
-    
+
     private GameObject player;
     public float fadeInTime = 0.2f;
     public float fadeOutTime = 0.2f;
@@ -16,7 +16,7 @@ public class CharacterSwitch : MonoBehaviour
     private GameObject currentPlayer; // the current player object
     private SpriteRenderer spriteRenderer;
     private ParticleSystem particles1;
-    
+
     public TMP_Text buyPrompt;
 
     private float lastPressTime;
@@ -25,9 +25,11 @@ public class CharacterSwitch : MonoBehaviour
     private Coroutine currentCoroutine;
 
     public int prefabID;
- 
 
-    
+    private bool insideTheMask = false;
+
+
+
     private void Start()
     {
         // Get the CircleCollider2D component on the game object
@@ -40,17 +42,17 @@ public class CharacterSwitch : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
-        if (buyPrompt.gameObject.activeSelf && Input.GetKeyDown(triggerKey) && Time.time - lastPressTime > pressDelay && IsPlayerInsideMask())
+        if (buyPrompt.gameObject.activeSelf && Input.GetKeyDown(triggerKey) && Time.time - lastPressTime > pressDelay && insideTheMask)
         {
             lastPressTime = Time.time;
             if (!FindAnyObjectByType<MoneyManager>().TryBuy(newHero))
             {
-                
+
             }
             currentCoroutine = StartCoroutine(FadeOut(buyPrompt));
         }
 
-        if (ePrompt.gameObject.activeSelf && Input.GetKeyDown(triggerKey) && IsPlayerInsideMask() && Time.time - lastPressTime > pressDelay)
+        if (ePrompt.gameObject.activeSelf && Input.GetKeyDown(triggerKey) && insideTheMask && Time.time - lastPressTime > pressDelay)
         {
             Debug.Log("E pressed");
             lastPressTime = Time.time;
@@ -80,6 +82,7 @@ public class CharacterSwitch : MonoBehaviour
             // set the currentPlayer object to the player that entered the collider
             currentPlayer = collision.gameObject;
         }
+        insideTheMask = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -99,6 +102,7 @@ public class CharacterSwitch : MonoBehaviour
                 currentCoroutine = StartCoroutine(FadeOut(ePrompt));
             }
         }
+        insideTheMask = false;
     }
 
     private IEnumerator FadeIn(TMP_Text prompt)
