@@ -168,6 +168,8 @@ public class RoomController : MonoBehaviour
         currRoom = room;
 
         StartCoroutine(RoomCoroutine());
+        if(!currRoom.GetComponentInChildren<Visit>().visited)
+            currRoom.GetComponentInChildren<Visit>().VisitRoom();
     }
 
     public IEnumerator RoomCoroutine()

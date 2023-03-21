@@ -602,7 +602,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 119
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1059,32 +1059,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73995d9e05658bc4bb2fae59623d4dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundVolume: {fileID: 0}
   sounds:
-  - name: PlayerHit
+  - audioType: 0
+    name: PlayerHit
     clip: {fileID: 8300000, guid: 38e3a83dc0ad2594ea8483b338608986, type: 3}
     volume: 0.15
     pitch: 2
     loop: 0
     source: {fileID: 0}
-  - name: PlayerDash
+  - audioType: 0
+    name: PlayerDash
     clip: {fileID: 8300000, guid: 8091513d108d7b34da0fffcf02067797, type: 3}
     volume: 0.2
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: BackGround_Music1
+  - audioType: 0
+    name: BackGround_Music1
     clip: {fileID: 8300000, guid: 5b92b38c4d9b86f40addd41fa112a7c0, type: 3}
     volume: 0.022
     pitch: 3
     loop: 1
     source: {fileID: 0}
-  - name: PlayerDeath
+  - audioType: 0
+    name: PlayerDeath
     clip: {fileID: 8300000, guid: 73f2fa346638c974d8b79536d0721c23, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: PlayerWalk
+  - audioType: 0
+    name: PlayerWalk
     clip: {fileID: 8300000, guid: cbccd37e2a82bbb498c26c842aaf3d0b, type: 3}
     volume: 0.5
     pitch: 1

@@ -32,13 +32,13 @@ public class Room : MonoBehaviour
 
     void Start()
     {
-        if(RoomController.instance == null)
+        if (RoomController.instance == null)
         {
             return;
         }
 
         Door[] ds = GetComponentsInChildren<Door>();
-        foreach(Door d in ds)
+        foreach (Door d in ds)
         {
             doors.Add(d);
             switch (d.doorType)
@@ -82,7 +82,7 @@ public class Room : MonoBehaviour
 
     void Update()
     {
-        if(name.Contains("End") && !updatedDoors)
+        if (name.Contains("End") && !updatedDoors)
         {
             RemoveUnconnectedDoors();
             updatedDoors = true;
@@ -100,7 +100,7 @@ public class Room : MonoBehaviour
                     {
                         door.gameObject.SetActive(false);
                         rightWall.wallCollider.SetActive(true);
-                    }  
+                    }
                     break;
                 case Door.DoorType.left:
                     if (GetLeft() == null)
@@ -129,7 +129,7 @@ public class Room : MonoBehaviour
 
     public Room GetRight()
     {
-        if(RoomController.instance.DoesRoomExist(X+1, Y))
+        if (RoomController.instance.DoesRoomExist(X + 1, Y))
         {
             return RoomController.instance.FindRoom(X + 1, Y);
         }
@@ -145,17 +145,17 @@ public class Room : MonoBehaviour
     }
     public Room GetTop()
     {
-        if (RoomController.instance.DoesRoomExist(X, Y+1))
+        if (RoomController.instance.DoesRoomExist(X, Y + 1))
         {
-            return RoomController.instance.FindRoom(X, Y+1);
+            return RoomController.instance.FindRoom(X, Y + 1);
         }
         return null;
     }
     public Room GetBottom()
     {
-        if (RoomController.instance.DoesRoomExist(X, Y-1))
+        if (RoomController.instance.DoesRoomExist(X, Y - 1))
         {
-            return RoomController.instance.FindRoom(X, Y-1);
+            return RoomController.instance.FindRoom(X, Y - 1);
         }
         return null;
     }
@@ -173,9 +173,11 @@ public class Room : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             RoomController.instance.OnPlayerEnterRoom(this);
         }
     }
+
 }
+

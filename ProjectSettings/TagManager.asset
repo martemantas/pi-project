@@ -11,6 +11,7 @@ TagManager:
   - Room
   - MoneyText
   - buyingText
+  - minimap
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
+  - Minimap
   - 
   - 
   - 
