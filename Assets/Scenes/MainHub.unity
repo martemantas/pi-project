@@ -169,6 +169,10 @@ MonoBehaviour:
     isBought: 1
     price: 0
     character: {fileID: 5912177598210254999, guid: dd6e86f687174544db602ad3404f1247, type: 3}
+  - name: knight2
+    isBought: 0
+    price: 100
+    character: {fileID: 5912177598210254999, guid: eeb2be13c8e75874db2818a81d14d640, type: 3}
 --- !u!4 &221443490
 Transform:
   m_ObjectHideFlags: 0
@@ -40270,14 +40274,14 @@ PrefabInstance:
     - target: {fileID: 5982467248998881985, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: newHero
       value: 
-      objectReference: {fileID: 5912177598210254999, guid: dd6e86f687174544db602ad3404f1247, type: 3}
+      objectReference: {fileID: 5912177598210254999, guid: eeb2be13c8e75874db2818a81d14d640, type: 3}
     - target: {fileID: 5982467248998881985, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: heroName
       value: Ghost
       objectReference: {fileID: 0}
     - target: {fileID: 5982467248998881985, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: prefabID
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5982467248998881985, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: buyFailed

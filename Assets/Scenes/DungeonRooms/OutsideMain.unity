@@ -1510,6 +1510,7 @@ MonoBehaviour:
   playerPrefabs:
   - {fileID: 899074607574101874, guid: a7194ef12cd6ff84697069f8ceaf070a, type: 3}
   - {fileID: 5912177598210254999, guid: dd6e86f687174544db602ad3404f1247, type: 3}
+  - {fileID: 5912177598210254999, guid: eeb2be13c8e75874db2818a81d14d640, type: 3}
   prefabID: 0
 --- !u!4 &1853712799
 Transform:
@@ -1689,32 +1690,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73995d9e05658bc4bb2fae59623d4dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundVolume: {fileID: 0}
   sounds:
-  - name: PlayerHit
+  - audioType: 0
+    name: PlayerHit
     clip: {fileID: 8300000, guid: 38e3a83dc0ad2594ea8483b338608986, type: 3}
     volume: 0.15
     pitch: 2
     loop: 0
     source: {fileID: 0}
-  - name: PlayerDash
+  - audioType: 0
+    name: PlayerDash
     clip: {fileID: 8300000, guid: 8091513d108d7b34da0fffcf02067797, type: 3}
     volume: 0.2
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: BackGround_Music1
+  - audioType: 0
+    name: BackGround_Music1
     clip: {fileID: 8300000, guid: 5b92b38c4d9b86f40addd41fa112a7c0, type: 3}
     volume: 0.022
     pitch: 3
     loop: 1
     source: {fileID: 0}
-  - name: PlayerDeath
+  - audioType: 0
+    name: PlayerDeath
     clip: {fileID: 8300000, guid: 73f2fa346638c974d8b79536d0721c23, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: PlayerWalk
+  - audioType: 0
+    name: PlayerWalk
     clip: {fileID: 8300000, guid: cbccd37e2a82bbb498c26c842aaf3d0b, type: 3}
     volume: 0.5
     pitch: 1

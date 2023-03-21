@@ -10,7 +10,7 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private Image currentHealthBar;
 
     private IEnumerator Start() {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         playerHealth = GameObject.FindWithTag("Player").GetComponent<HealthController>();
         totalHealthBar.fillAmount = playerHealth.health / 10;
     }
