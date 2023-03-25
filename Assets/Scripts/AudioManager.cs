@@ -14,7 +14,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] public static bool paused;
     public ParticleSystem Rain, RainDrops;
     public float volume { private get;  set; }
-    public void FixedUpdate()
+    public void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
