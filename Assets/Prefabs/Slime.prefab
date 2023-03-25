@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5594955175663079804}
   - component: {fileID: -2754155503862667788}
   - component: {fileID: -5087055931509162248}
+  - component: {fileID: 2410128131559712484}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Enemy
@@ -158,6 +159,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   scaler: 0.4
+  target: {fileID: 0}
   inRoom: 0
   damage: 1
   attackPause: 1
@@ -228,3 +230,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &2410128131559712484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5654097140766332748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2322324d8aaa72d49b3e63b4b4f528a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droppedItemPrefab: {fileID: 4862617375306580554, guid: 99ddaed84e8212040827428b17bd0996, type: 3}
+  lootList:
+  - {fileID: 11400000, guid: dd7ca59a88f5d464d9698fe68fa6592c, type: 2}
+  - {fileID: 11400000, guid: 35a0bf6c42f5f4d4bbeef5a4fc44b3a6, type: 2}

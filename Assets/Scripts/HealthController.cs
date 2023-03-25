@@ -40,10 +40,12 @@ public class HealthController : MonoBehaviour
         {
 
             Destroy(this.gameObject);
+          
             if (this.gameObject.CompareTag("Player"))
                 GameObject.FindWithTag("GameOverScreen").GetComponent<GameOverScreen>().Setup();
             else
-                RoomController.instance.StartCoroutine(RoomController.instance.RoomCoroutine()); ; //
+            GetComponent<LootBag>().InstantiateLoot(transform.position);
+            RoomController.instance.StartCoroutine(RoomController.instance.RoomCoroutine()); ; //
             if (digit >= 75)
             {
                 FindObjectOfType<AudioManager>().Play(sound);

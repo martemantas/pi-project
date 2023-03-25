@@ -12,12 +12,39 @@ public class AudioManager : MonoBehaviour
     [SerializeField] public List<AudioSource> allAudioSources;
     [SerializeField] public List<bool> allAudioSourcesRunningState;
     [SerializeField] public static bool paused;
+    public ParticleSystem Rain, RainDrops;
     public float volume { private get;  set; }
+    public void FixedUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (GetSound("BackGround_Music1").isPlaying)
+            {
+                Stop("BackGround_Music1");
+                Play("BackGround_Music2");
+                Play("Rain_Sound");
+                Rain.Play();
+                RainDrops.Play();
+            }
+            else
+            {
+                GetComponent<AudioManager>().Stop("BackGround_Music2");
+                GetComponent<AudioManager>().Stop("Rain_Sound");
+                GetComponent<AudioManager>().Play("BackGround_Music1");
+                Rain.Stop();
+                RainDrops.Stop();
+            }
+            if (Rain == null || RainDrops == null)
+            {
+                //GameObject.FindWithTag("GameOverScreen")
+                //GameObject.FindWithTag("GameOverScreen")
+            }
 
+        }
+    }
     // Start is called before the first frame update
     void Awake() // deletes second AudioManager if it appears
     {
-
         if (instance == null) 
             instance = this;
         else

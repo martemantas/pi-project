@@ -23,7 +23,7 @@ public class OpenChest : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.name.Equals("PlayerGhost"))
+        if (col.CompareTag("Player"))
         {
             /*text.gameObject.SetActive(true);
             openAllowed = true;*/
@@ -34,7 +34,7 @@ public class OpenChest : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.name.Equals("PlayerGhost"))
+        if (col.CompareTag("Player"))
         {
             /*text.gameObject.SetActive(false);
             openAllowed = false;*/

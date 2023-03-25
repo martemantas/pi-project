@@ -2190,6 +2190,8 @@ MonoBehaviour:
     source: {fileID: 0}
   allAudioSources: []
   allAudioSourcesRunningState: 
+  Rain: {fileID: 0}
+  RainDrops: {fileID: 0}
 --- !u!4 &1947422060
 Transform:
   m_ObjectHideFlags: 0
