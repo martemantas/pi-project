@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 3646535791694739905}
   - component: {fileID: 1123095468798450593}
   - component: {fileID: 4493587932886190778}
-  - component: {fileID: 6312050400716726023}
+  - component: {fileID: 5332208565510381917}
+  - component: {fileID: 5142087299912763359}
   m_Layer: 0
   m_Name: Crate
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,7 +113,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
---- !u!114 &6312050400716726023
+--- !u!114 &5332208565510381917
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,8 +122,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 6695584543586289487}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 896e83f8ae6d0c74b9164e6ee7c9d3bf, type: 3}
+  m_Script: {fileID: 11500000, guid: eff5d0fd799557d4cbff80a204a44a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyEffect: {fileID: 0}
-  bullet: {fileID: 7686794606472135238, guid: 1b356139b095ad14c8005ae67ff1735e, type: 3}
+  health: 1
+  gameObject: {fileID: 6695584543586289487}
+  hitSound: 
+  deathSound: 
+  sound: 
+--- !u!114 &5142087299912763359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6695584543586289487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2322324d8aaa72d49b3e63b4b4f528a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droppedItemPrefab: {fileID: 4862617375306580554, guid: 99ddaed84e8212040827428b17bd0996, type: 3}
+  lootList:
+  - {fileID: 11400000, guid: 35a0bf6c42f5f4d4bbeef5a4fc44b3a6, type: 2}
+  - {fileID: 11400000, guid: dd7ca59a88f5d464d9698fe68fa6592c, type: 2}

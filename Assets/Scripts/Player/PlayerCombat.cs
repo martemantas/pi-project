@@ -97,8 +97,8 @@ public class PlayerCombat : MonoBehaviour
             if (bulletDamage > 0)
                 newBullet.GetComponent<BulletController>().damage = bulletDamage;
             attackPauseCounter = attackPause;
-            animator.SetBool("isShooting", true); // -M
-            Debug.Log("shooooooot");
+            //animator.SetBool("isShooting", true); // -M
+            //Debug.Log("shooooooot");
 
         }
     }

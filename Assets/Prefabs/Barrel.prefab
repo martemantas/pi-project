@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3646535791694739905}
   - component: {fileID: 1123095468798450593}
   - component: {fileID: 4775883201401741017}
+  - component: {fileID: 8081223416038196528}
   m_Layer: 0
   m_Name: Barrel
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,3 +102,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0.00021026284, y: -0.00028969347}
   m_Size: {x: 0.17899092, y: 0.222622}
   m_Direction: 0
+--- !u!114 &8081223416038196528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6695584543586289487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eff5d0fd799557d4cbff80a204a44a4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  gameObject: {fileID: 6695584543586289487}
+  hitSound: 
+  deathSound: 
+  sound: 

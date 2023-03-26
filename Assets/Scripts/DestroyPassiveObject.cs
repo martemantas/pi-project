@@ -6,7 +6,7 @@ public class DestroyPassiveObject : MonoBehaviour
 {
     public GameObject bullet;
 
-    private void OnCollisionEnder2D(Collider2D col)
+    private void OnCollisionEnter2D(Collision2D col)
     {
         if(col.gameObject == bullet)
         {

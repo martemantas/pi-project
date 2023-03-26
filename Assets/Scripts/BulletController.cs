@@ -66,7 +66,7 @@ public class BulletController : MonoBehaviour
             {
                 if (collision.CompareTag("Enemy"))
                 {
-                    Debug.Log("Bullet died");
+                    //Debug.Log("Bullet died");
                     Destroy(this.gameObject);
                     var enemyHealth = collision.GetComponent<HealthController>();
                     if (enemyHealth != null)
@@ -77,7 +77,7 @@ public class BulletController : MonoBehaviour
                 else if (!collision.CompareTag("Enemy") && !collision.CompareTag("Player") && !collision.CompareTag("Room"))
                 {
                     Destroy(this.gameObject);
-                    Debug.Log("Bullet died");
+                    //Debug.Log("Bullet died");
                 }
             }
         }
