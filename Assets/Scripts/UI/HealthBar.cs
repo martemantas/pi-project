@@ -14,7 +14,8 @@ public class HealthBar : MonoBehaviour
         playerHealth = GameObject.FindWithTag("Player").GetComponent<HealthController>();
         totalHealthBar.fillAmount = playerHealth.health / 10;
     }
-    private void Update() {
+    private void FixedUpdate() {
+        playerHealth = GameObject.FindWithTag("Player").GetComponent<HealthController>();
         currentHealthBar.fillAmount = playerHealth.health / 10;
     }
 }
