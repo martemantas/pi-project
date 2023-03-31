@@ -11,14 +11,12 @@ public class LevelSystem : MonoBehaviour
     private static int level;
     private static int experience;
     private static int experienceToNextLevel;
-    public static int levelPoints;
 
     public void Awake()
     {
         level = 0;
         experience = 0;
         experienceToNextLevel = 100;
-        levelPoints = 0;
         LevelWindow.SetLevelSystemAnimated();
 
     }
@@ -29,7 +27,7 @@ public class LevelSystem : MonoBehaviour
         while (experience >= experienceToNextLevel)
         {
             level++;
-            levelPoints++;
+            FindObjectOfType<SkillTree>().AddSkillPoints();
             experience -= experienceToNextLevel;
             if (OnLevelChanged != null) { Debug.Log("Level Changed, on system side"); 
                 OnLevelChanged(this, EventArgs.Empty); }
@@ -45,10 +43,6 @@ public class LevelSystem : MonoBehaviour
     public static float GetExperienceNormalized()
     {
         return (float)experience / experienceToNextLevel;
-    }
-    public static void SpendLevelPoints(int amount)
-    {
-        levelPoints -= amount;
     }
     public int GetExperience()
     {

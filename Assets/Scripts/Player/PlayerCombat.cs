@@ -28,6 +28,7 @@ public class PlayerCombat : MonoBehaviour
     public GameObject explosive;
     public float explosionRadius = 0.5f;
     public float explosionTime = 3.0f;
+    public float explosiveDamage = 0.5f;
 
     private Animator animator; //-M
 
@@ -119,7 +120,7 @@ public class PlayerCombat : MonoBehaviour
         BulletController newExplosive = Instantiate(explosive, this.transform.position, Quaternion.identity).GetComponent<BulletController>();
         newExplosive.isExplosive = true;
         newExplosive.speed = 0;
-        newExplosive.damage = 0.5f;
+        newExplosive.damage = explosiveDamage;
         if(explosionRadius > 0)
             newExplosive.explosionRadius = explosionRadius;
         if(explosionTime > 0)

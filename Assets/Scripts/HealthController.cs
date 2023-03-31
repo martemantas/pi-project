@@ -5,11 +5,12 @@ using UnityEngine;
 public class HealthController : MonoBehaviour
 {
     public float health = 3f;
-    private float unlockedHeal = 3f;
+    public float unlockedHeal = 3f;
     public GameObject gameObject;
     public string hitSound;
     public string deathSound;
     public string sound;
+    public int DodgeChance;
 
     // -M
     private Animator anim;
@@ -38,6 +39,11 @@ public class HealthController : MonoBehaviour
         {
             if (gameObject.GetComponent<PlayerMovement>().isDashing != true)
             {
+                if (digit <= DodgeChance)
+                {
+                    Debug.Log("Dodged this");
+                    return;
+                }
                 health -= damagePoints;
                 anim.Play("Hit"); // -M
                 FindObjectOfType<AudioManager>().Play(hitSound);

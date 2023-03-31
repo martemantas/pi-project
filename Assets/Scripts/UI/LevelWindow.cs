@@ -18,12 +18,8 @@ public class LevelWindow : MonoBehaviour
     }
     public void SetLevelSystemAnimated()
     {
-        //set the levelSystemAnimated object
-        //this.levelSystemAnimated = levelSystemAnimated;
-        //update the starting values
-        //Debug.Log("setlevel" + levelSystemAnimated.GetLevelNumber());
+
         SetLevelNumber(LevelSystem.GetLevelNumber());
-        //Debug.Log("setexp" + levelSystemAnimated.GetExperienceNormalized());
         SetExperienceBarSize(LevelSystem.GetExperienceNormalized());
         // Surbscribe to the change events
         LevelSystem.OnExperienceChanged += LevelSystem_OnExperienceChanged;
