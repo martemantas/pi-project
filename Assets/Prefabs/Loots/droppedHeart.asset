@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d58a35fcf98a6444924d61d3d20a9b7, type: 3}
   m_Name: droppedHeart
   m_EditorClassIdentifier: 
-  lootSprite: {fileID: 21300000, guid: 38b870f003500e544afb3089fb1b0a74, type: 3}
+  dropObject: {fileID: 3285481589832570350, guid: 441cd243cf4db674598ae5c1c6cf08f4, type: 3}
   lootName: droppedHeart
   dropChance: 20
+  isHealth: 1
+  healAmount: 1
+  isXp: 0
+  xpAmount: 0

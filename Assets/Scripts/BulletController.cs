@@ -46,7 +46,7 @@ public class BulletController : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isExplosive)
+        if (!isExplosive && !collision.CompareTag("Loot"))
         {
             if (parent.CompareTag("Enemy"))
             {

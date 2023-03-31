@@ -229,5 +229,4 @@ public class MoneyManager : MonoBehaviour
         }
         prompt.gameObject.SetActive(false);
     }
-
 }

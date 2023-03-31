@@ -157,12 +157,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   scaler: 0.2
+  target: {fileID: 0}
   inRoom: 0
   damage: 5
   attackPause: 2
   bullet: {fileID: 7686794606472135238, guid: 1b356139b095ad14c8005ae67ff1735e, type: 3}
   bulletSpeed: 2
   bulletDamage: 0.5
+  knockBackTime: 0
 --- !u!114 &8458326664779695759
 MonoBehaviour:
   m_ObjectHideFlags: 0

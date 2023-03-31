@@ -17,8 +17,12 @@ public class HealthController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
     }
-    //
-
+    //  
+    public void Heal(int healAmount)
+    {
+        health += (float)healAmount;
+        Debug.Log("Healas neveikia, asile");
+    }
     public void Damage(float damagePoints)
     {
         int digit = Random.Range(0, 100);
