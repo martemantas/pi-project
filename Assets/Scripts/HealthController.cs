@@ -5,6 +5,7 @@ using UnityEngine;
 public class HealthController : MonoBehaviour
 {
     public float health = 3f;
+    private float unlockedHeal = 3f;
     public GameObject gameObject;
     public string hitSound;
     public string deathSound;
@@ -16,12 +17,19 @@ public class HealthController : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+        unlockedHeal = health;
     }
     //  
     public void Heal(int healAmount)
     {
-        health += (float)healAmount;
-        Debug.Log("Healas neveikia, asile");
+        if (unlockedHeal < healAmount + health)
+        {
+            health = unlockedHeal;
+        }
+        else
+        {
+          health += (float)healAmount;
+        }
     }
     public void Damage(float damagePoints)
     {
