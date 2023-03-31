@@ -22,21 +22,24 @@ public class SkillTree : MonoBehaviour
 
     private void Start()
     {
-        SkillPoints = 1;
-        SkillLevels = new int[8];
-        SkillCaps = new[] { 1, 2, 4, 2, 2, 2, 2, 2};
-        SkillNames = new[] {"Vision", "Damage ", "Special Attack Damage","Attack length", "Dash length", "speed", "Dodge", "Health"};
+        SkillPoints = 20;
+        SkillLevels = new int[10];
+        SkillCaps = new[] { 1, 2, 4, 2, 2, 2, 2, 4, 1, 2};
+        SkillNames = new[] {"Vision", "Damage ", " Damage", "Cooldown", "knockback", "Attack length", "speed", "Dodge", "Dash length", "Health" };
         //skill names
         SkillDescriptions = new[]
         {
             "See next skills",
             "You deal more damage to your enemies!", //skill desc
             "Your special attack does more damage!",
+            "You can use your special attack earlier",
+            "Your special attack will push enemies more",
             "Attack length increases!",
-            "Your dash length increases!",
             "Your movement speed increases",
             "Get a small chance to dodge enemie attacks",
+            "Your dash length increases!",
             "Increases amount of hearts",
+
         };
         // NOTE: 
         //skill names and desc, are counted the way they are placed in object tab
@@ -47,10 +50,9 @@ public class SkillTree : MonoBehaviour
 
         for (int i = 0; i < skillList.Count; i++) skillList[i].id = i;
 
-        skillList[0].ConnectedSkills = new[] { 1, 4, 6, 7}; // skill conections
-        skillList[1].ConnectedSkills = new[] { 2 };
-        skillList[2].ConnectedSkills = new[] { 3 };
-        skillList[4].ConnectedSkills = new[] { 5 };
+        skillList[0].ConnectedSkills = new[] { 1, 6, 9}; // skill conections
+        skillList[1].ConnectedSkills = new[] { 2, 3, 4, 5};
+        skillList[6].ConnectedSkills = new[] { 7, 8 };
 
 
 
@@ -66,11 +68,14 @@ public class SkillTree : MonoBehaviour
         if (id == 0) return;
         if (id == 1) { FindAnyObjectByType<PlayerCombat>().damage += 0.2f; ; FindAnyObjectByType<PlayerCombat>().bulletDamage += 0.2f; }
         if (id == 2) FindAnyObjectByType<PlayerCombat>().explosiveDamage += 2;
-        if (id == 3) FindAnyObjectByType<PlayerMovement>().dashLength += (float)0.5;
-        if (id == 4) FindAnyObjectByType<PlayerCombat>().attackRange += (float)0.2;
-        if (id == 5) FindAnyObjectByType<PlayerMovement>().movementSpeed += (float)0.3;
-        if (id == 6) FindAnyObjectByType<HealthController>().DodgeChance += 5;
-        if (id == 7) FindAnyObjectByType<HealthController>().unlockedHeal += (float)1;
+        if (id == 3) FindAnyObjectByType<PlayerCombat>().specialPause -= 0.25f;
+        if (id == 4) FindAnyObjectByType<PlayerCombat>().knockBackStrength += 0.25f;
+        if (id == 5) FindAnyObjectByType<PlayerCombat>().attackRange += (float)0.2;
+        if (id == 6) FindAnyObjectByType<PlayerMovement>().movementSpeed += (float)0.3;
+        if (id == 7) FindAnyObjectByType<HealthController>().DodgeChance += 5;
+        if (id == 8) FindAnyObjectByType<PlayerMovement>().dashLength += (float)0.5;
+        if (id == 9) FindAnyObjectByType<HealthController>().unlockedHeal += (float)1;
+
 
     }
     public void AddSkillPoints()
