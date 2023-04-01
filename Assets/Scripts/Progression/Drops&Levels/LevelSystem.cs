@@ -28,6 +28,7 @@ public class LevelSystem : MonoBehaviour
         {
             level++;
             FindObjectOfType<SkillTree>().AddSkillPoints();
+            FindObjectOfType<SkillTreeLong>().AddSkillPoints();
             experience -= experienceToNextLevel;
             if (OnLevelChanged != null) { Debug.Log("Level Changed, on system side"); 
                 OnLevelChanged(this, EventArgs.Empty); }
