@@ -155,7 +155,6 @@ public class RoomController : MonoBehaviour
     {
         string[] possibleRooms = new string[]
         {
-            "Basic1",
             "Basic2"
         };
 
@@ -166,6 +165,12 @@ public class RoomController : MonoBehaviour
     {
         CameraController.instance.currRoom = room;
         currRoom = room;
+
+        Vector3 center = currRoom.GetRoomCenter();
+        Transform player = GameObject.FindWithTag("Player").transform;
+        Vector3 diff = center - player.position;
+        diff.Normalize();
+        player.position = new Vector3(player.position.x + diff.x*0.2f, player.position.y + diff.y*0.2f, player.position.z);
 
         StartCoroutine(RoomCoroutine());
         if(!currRoom.GetComponentInChildren<Visit>().visited)

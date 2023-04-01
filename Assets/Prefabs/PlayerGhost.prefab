@@ -143,10 +143,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  unlockedHeal: 3
   gameObject: {fileID: 899074607574101874}
   hitSound: 
   deathSound: 
   sound: 
+  DodgeChance: 0
 --- !u!58 &1737717097105299790
 CircleCollider2D:
   m_ObjectHideFlags: 0
