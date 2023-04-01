@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
+    public bool isLongRange; 
+
     public float damage = 1.0f;
     private Vector2 attackDirection = Vector2.zero;
     public Transform attackPoint;
@@ -59,20 +61,27 @@ public class PlayerCombat : MonoBehaviour
         if (attackPauseCounter > 0)
             attackPauseCounter -= Time.deltaTime;
         if(specialPauseCounter > 0)
-            specialPauseCounter -= Time.deltaTime;  
-        if (Input.GetKeyDown(KeyCode.N))
-            ShortRangeAttack();
-        if (Input.GetKeyDown(KeyCode.J) && bullet != null)
-            LongRangeAttack();
-        if (Input.GetKeyDown(KeyCode.M) && specialPauseCounter <= 0)
-            SpecialKnockAttack();
-        if (Input.GetKeyDown(KeyCode.K) && specialPauseCounter <= 0)
-            SpecialBombAttack();
-        
+            specialPauseCounter -= Time.deltaTime;
+
+        if (isLongRange)
+        {
+            if (Input.GetKeyDown(KeyCode.N) && bullet != null)
+                LongRangeAttack();
+            if (Input.GetKeyDown(KeyCode.M) && specialPauseCounter <= 0)
+                SpecialBombAttack();
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.N))
+                ShortRangeAttack();
+            if (Input.GetKeyDown(KeyCode.M) && specialPauseCounter <= 0)
+                SpecialKnockAttack();
+        }
     }
     void ShortRangeAttack() {
         if (attackPauseCounter <= 0)
         {
+            animator.SetTrigger("attack");
             //gets all colliders which were in attack point circle
             Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange);
             string lastName = "";
@@ -104,6 +113,7 @@ public class PlayerCombat : MonoBehaviour
         }
     }
     void SpecialKnockAttack() {
+        animator.SetTrigger("special");
         Collider2D[] enemies = Physics2D.OverlapCircleAll(this.gameObject.transform.position, knockBackRange);
         foreach (Collider2D enemy in enemies)
         {

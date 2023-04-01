@@ -229,10 +229,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  unlockedHeal: 3
   gameObject: {fileID: 5912177598210254999}
   hitSound: PlayerHit
   deathSound: PlayerDeath
   sound: 
+  DodgeChance: 0
 --- !u!114 &6169246674185318924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ea9ace15554b94386ec9c03a0d572b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLongRange: 1
   damage: 1
   attackPoint: {fileID: 8962266455185206242}
   attackArea: {fileID: 0}
@@ -259,6 +262,7 @@ MonoBehaviour:
   explosive: {fileID: 7686794606472135238, guid: 1b356139b095ad14c8005ae67ff1735e, type: 3}
   explosionRadius: 0.5
   explosionTime: 3
+  explosiveDamage: 0.5
 --- !u!61 &-5951299682004256324
 BoxCollider2D:
   m_ObjectHideFlags: 0
