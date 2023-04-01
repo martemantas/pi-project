@@ -19,18 +19,6 @@ EditorBuildSettings:
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/DungeonRooms/OutsideStart.unity
-    guid: f25769b280f543447bfa5f080d6f5db6
-  - enabled: 1
-    path: Assets/Scenes/DungeonRooms/OutsideBasic1.unity
-    guid: 6ecdc7e402ae42c4287fd12ae8f299a9
-  - enabled: 1
-    path: Assets/Scenes/DungeonRooms/OutsideEnd.unity
-    guid: c647d8b848857e1489d33e0eabf8ce0f
-  - enabled: 1
-    path: Assets/Scenes/DungeonRooms/OutsideBasic2.unity
-    guid: e007cc1011fc6fa409e19117bf8b3871
-  - enabled: 1
-    path: Assets/Scenes/DungeonRooms/OutsideStart.unity
     guid: 14f27588df404c24d90f2fd37e9528a5
   - enabled: 1
     path: Assets/Scenes/DungeonRooms/OutsideEnd.unity
@@ -38,4 +26,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DungeonRooms/OutsideBasic2.unity
     guid: 410bb35bf9c0a0c4d81349e6e55df437
+  - enabled: 1
+    path: Assets/Scenes/DungeonRooms/OutsideBasic1.unity
+    guid: eb2ba0d3b67a1f24087c0563252fecd9
+  - enabled: 1
+    path: Assets/Scenes/DungeonRooms/OutsideBasic3.unity
+    guid: 16a2abf2a9bc90144ab9e6b37f0edca2
+  - enabled: 1
+    path: Assets/Scenes/DungeonRooms/OutsideBasic4.unity
+    guid: cfe95a9f81b773a4baa1cffc4c817bcd
+  - enabled: 1
+    path: Assets/Scenes/DungeonRooms/OutsideBasic5.unity
+    guid: 44d47d4c1f7398346b04a7568e479900
   m_configObjects: {}

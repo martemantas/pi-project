@@ -27,7 +27,9 @@ public class SceneChanger : MonoBehaviour
         {
             Debug.Log("E pressed");
             lastPressTime = Time.time;
-            ChangeScene(sceneID);
+
+            FindObjectOfType<LevelManager>().LoadScene(sceneID);
+            //ChangeScene(sceneID);
         }
     }
 
