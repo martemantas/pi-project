@@ -61,6 +61,9 @@ public class PlayerMovement : MonoBehaviour
         if (!isDashing)
         {
             GetMovementDirection();
+            animator.SetFloat("horizontal", movementInput.x);
+            animator.SetFloat("vertical", movementInput.y);
+            animator.SetFloat("speed", movementInput.SqrMagnitude());
         }
 
         rb.velocity = smoothedMovementInput * activeMovementSpeed;
@@ -118,10 +121,10 @@ public class PlayerMovement : MonoBehaviour
         {
             if (dashCooldownCounter <= 0 && dashCounter <= 0)
             {
-                
+                isDashing = true;
+                animator.SetBool("dash", isDashing);
                 activeMovementSpeed = dashSpeed;
                 dashCounter = dashLength;
-                isDashing = true;
                 FindObjectOfType<AudioManager>().Play("PlayerDash");
             }
         }
@@ -134,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
                 activeMovementSpeed = movementSpeed;
                 dashCooldownCounter = dashCooldown;
                 isDashing = false;
-                
+                animator.SetBool("dash", isDashing);
             }
         }
         //counts down dash cooldown

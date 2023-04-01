@@ -16029,6 +16029,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5982467248998881986, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
   m_PrefabInstance: {fileID: 1951195310}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &452344323
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452344316}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5c05468b0fda946449abec0446c9b912, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &502605344 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5982467248998882044, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
@@ -52836,12 +52856,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5982467248998881986, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5982467248998881986, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5982467248998881986, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.9518113
+      value: 0.949
       objectReference: {fileID: 0}
     - target: {fileID: 5982467248998881986, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.10794221
+      value: 0.134
       objectReference: {fileID: 0}
     - target: {fileID: 5982467248998881986, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: m_LocalPosition.z
@@ -52896,8 +52924,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5982467248998882045, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1521249493, guid: 5eab657b48f7fcf4281951a899d0e42c, type: 3}
+    - target: {fileID: 5982467248998882045, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
+      propertyPath: m_DrawMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5982467248998882045, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: m_SortingOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5982467248998882045, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f5afd55b587308408944cda74e80e92, type: 3}

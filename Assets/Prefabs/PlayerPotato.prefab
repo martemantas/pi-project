@@ -247,6 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ea9ace15554b94386ec9c03a0d572b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLongRange: 1
   damage: 1
   attackPoint: {fileID: 8962266455185206242}
   attackArea: {fileID: 0}
