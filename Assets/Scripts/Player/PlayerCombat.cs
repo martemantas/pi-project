@@ -99,6 +99,7 @@ public class PlayerCombat : MonoBehaviour
     void LongRangeAttack() { 
         if(attackPauseCounter <= 0)
         {
+            animator.SetTrigger("shoot");
             GameObject newBullet = Instantiate(bullet, this.transform.position, Quaternion.identity);
             newBullet.GetComponent<BulletController>().setDirection(attackDirection*10);
             newBullet.GetComponent<BulletController>().setParent(this.gameObject);

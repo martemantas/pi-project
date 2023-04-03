@@ -53504,7 +53504,7 @@ Animator:
   m_GameObject: {fileID: 1938810723}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 256657c610e54a84c878fbe6b5720d19, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5bc110b30ed9b374685611abcc552898, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -53532,9 +53532,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.03}
+  m_Offset: {x: 0, y: -0.06}
   serializedVersion: 2
-  m_Radius: 0.23
+  m_Radius: 0.32
 --- !u!1001 &1951195310
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53592,11 +53592,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5982467248998881986, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.949
+      value: 0.94
       objectReference: {fileID: 0}
     - target: {fileID: 5982467248998881986, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.134
+      value: 0.196
       objectReference: {fileID: 0}
     - target: {fileID: 5982467248998881986, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: m_LocalPosition.z
@@ -53632,7 +53632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5982467248998881987, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: m_Radius
-      value: 0.043471307
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5982467248998881987, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: m_Offset.x
@@ -53640,7 +53640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5982467248998881987, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: m_Offset.y
-      value: 0.0005521655
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5982467248998882044, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: m_Name
@@ -53953,23 +53953,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5982467248998881986, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 5982467248998881986, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 5982467248998881986, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 5982467248998881986, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.4931887
+      value: -0.473
       objectReference: {fileID: 0}
     - target: {fileID: 5982467248998881986, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.13294221
+      value: 0.184
       objectReference: {fileID: 0}
     - target: {fileID: 5982467248998881986, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: m_LocalPosition.z
@@ -54003,6 +54003,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5982467248998881986, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5982467248998881987, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: m_Radius
       value: 0.03841672
@@ -54034,7 +54038,7 @@ PrefabInstance:
     - target: {fileID: 5982467248998882045, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -275895495, guid: 1d600f494e00b134e8d27b3214bbf501, type: 3}
+      objectReference: {fileID: 13830099, guid: a7ff901f3147a2642a8c2e20a278b1e3, type: 3}
     - target: {fileID: 5982467248998882045, guid: 8f5afd55b587308408944cda74e80e92, type: 3}
       propertyPath: m_SortingOrder
       value: 5
