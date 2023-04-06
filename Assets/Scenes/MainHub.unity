@@ -21976,6 +21976,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pillar (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8509608437199887048, guid: 02bd3b342767ffe46b9122683b9018f3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02bd3b342767ffe46b9122683b9018f3, type: 3}
 --- !u!1001 &796738733

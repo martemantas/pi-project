@@ -167,10 +167,11 @@ public class RoomController : MonoBehaviour
 
     public void OnPlayerEnterRoom(Room room)
     {
-        CameraController.instance.currRoom = room;
         currRoom = room;
-
         Vector3 center = currRoom.GetRoomCenter();
+
+        CameraController.instance.UpdateCameraData(room);
+
         Transform player = GameObject.FindWithTag("Player").transform;
         Vector3 diff = center - player.position;
         diff.Normalize();

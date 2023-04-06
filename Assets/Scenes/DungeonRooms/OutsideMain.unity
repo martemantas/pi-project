@@ -156,15 +156,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5912177598210254997, guid: dd6e86f687174544db602ad3404f1247, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.7538528
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5912177598210254997, guid: dd6e86f687174544db602ad3404f1247, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5587606
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5912177598210254997, guid: dd6e86f687174544db602ad3404f1247, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.1578215
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5912177598210254997, guid: dd6e86f687174544db602ad3404f1247, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2128,7 +2128,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1629717189}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7538528, y: 1.5587606, z: -1.1578215}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2346,7 +2346,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 0.9
+  orthographic size: 1.2
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2392,6 +2392,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currRoom: {fileID: 0}
   moveSpeed: 10
+  roomCenter: 0
+  target: {fileID: 1711683426}
+  smoothing: 0
+  maxBoundsIndex: {x: 0.1, y: 0.22}
+  minBoundsIndex: {x: -0.1, y: -0.22}
+  maxBounds: {x: 0.1, y: 0.22}
+  minBounds: {x: -0.1, y: -0.22}
 --- !u!1 &1771281917
 GameObject:
   m_ObjectHideFlags: 0

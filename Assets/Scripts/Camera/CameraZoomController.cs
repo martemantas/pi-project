@@ -30,7 +30,7 @@ public class CameraZoomController : MonoBehaviour
 
                 float scrollData = Input.GetAxis("Mouse ScrollWheel");
                 targetZoom = targetZoom - scrollData * zoomFactor;
-                targetZoom = Mathf.Clamp(targetZoom, 4f, 10f);
+                targetZoom = Mathf.Clamp(targetZoom, 4f, 15f);
                 camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, targetZoom, Time.deltaTime * zoomSpeed);
             }
             else
@@ -39,7 +39,7 @@ public class CameraZoomController : MonoBehaviour
 
                 float scrollData = Input.GetAxis("Mouse ScrollWheel");
                 targetZoom = targetZoom - scrollData * zoomFactor;
-                targetZoom = Mathf.Clamp(targetZoom, 4f, 10f);
+                targetZoom = Mathf.Clamp(targetZoom, 4f, 15f);
                 camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, targetZoom, Time.deltaTime * zoomSpeed);
             }
 
@@ -52,7 +52,7 @@ public class CameraZoomController : MonoBehaviour
 
             float scrollData = Input.GetAxis("Mouse ScrollWheel");
             targetZoom = targetZoom - scrollData * zoomFactor;
-            targetZoom = Mathf.Clamp(targetZoom, 4f, 10f);
+            targetZoom = Mathf.Clamp(targetZoom, 4f, 15f);
             camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, targetZoom, Time.deltaTime * zoomSpeed);
 
         }

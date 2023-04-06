@@ -8,20 +8,37 @@ public class CameraController : MonoBehaviour
 
     public Room currRoom;
     public float moveSpeed;
+    public bool roomCenter = false;
+
+    public Transform target;
+    public float smoothing;
+    public Vector2 maxBoundsIndex;
+    public Vector2 minBoundsIndex;
+    private Vector2 maxBounds;
+    private Vector2 minBounds;
 
     void Awake()
     {
         instance = this;
+        maxBounds = maxBoundsIndex;
+        minBounds = minBoundsIndex;
     }
 
     void Update()
     {
-        UpdatePosition();
+        if (!roomCenter)
+            UpdatePosition();
+        else
+        {
+            if (target == null)
+                target = GameObject.FindWithTag("Player").transform;
+            FollowPlayer();
+        }
     }
 
-    void UpdatePosition()
+    public void UpdatePosition()
     {
-        if(currRoom == null)
+        if (currRoom == null)
         {
             return;
         }
@@ -29,11 +46,14 @@ public class CameraController : MonoBehaviour
         Vector3 targetPos = GetCameraTargetPosition();
 
         transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * moveSpeed);
+
+        if (transform.position == targetPos)
+            roomCenter = true;
     }
 
     Vector3 GetCameraTargetPosition()
     {
-        if(currRoom == null)
+        if (currRoom == null)
         {
             return Vector3.zero;
         }
@@ -41,27 +61,31 @@ public class CameraController : MonoBehaviour
         Vector3 targetPos = currRoom.GetRoomCenter();
         targetPos.z = transform.position.z;
 
-            return targetPos;
+        return targetPos;
     }
 
     public bool IsSwichingScene()
     {
         return transform.position.Equals(GetCameraTargetPosition()) == false;
-    }
+    }  
 
-    /*public Transform target;
-    public float smoothing;
-    public Vector2 maxBounds;
-    public Vector2 minBounds;
-
-    private void LateUpdate()
+    private void FollowPlayer()
     {
         if (transform.position != target.position)
         {
             Vector3 targetPosition = new Vector3(target.position.x, target.position.y, transform.position.z);
             targetPosition.x = Mathf.Clamp(targetPosition.x, minBounds.x, maxBounds.x);
             targetPosition.y = Mathf.Clamp(targetPosition.y, minBounds.y, maxBounds.y);
-            transform.position = Vector3.Lerp(transform.position, targetPosition, smoothing);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * moveSpeed);
         }
-    }*/
+    }
+
+    public void UpdateCameraData(Room room)
+    {
+        currRoom = room;
+        roomCenter = false;
+        Vector3 center = currRoom.GetRoomCenter();
+        minBounds = new Vector2(minBoundsIndex.x + center.x, minBoundsIndex.y + center.y);
+        maxBounds = new Vector2(maxBoundsIndex.x + center.x, maxBoundsIndex.y + center.y);
+    }
 }
