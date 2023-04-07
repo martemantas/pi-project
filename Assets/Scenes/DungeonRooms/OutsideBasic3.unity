@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1653932935}
     m_Modifications:
+    - target: {fileID: 8125739367381255624, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8125739367381255627, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
@@ -198,6 +202,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock7 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8125739368332975457, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
 --- !u!4 &397667938 stripped
@@ -212,6 +220,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1653932935}
     m_Modifications:
+    - target: {fileID: 8125739367381255624, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8125739367381255627, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
@@ -280,6 +292,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock7 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8125739368332975457, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
 --- !u!4 &397778799 stripped
@@ -342,6 +358,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock6
       objectReference: {fileID: 0}
+    - target: {fileID: 7276055561212773910, guid: d1c50442141927542808dcfd0170f0b2, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7276055562043973807, guid: d1c50442141927542808dcfd0170f0b2, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1c50442141927542808dcfd0170f0b2, type: 3}
 --- !u!4 &401464034 stripped
@@ -361,6 +385,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1653932935}
     m_Modifications:
+    - target: {fileID: 8125739367381255624, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8125739367381255627, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
@@ -433,6 +461,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock7 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8125739368332975457, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
 --- !u!4 &609242351 stripped
@@ -447,6 +479,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1653932935}
     m_Modifications:
+    - target: {fileID: 8125739367381255624, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8125739367381255627, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
@@ -514,6 +550,10 @@ PrefabInstance:
     - target: {fileID: 8125739368332975457, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
       propertyPath: m_Name
       value: Rock7 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125739368332975457, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
@@ -9103,6 +9143,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1653932935}
     m_Modifications:
+    - target: {fileID: 8125739367381255624, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8125739367381255627, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
@@ -9171,6 +9215,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock7
       objectReference: {fileID: 0}
+    - target: {fileID: 8125739368332975457, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
 --- !u!4 &1493485755 stripped
@@ -9219,6 +9267,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1653932935}
     m_Modifications:
+    - target: {fileID: 8125739367381255624, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8125739368332975456, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -9267,6 +9319,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock7 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8125739368332975457, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0958956c374e4b041af0ed8e5ee9e19d, type: 3}
 --- !u!4 &1533939234 stripped
@@ -9283,7 +9339,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1653932935}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}

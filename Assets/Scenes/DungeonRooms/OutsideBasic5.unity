@@ -417,6 +417,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock4 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7509424604678897344, guid: 4210c98803c64954da0d29eba4276c21, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7509424604678897346, guid: 4210c98803c64954da0d29eba4276c21, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -460,6 +464,10 @@ PrefabInstance:
     - target: {fileID: 7509424604678897346, guid: 4210c98803c64954da0d29eba4276c21, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7509424605969495689, guid: 4210c98803c64954da0d29eba4276c21, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7509424605969495690, guid: 4210c98803c64954da0d29eba4276c21, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11206,6 +11214,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock5
       objectReference: {fileID: 0}
+    - target: {fileID: 5568262374528536842, guid: 8ba5317092040df47b53e34feda16a0b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5568262374528536843, guid: 8ba5317092040df47b53e34feda16a0b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -11250,6 +11262,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5568262375366373479, guid: 8ba5317092040df47b53e34feda16a0b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ba5317092040df47b53e34feda16a0b, type: 3}
 --- !u!4 &1032466149 stripped
@@ -11288,6 +11304,10 @@ PrefabInstance:
     - target: {fileID: 5568262374528536842, guid: 8ba5317092040df47b53e34feda16a0b, type: 3}
       propertyPath: m_Name
       value: Rock5 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5568262374528536842, guid: 8ba5317092040df47b53e34feda16a0b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5568262374528536843, guid: 8ba5317092040df47b53e34feda16a0b, type: 3}
       propertyPath: m_RootOrder
@@ -11333,6 +11353,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5568262375366373479, guid: 8ba5317092040df47b53e34feda16a0b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5568262375366373480, guid: 8ba5317092040df47b53e34feda16a0b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.2588191
@@ -11370,6 +11394,10 @@ PrefabInstance:
     - target: {fileID: 7509424604678897344, guid: 4210c98803c64954da0d29eba4276c21, type: 3}
       propertyPath: m_Name
       value: Rock4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7509424604678897344, guid: 4210c98803c64954da0d29eba4276c21, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7509424604678897346, guid: 4210c98803c64954da0d29eba4276c21, type: 3}
       propertyPath: m_RootOrder
@@ -11415,6 +11443,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7509424605969495689, guid: 4210c98803c64954da0d29eba4276c21, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4210c98803c64954da0d29eba4276c21, type: 3}
 --- !u!4 &1567755410 stripped
@@ -11431,7 +11463,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1828336519}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
