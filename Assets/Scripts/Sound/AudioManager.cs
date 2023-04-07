@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioMixerGroup SoundVolume;
+    [SerializeField] private AudioMixerGroup Effects;
 
     public Sound[] sounds;
     public static AudioManager instance;
@@ -66,7 +67,7 @@ public class AudioManager : MonoBehaviour
             switch (s.audioType)
             {
                 case Sound.AudioTypes.soundEffect:
-                    s.source.outputAudioMixerGroup = SoundVolume;
+                    s.source.outputAudioMixerGroup = Effects;
                     break;
                 case Sound.AudioTypes.music:
                     s.source.outputAudioMixerGroup = SoundVolume;

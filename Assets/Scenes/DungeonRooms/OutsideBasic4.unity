@@ -321,6 +321,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5883784088753659519, guid: e74adb9c747b27540b4dc58c4219223e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883784089035307920, guid: e74adb9c747b27540b4dc58c4219223e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883784089169067615, guid: e74adb9c747b27540b4dc58c4219223e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883784089291276070, guid: e74adb9c747b27540b4dc58c4219223e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883784089301218598, guid: e74adb9c747b27540b4dc58c4219223e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883784089689715387, guid: e74adb9c747b27540b4dc58c4219223e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5883784089735816234, guid: e74adb9c747b27540b4dc58c4219223e, type: 3}
       propertyPath: visited
       value: 0
@@ -392,6 +416,14 @@ PrefabInstance:
     - target: {fileID: 5883784089848765619, guid: e74adb9c747b27540b4dc58c4219223e, type: 3}
       propertyPath: m_Name
       value: Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883784090550038579, guid: e74adb9c747b27540b4dc58c4219223e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883784090603470715, guid: e74adb9c747b27540b4dc58c4219223e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e74adb9c747b27540b4dc58c4219223e, type: 3}

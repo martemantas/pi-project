@@ -10,8 +10,8 @@ public class LoadSave : MonoBehaviour
 
     private void Start()
     {
-        float volumeValue = volumeSlider.value;
-        LoadValues();
+        //float volumeValue = volumeSlider.value;
+        //LoadValues();
     }
 
     /*public void VolumeSlider(float volume)

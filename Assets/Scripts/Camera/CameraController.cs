@@ -23,11 +23,17 @@ public class CameraController : MonoBehaviour
         maxBounds = maxBoundsIndex;
         minBounds = minBoundsIndex;
     }
+    void Start()
+    {
+
+    }
 
     void Update()
     {
         if (!roomCenter)
+        {
             UpdatePosition();
+        }
         else
         {
             if (target == null)
@@ -46,7 +52,6 @@ public class CameraController : MonoBehaviour
         Vector3 targetPos = GetCameraTargetPosition();
 
         transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * moveSpeed);
-
         if (transform.position == targetPos)
             roomCenter = true;
     }
