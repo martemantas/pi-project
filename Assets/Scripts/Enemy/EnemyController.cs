@@ -63,6 +63,7 @@ public class EnemyController : MonoBehaviour
                 dest.target = target;
                 isAiActive = true;
                 dest.enabled = isAiActive;
+                anim.SetBool("spotted", true);
             }
             isInAttackRange = Physics2D.OverlapCircle(transform.position, attackRadius, playerMask);
             
@@ -110,7 +111,6 @@ public class EnemyController : MonoBehaviour
     private void Move(Vector2 dir)
     {
         rb.MovePosition((Vector2)transform.position + (dir * speed * Time.deltaTime));
-        anim.SetBool("spotted", true);
     }
 
     // Enemy attack

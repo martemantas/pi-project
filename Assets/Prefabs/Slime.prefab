@@ -193,7 +193,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.013951205, y: 0.007456621}
+  m_Size: {x: 0.015, y: 0.01}
   m_EdgeRadius: 0
 --- !u!114 &-2754155503862667788
 MonoBehaviour:
@@ -326,12 +326,12 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 0.6
+  slowdownDistance: 0.4
   pickNextWaypointDist: 0.1
   endReachedDistance: 0.02
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
+  whenCloseToDestination: 1
   constrainInsideGraph: 0
 --- !u!114 &1581709722651547835
 MonoBehaviour:
