@@ -48,8 +48,8 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        target = GameObject.FindWithTag("Player").transform;
         spriteRenderer = GetComponent<SpriteRenderer>(); // -M
+        target = GameObject.FindWithTag("Player").transform;
         anim = GetComponent<Animator>();
 
         enemies = new List<Transform>();
@@ -176,6 +176,7 @@ public class EnemyController : MonoBehaviour
                 attackPauseCounter = attackPause;
 
                 StartCoroutine(getDamageAnimation());
+                anim.SetTrigger("Attack");
             }
         }
     }

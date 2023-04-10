@@ -1851,6 +1851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadedRooms: []
+  Boss: {fileID: 164209822737568580, guid: a3ac4ee5a7133384a9ae322160317c1a, type: 3}
 --- !u!4 &1264874242
 Transform:
   m_ObjectHideFlags: 0
@@ -2397,8 +2398,6 @@ MonoBehaviour:
   smoothing: 0
   maxBoundsIndex: {x: 0.1, y: 0.22}
   minBoundsIndex: {x: -0.1, y: -0.22}
-  maxBounds: {x: 0.1, y: 0.22}
-  minBounds: {x: -0.1, y: -0.22}
 --- !u!1 &1771281917
 GameObject:
   m_ObjectHideFlags: 0

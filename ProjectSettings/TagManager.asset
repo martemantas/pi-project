@@ -15,6 +15,7 @@ TagManager:
   - Weather
   - Loot
   - Weather2
+  - Boss
   layers:
   - Default
   - TransparentFX

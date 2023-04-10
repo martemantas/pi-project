@@ -1092,6 +1092,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currRoom: {fileID: 0}
   moveSpeed: 0
+  roomCenter: 0
+  target: {fileID: 0}
+  smoothing: 0
+  maxBoundsIndex: {x: 0, y: 0}
+  minBoundsIndex: {x: 0, y: 0}
 --- !u!1 &558055916 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8537739143407498960, guid: 1352d0286b462ce4bae21b88e2450899, type: 3}

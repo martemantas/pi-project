@@ -26,6 +26,7 @@ public class RoomController : MonoBehaviour
     bool updatedRooms = false;
     //public Tile chest;
     //public GameObject openChest;
+    public GameObject Boss;
 
     void Awake()
     {
@@ -80,6 +81,7 @@ public class RoomController : MonoBehaviour
             var roomToRemove = loadedRooms.Single(r => r.X == tempRoom.X && r.Y == tempRoom.Y);
             loadedRooms.Remove(roomToRemove);
             LoadRoom("End", tempRoom.X, tempRoom.Y);
+            //Instantiate(Boss, new Vector3(1, 0, 0), Quaternion.identity);//reikia i vector3 irasyt boss room koordinates
         }
     }
 
