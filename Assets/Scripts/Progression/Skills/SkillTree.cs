@@ -22,7 +22,7 @@ public class SkillTree : MonoBehaviour
 
     private void Start()
     {
-        SkillPoints = 1;
+        SkillPoints = 20;
         SkillLevels = new int[10];
         SkillCaps = new[] { 1, 2, 4, 2, 2, 2, 2, 4, 1, 2};
         SkillNames = new[] {"Vision", "Damage ", " Damage", "Cooldown", "knockback", "Attack length", "speed", "Dodge", "Dash length", "Health" };

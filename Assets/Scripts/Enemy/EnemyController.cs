@@ -1,4 +1,3 @@
-using Pathfinding;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,10 +6,12 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public bool isAiActive = false;
-    private AIDestinationSetter dest;
     public float speed;        //greitis
+    public float checkRadius;  //matymo range
     public float attackRadius; //atakos range
+
+    public float avoidDistance = 2f; // distance at which enemy avoids other enemies
+    public float avoidanceForce = 5f; // force of avoidance behavior
 
     public LayerMask playerMask; //zaidejo layer
     public float scaler = 0.3f;
@@ -22,10 +23,13 @@ public class EnemyController : MonoBehaviour
     private Vector2 avoidVector;
 
     private bool isInAttackRange;
+    private bool isInCheckRange;
     public bool inRoom = false;
 
     SpriteRenderer spriteRenderer; //enemy sprite -M
     private Animator anim;
+
+    private List<Transform> enemies;
 
     // Enemy attack
     public float damage = 0.5f;
@@ -39,6 +43,7 @@ public class EnemyController : MonoBehaviour
     private bool knockBackImunity = false;
     public float knockBackTime;
     private float knockBackCounter;
+    private float speedBackup;
 
     private void Start()
     {
@@ -47,46 +52,94 @@ public class EnemyController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>(); // -M
         anim = GetComponent<Animator>();
 
+        enemies = new List<Transform>();
+        GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemyObjects)
+        {
+            if (enemy.transform != transform)
+            {
+                enemies.Add(enemy.transform);
+            }
+        }
         knockBackImunity = false;
         knockBackCounter = knockBackTime;
+        speedBackup = speed;
         if (knockBackTime <= 0)
             knockBackTime = 0.5f;
-        dest = this.GetComponent<AIDestinationSetter>();
-        dest.enabled = isAiActive;
     }
 
     private void Update()
     {
         if (inRoom)
         {
+<<<<<<< HEAD
             if (!isAiActive && dest != null) {
                 dest.target = target;
                 isAiActive = true;
                 dest.enabled = isAiActive;
                 anim.SetBool("spotted", true);
             }
+=======
+            isInCheckRange = Physics2D.OverlapCircle(transform.position, checkRadius, playerMask);
+>>>>>>> parent of 88a36fe (Enemy AI rework)
             isInAttackRange = Physics2D.OverlapCircle(transform.position, attackRadius, playerMask);
-            
+
             direction = target.position - transform.position;
-            direction.Normalize();
-            movement = direction;
             if (knockBackImunity && knockBackCounter > 0)
             {
                 knockBackCounter -= Time.deltaTime;
-                movement *= -1;
-                Move(movement * (1 - scaler) + avoidVector * scaler);
+                direction *= -1;
             }
             if (knockBackCounter <= 0 && knockBackImunity)
             {
                 knockBackCounter = knockBackTime;
                 knockBackImunity = false;
-                this.GetComponent<AIPath>().canMove = isAiActive;
-            } 
+                speed = speedBackup;
+            }
+            direction.Normalize();
+            movement = direction;
+
+            Vector3 avoidance = Vector3.zero;
+            foreach (Transform enemy in enemies)
+            {
+                
+                if (enemy != null)
+                {
+                    // calculate the distance to the other enemy
+                    Vector3 enemyDirection = enemy.position - transform.position;
+                    float enemyDistance = enemyDirection.magnitude;
+
+                    // check if the other enemy is within the avoidance distance
+                    if (enemyDistance <= avoidDistance)
+                    {
+                        // calculate the avoidance force
+                        avoidance += -enemyDirection.normalized * avoidanceForce / enemyDistance;
+                    }
+                }
+            }
+            avoidance.Normalize();
+            avoidVector = avoidance;
+        }
+        else
+        {
+            movement = Vector2.zero;
+            avoidVector = Vector2.zero;
         }
     }
 
     private void FixedUpdate()
     {
+        if (isInCheckRange && !isInAttackRange) // juda link player
+        {
+            Move(movement*(1-scaler)+avoidVector*scaler);
+        }
+        else if (isInAttackRange) //jei gali pulti kolkas tik sustoja
+        {
+            rb.velocity = Vector2.zero;
+        }
+        else
+            rb.velocity = Vector2.zero;
+
         // enemy pasisuka pagal vaiksciojimo krypti -M
         if (movement.x < 0)
         {
@@ -106,6 +159,7 @@ public class EnemyController : MonoBehaviour
             if (rangePauseCounter <= 0 && isInAttackRange)
                 RangeAttack();
         }
+
     }
 
     private void Move(Vector2 dir)
@@ -157,5 +211,8 @@ public class EnemyController : MonoBehaviour
     }
     public void setKnockBackImunity(bool value) { 
         this.knockBackImunity = value;
+    }
+    public void backupSpeed() {
+        speedBackup = speed;
     }
 }

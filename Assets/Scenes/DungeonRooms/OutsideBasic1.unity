@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 348687080}
   - component: {fileID: 348687081}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: void (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 413905824}
   - component: {fileID: 413905825}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: void (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4651,7 +4651,7 @@ GameObject:
   m_Component:
   - component: {fileID: 470263005}
   - component: {fileID: 470263006}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: void (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4709,7 +4709,7 @@ GameObject:
   m_Component:
   - component: {fileID: 832782977}
   - component: {fileID: 832782978}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: void
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -10,17 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 3247833579151692249}
   - component: {fileID: 3247833579151692248}
-  - component: {fileID: 1445207964812268536}
+  - component: {fileID: 3247833579151692251}
   - component: {fileID: 3247833579151692255}
   - component: {fileID: 3247833579151692254}
   - component: {fileID: -8331149853103268655}
   - component: {fileID: -5854474882307303446}
   - component: {fileID: -8093919587575175304}
   - component: {fileID: 315397217142967356}
-  - component: {fileID: 2072837376209913156}
-  - component: {fileID: 1487026364}
-  - component: {fileID: 1487026365}
-  - component: {fileID: -32331482718881761}
   m_Layer: 0
   m_Name: LittleDevil
   m_TagString: Enemy
@@ -95,7 +91,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &1445207964812268536
+--- !u!50 &3247833579151692251
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -154,9 +150,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 367e6bb1a477c3f46979734231a04936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAiActive: 0
-  speed: 1
-  attackRadius: 0.03
+  speed: 0.4
+  checkRadius: 5
+  attackRadius: 0.02
+  avoidDistance: 0.2
+  avoidanceForce: 1
   playerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -168,7 +166,7 @@ MonoBehaviour:
   bullet: {fileID: 0}
   bulletSpeed: 0
   bulletDamage: 0
-  knockBackTime: 1
+  knockBackTime: 0.5
 --- !u!114 &-8331149853103268655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,12 +180,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  unlockedHeal: 3
   gameObject: {fileID: 3247833579151692250}
   hitSound: SwordHitFlesh
   deathSound: Death
   sound: Death2
-  DodgeChance: 0
 --- !u!61 &-5854474882307303446
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -246,9 +242,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2322324d8aaa72d49b3e63b4b4f528a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  droppedItemPrefab: {fileID: 4862617375306580554, guid: 99ddaed84e8212040827428b17bd0996, type: 3}
   lootList:
   - {fileID: 11400000, guid: dd7ca59a88f5d464d9698fe68fa6592c, type: 2}
   - {fileID: 11400000, guid: 35a0bf6c42f5f4d4bbeef5a4fc44b3a6, type: 2}
+<<<<<<< HEAD
 --- !u!114 &2072837376209913156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,3 +346,5 @@ MonoBehaviour:
   version: 1
   penalty: 500
   randomStep: 1
+=======
+>>>>>>> parent of 88a36fe (Enemy AI rework)

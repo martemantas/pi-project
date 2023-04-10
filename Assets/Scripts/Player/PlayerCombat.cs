@@ -1,4 +1,3 @@
-using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 //using System.Numerics;
@@ -124,7 +123,6 @@ public class PlayerCombat : MonoBehaviour
                 EnemyController ec = enemy.GetComponent<EnemyController>();
                 ec.setKnockBackImunity(true);
                 ec.speed = knockBackStrength;
-                ec.GetComponent<AIPath>().canMove = false;
             }
         }
         specialPauseCounter = specialPause;
