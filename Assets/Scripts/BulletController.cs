@@ -24,6 +24,7 @@ public class BulletController : MonoBehaviour
         parent = obj;
     }
     // Start is called before the first frame update
+    //keitimas :)
     void Start()
     {
         direction.Normalize();
