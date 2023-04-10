@@ -12,6 +12,7 @@ public class SettingsMenu : MonoBehaviour
     public GameObject[] menuPanels;
     private GameObject mainMenuPanel;
     private GameObject optionsPanel;
+    private GameObject controlsPanel;
 
     // Use t$$anonymous$$s for initialization
     void Start()
@@ -22,6 +23,7 @@ public class SettingsMenu : MonoBehaviour
 
         mainMenuPanel = GameObject.Find("MainMenu");
         optionsPanel = GameObject.Find("SettingsMenu");
+        controlsPanel = GameObject.Find("ControlsMenu");
 
         switchToMenu(menuID);
     }
@@ -45,6 +47,17 @@ public class SettingsMenu : MonoBehaviour
                     particleSystem.Play();
                 optionsPanel.gameObject.SetActive(true);
                 break;
+            case 2:
+                if(particleSystem != null)
+                    particleSystem.Play();
+                controlsPanel.gameObject.SetActive(true);
+                break;
+            case 3:
+                if (particleSystem != null)
+                    particleSystem.Play();
+                optionsPanel.gameObject.SetActive(true);
+                break;
+
         }
     }
 

@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
+    public KeyCode attackKey;
+    public KeyCode specialKey;
     public bool isLongRange; 
 
     public float damage = 1.0f;
@@ -38,6 +40,8 @@ public class PlayerCombat : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>(); // -M
+        attackKey = ControlManager.CM.attack;
+        specialKey = ControlManager.CM.special;
     }
 
     void Update()
@@ -66,16 +70,16 @@ public class PlayerCombat : MonoBehaviour
 
         if (isLongRange)
         {
-            if (Input.GetKeyDown(KeyCode.N) && bullet != null)
+            if (Input.GetKeyDown(attackKey) && bullet != null)
                 LongRangeAttack();
-            if (Input.GetKeyDown(KeyCode.M) && specialPauseCounter <= 0)
+            if (Input.GetKeyDown(specialKey) && specialPauseCounter <= 0)
                 SpecialBombAttack();
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.N))
+            if (Input.GetKeyDown(attackKey))
                 ShortRangeAttack();
-            if (Input.GetKeyDown(KeyCode.M) && specialPauseCounter <= 0)
+            if (Input.GetKeyDown(specialKey) && specialPauseCounter <= 0)
                 SpecialKnockAttack();
         }
     }

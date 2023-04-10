@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public KeyCode dashKey;
+    public KeyCode upKey;
+    public KeyCode downKey;
+    public KeyCode leftKey;
+    public KeyCode rightKey;
+
     private Rigidbody2D rb;
     public float movementSpeed;   //greitis 
     public float smoothingTime; //per kiek laiko sustos nuo mygtumo atleidimo
@@ -38,6 +44,11 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>(); // -M
         animator = GetComponent<Animator>(); // -M
 
+        dashKey = ControlManager.CM.dash;
+        upKey = ControlManager.CM.up;
+        downKey = ControlManager.CM.down;
+        leftKey = ControlManager.CM.left;
+        rightKey = ControlManager.CM.right;
     }
 
     void Update()
@@ -119,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
     private void Dash()
     {
         //if "SPACE" is pressed changes speed (starts dash) 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(dashKey))
         {
             if (dashCooldownCounter <= 0 && dashCounter <= 0)
             {
