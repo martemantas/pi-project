@@ -31,17 +31,18 @@ public class SettingsMenu : MonoBehaviour
         foreach (GameObject panel in menuPanels)
         {
             panel.gameObject.SetActive(false);
-            Debug.Log(panel.name);
         }
 
         switch (menuID)
         {
             case 0:
-                particleSystem.Play();
+                if(particleSystem != null)
+                    particleSystem.Play();
                 mainMenuPanel.gameObject.SetActive(true);
                 break;
             case 1:
-                particleSystem.Play();
+                if(particleSystem!= null)
+                    particleSystem.Play();
                 optionsPanel.gameObject.SetActive(true);
                 break;
         }
