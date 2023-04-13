@@ -16,6 +16,7 @@ public class AudioController : MonoBehaviour
     {
         if (m_profiles != null)
             m_profiles.SetProfile(m_profiles);
+        
     }
 
     

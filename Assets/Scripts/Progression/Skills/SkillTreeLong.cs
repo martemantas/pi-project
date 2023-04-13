@@ -44,9 +44,9 @@ public class SkillTreeLong : MonoBehaviour
         // NOTE: 
         //skill names and desc, are counted the way they are placed in object tab
         foreach (var skillLong in SkillHolder.GetComponentsInChildren<SkillLong>()) skillList.Add(skillLong);
-        Debug.Log("skillList.Count" + skillList.Count);
+        //Debug.Log("skillList.Count" + skillList.Count);
         foreach (var connector in ConnectorHolder.GetComponentsInChildren<RectTransform>()) ConnectorList.Add(connector.gameObject);
-        Debug.Log("ConnectorList.Count" + ConnectorList.Count);
+       //Debug.Log("ConnectorList.Count" + ConnectorList.Count);
 
         for (int i = 0; i < skillList.Count; i++) skillList[i].Longid = i;
 

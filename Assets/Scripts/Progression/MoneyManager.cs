@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class MoneyManager : MonoBehaviour
+public class MoneyManager : MonoBehaviour, IDataPersistance
 {
     public UnlockableCharacters[] characters;
     [HideInInspector]
@@ -30,6 +30,37 @@ public class MoneyManager : MonoBehaviour
     //    DontDestroyOnLoad(gameObject); // makes it so this object would persist trough scenes
         
     }
+
+    public void LoadData(GameData data)
+    {
+        playerCoins = data.money;
+        
+        foreach (UnlockableCharacters foundcharacter in characters)
+        {
+            bool unlocked = false;
+            data.charactersUnlocked.TryGetValue(foundcharacter.name, out unlocked);
+            //Debug.Log("unlocked: " + foundcharacter.name + " " + unlocked);
+            if (unlocked)
+                foundcharacter.isBought = true; 
+        }
+    }
+    public void SaveData(ref GameData data)
+    {
+        data.money = playerCoins+gottenCoins;
+        Debug.Log("palyer " + playerCoins + " goten " + gottenCoins);
+        data.level = 0;
+        data.experience = 0;
+        data.experienceToNextLevel = 100;
+
+        foreach (UnlockableCharacters foundcharacter in characters)
+        {
+            if (data.charactersUnlocked.ContainsKey(foundcharacter.name))
+                data.charactersUnlocked.Remove(foundcharacter.name);
+
+            data.charactersUnlocked.Add(foundcharacter.name, foundcharacter.isBought);
+        }
+    }
+
     private void Start()
     {
         buyStatus = FindInActiveObjectByTag("buyingText");
@@ -143,6 +174,8 @@ public class MoneyManager : MonoBehaviour
     public static void AddMoney(int amount) //changes your current money by the given amount
     {
         playerCoins += amount;
+        FindObjectOfType<DataPersistanceManager>().SaveGame();
+        Debug.Log(FindObjectOfType<DataPersistanceManager>());
         if (playerCoins < 0)
         {
             playerCoins = 0;

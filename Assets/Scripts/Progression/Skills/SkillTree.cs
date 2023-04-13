@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillTree : MonoBehaviour
+public class SkillTree : MonoBehaviour, IDataPersistance
 {
     public static SkillTree skillTree;
     private void Awake() => skillTree = this;
@@ -19,6 +19,16 @@ public class SkillTree : MonoBehaviour
     public GameObject SkillHolder;
 
     public int SkillPoints;
+
+    public void LoadData(GameData data)
+    {
+        SkillLevels = data.SkillLevels;
+        skillTree.UpdateAllSkillUi();
+    }
+    public void SaveData(ref GameData data)
+    {
+        data.SkillLevels = SkillLevels;
+    }
 
     private void Start()
     {
@@ -44,9 +54,9 @@ public class SkillTree : MonoBehaviour
         // NOTE: 
         //skill names and desc, are counted the way they are placed in object tab
         foreach (var skill in SkillHolder.GetComponentsInChildren<Skill>()) skillList.Add(skill);
-        Debug.Log("skillList.Count" + skillList.Count);
+        //Debug.Log("skillList.Count" + skillList.Count);
         foreach (var connector in ConnectorHolder.GetComponentsInChildren<RectTransform>()) ConnectorList.Add(connector.gameObject);
-        Debug.Log("ConnectorList.Count" + ConnectorList.Count);
+        //Debug.Log("ConnectorList.Count" + ConnectorList.Count);
 
         for (int i = 0; i < skillList.Count; i++) skillList[i].id = i;
 

@@ -4,13 +4,22 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
-public class GameOverScreen : MonoBehaviour
+public class GameOverScreen : MonoBehaviour, IDataPersistance
 {
     public GameObject gameOverScreen;
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI titleText;
     public Button restartButton;
     public TextMeshProUGUI moneyText;
+
+    public void LoadData(GameData data)
+    {
+        //nothing
+    }
+    public void SaveData(ref GameData data)
+    {
+        data.money += MoneyManager.gottenCoins;
+    }
 
     public void Setup() {
         gameOverScreen.SetActive(true);
@@ -27,6 +36,7 @@ public class GameOverScreen : MonoBehaviour
     }
     
     public void Restart() {
+        
         MoneyManager.AddMoney(MoneyManager.gottenCoins);
         MoneyManager.ResetMoney();
         FindObjectOfType<AudioManager>().Destroy();

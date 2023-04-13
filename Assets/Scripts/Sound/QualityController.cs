@@ -23,7 +23,7 @@ public class QualityController : MonoBehaviour
 
     void Resize(RenderTexture renderTexture, int width, int height)
     {
-        Debug.Log(renderTexture);
+        //Debug.Log(renderTexture);
         if (renderTexture)
         {
             renderTexture.Release();
@@ -31,7 +31,7 @@ public class QualityController : MonoBehaviour
             renderTexture.height = height;
             //renderTexture.Create();
         }
-        Debug.Log(width);
+        //Debug.Log(width);
     }
 
     public void ApplyChanges(bool value)
