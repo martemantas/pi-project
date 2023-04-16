@@ -11,6 +11,7 @@ public class HealthController : MonoBehaviour
     public string deathSound;
     public string sound;
     public int DodgeChance;
+    public ParticleSystem deathEffect;
 
     // -M
     private Animator anim;
@@ -56,13 +57,21 @@ public class HealthController : MonoBehaviour
         }
         if (health <= 0)
         {
-
+            
             Destroy(this.gameObject);
-          
+
             if (this.gameObject.CompareTag("Player"))
+            {
                 GameObject.FindWithTag("GameOverScreen").GetComponent<GameOverScreen>().Setup();
+                Instantiate(deathEffect, transform.position, transform.rotation);
+            }
+
             else
-            GetComponent<LootBag>().InstantiateLoot(transform.position);
+            {
+                Instantiate(deathEffect, transform.position, transform.rotation);
+                GetComponent<LootBag>().InstantiateLoot(transform.position);
+            }
+
             RoomController.instance.StartCoroutine(RoomController.instance.RoomCoroutine()); ; //
             if (digit >= 75)
             {

@@ -84,7 +84,7 @@ public class BulletController : MonoBehaviour
         }
     }
     private void Explode() {
-        PlayParticles();
+        
         Collider2D[] enemies = Physics2D.OverlapCircleAll(this.gameObject.transform.position, explosionRadius);
         string lastName = "";
         foreach (Collider2D enemy in enemies)
@@ -95,11 +95,18 @@ public class BulletController : MonoBehaviour
                 lastName = enemy.name;
             }
         }
-        
+        //explosion.GetComponent<ParticleSystem>().Play();
+        Instantiate(expl, transform.position, transform.rotation);
         Destroy(this.gameObject); //fix because no particles
     }
-    private void PlayParticles() {
-        explosion.GetComponent<ParticleSystem>().Play();
-        Debug.Log(explosion.GetComponent<ParticleSystem>().isPlaying);
+
+    private void OnDestroy()
+    {
+        if (isExplosive)
+        {
+            //explosion.GetComponent<ParticleSystem>().Play();
+            
+            Debug.Log(explosion.GetComponent<ParticleSystem>().isPlaying);
+        }
     }
 }

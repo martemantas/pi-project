@@ -188,6 +188,7 @@ MonoBehaviour:
   deathSound: Death
   sound: Death2
   DodgeChance: 0
+  deathEffect: {fileID: 777854219051035532, guid: 15dbca06961d28e49a32b1d16f5c877f, type: 3}
 --- !u!61 &-5854474882307303446
 BoxCollider2D:
   m_ObjectHideFlags: 0
