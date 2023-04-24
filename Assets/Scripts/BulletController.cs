@@ -70,9 +70,14 @@ public class BulletController : MonoBehaviour
                     //Debug.Log("Bullet died");
                     Destroy(this.gameObject);
                     var enemyHealth = collision.GetComponent<HealthController>();
+                    var bossHealth = collision.GetComponent<BossHealthController>(); //m
                     if (enemyHealth != null)
                     {
                         enemyHealth.Damage(damage);
+                    }
+                    if (bossHealth != null)
+                    {
+                        bossHealth.Damage(damage);
                     }
                 }
                 else if (!collision.CompareTag("Enemy") && !collision.CompareTag("Player") && !collision.CompareTag("Room"))
