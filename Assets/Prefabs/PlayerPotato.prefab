@@ -210,6 +210,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51a92b42b8394247886f234be97e20c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dashKey: 0
+  upKey: 0
+  downKey: 0
+  leftKey: 0
+  rightKey: 0
   movementSpeed: 1
   smoothingTime: 0.1
   dashSpeed: 5
@@ -235,6 +240,7 @@ MonoBehaviour:
   deathSound: PlayerDeath
   sound: 
   DodgeChance: 0
+  deathEffect: {fileID: 0}
 --- !u!114 &6169246674185318924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,8 +253,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ea9ace15554b94386ec9c03a0d572b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackKey: 0
+  specialKey: 0
   isLongRange: 1
-  damage: 1
+  damage: 2
   attackPoint: {fileID: 8962266455185206242}
   attackArea: {fileID: 0}
   attackRange: 0.15

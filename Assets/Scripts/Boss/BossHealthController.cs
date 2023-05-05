@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossHealthController : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class BossHealthController : MonoBehaviour
     public int DodgeChance;
     public ParticleSystem deathEffect;
     private float MaxHealth;
+    public Slider healthBar;
+
 
     // -M
     private Animator anim;
@@ -29,6 +32,7 @@ public class BossHealthController : MonoBehaviour
         {
             anim.SetBool("Evolved", true);
         }
+        //healthBar.value = health;
     }
     //  
     public void Heal(int healAmount)
@@ -55,7 +59,8 @@ public class BossHealthController : MonoBehaviour
                     return;
                 }
                 health -= damagePoints;
-                anim.Play("Hit"); // -M
+                anim.SetTrigger("Attack"); // -M
+                //Debug.Log("PAtaike");
                 FindObjectOfType<AudioManager>().Play(hitSound);
             }
         }

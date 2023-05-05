@@ -21,6 +21,7 @@ public class BossController : MonoBehaviour
     private Vector3 direction;
     private Vector2 avoidVector;
 
+
     private bool isInAttackRange;
     public bool inRoom = false;
 
@@ -82,6 +83,13 @@ public class BossController : MonoBehaviour
                 knockBackImunity = false;
                 this.GetComponent<AIPath>().canMove = isAiActive;
             } 
+            if(anim.GetBool("Evolved") == true)
+            {
+                attackRadius = 1;
+                damage = 0;
+                bulletSpeed = 0.1f;
+                bulletDamage = 0.5f;
+            }
         }
     }
 
@@ -106,6 +114,7 @@ public class BossController : MonoBehaviour
             if (rangePauseCounter <= 0 && isInAttackRange)
                 RangeAttack();
         }
+        anim.SetFloat("speed", speed);
     }
 
     private void Move(Vector2 dir)
@@ -126,6 +135,7 @@ public class BossController : MonoBehaviour
             var playerHealth = other.GetComponent<HealthController>();
             if (playerHealth != null)
             {
+                anim.SetTrigger("Attack");
                 playerHealth.Damage(damage);
                 attackPauseCounter = attackPause;
 
@@ -154,6 +164,7 @@ public class BossController : MonoBehaviour
             newBullet.GetComponent<BulletController>().speed = bulletSpeed;
         if(bulletDamage > 0)
             newBullet.GetComponent<BulletController>().damage = bulletDamage;
+        anim.SetTrigger("Attack");
     }
     public void setKnockBackImunity(bool value) { 
         this.knockBackImunity = value;

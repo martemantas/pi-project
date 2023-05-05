@@ -196,6 +196,7 @@ public class RoomController : MonoBehaviour
             if (currRoom != room)
             {
                 EnemyController[] enemies = room.GetComponentsInChildren<EnemyController>();
+                BossController[] boss = room.GetComponentsInChildren<BossController>();
                 if (enemies != null)
                 {
                     foreach (EnemyController enemy in enemies)
@@ -215,11 +216,23 @@ public class RoomController : MonoBehaviour
                         door.doorCollider.SetActive(false);
                     }
                 }
+                if (boss != null)
+                {
+                    foreach (BossController b in boss)
+                    {
+                        b.inRoom = false;
+                    }
+
+                    foreach (Door door in room.GetComponentsInChildren<Door>())
+                    {
+                        door.doorCollider.SetActive(false);
+                    }
+                }
             }
             else
             {
-                
                 EnemyController[] enemies = room.GetComponentsInChildren<EnemyController>();
+                BossController[] boss = room.GetComponentsInChildren<BossController>();
                 if (enemies.Length > 0)
                 {
                     foreach (EnemyController enemy in enemies)
@@ -260,6 +273,18 @@ public class RoomController : MonoBehaviour
                                 doorSprite.color = Color.black;
                             }
                         }
+                    }
+                }
+                if (boss.Length > 0)
+                {
+                    foreach (BossController b in boss)
+                    {
+                        b.inRoom = true;
+                    }
+
+                    foreach (Door door in room.GetComponentsInChildren<Door>())
+                    {
+                        door.doorCollider.SetActive(true);
                     }
                 }
             }
