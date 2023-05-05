@@ -74,19 +74,17 @@ public class DataPersistanceManager : MonoBehaviour
     public void LoadGame()
     {
         this.gameData = dataHandler.Load(selectedProfileId);
-
-        if(this.gameData == null && initializeDataIfNull)
+        if (this.gameData == null && initializeDataIfNull)
         {
+            Debug.Log("new game");
             NewGame();
         }
-
-        if(this.gameData == null)
+        if (this.gameData == null)
         {
             Debug.Log("No data found");
             return;
         }
-
-        foreach(IDataPersistance dataPersistenceObj in dataPersistanceObjects)
+        foreach (IDataPersistance dataPersistenceObj in dataPersistanceObjects)
         {
             dataPersistenceObj.LoadData(gameData);
         }

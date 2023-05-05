@@ -18,4 +18,4 @@ MonoBehaviour:
   isHealth: 0
   healAmount: 0
   isXp: 1
-  xpAmount: 5
+  xpAmount: 10

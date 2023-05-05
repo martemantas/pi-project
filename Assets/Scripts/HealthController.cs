@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthController : MonoBehaviour
+public class HealthController : MonoBehaviour//, IDataPersistance
 {
     public float health = 3f;
     public float unlockedHeal = 3f;
@@ -16,14 +16,20 @@ public class HealthController : MonoBehaviour
     // -M
     private Animator anim;
 
-    private void Start()
+    void Start()
     {
         anim = GetComponent<Animator>();
         unlockedHeal = health;
+
+        SkillTree skills = FindObjectOfType<SkillTree>();
+        DodgeChance = skills.SkillLevels[7] * 10 + 0;
+        unlockedHeal = skills.SkillLevels[9] * 1 + 5;
+        health = unlockedHeal;
     }
     //  
     public void Heal(int healAmount)
     {
+
         if (unlockedHeal < healAmount + health)
         {
             health = unlockedHeal;
@@ -33,6 +39,18 @@ public class HealthController : MonoBehaviour
           health += (float)healAmount;
         }
     }
+
+    /*public void LoadData(GameData data)
+    {
+        tmpdodge = (int)data.stats[7];
+        tmpheal = data.stats[9];
+    }
+    public void SaveData(ref GameData data)
+    {
+        data.stats[7] = DodgeChance;
+        data.stats[9] = unlockedHeal;
+    }*/
+
     public void Damage(float damagePoints)
     {
         int digit = Random.Range(0, 100);

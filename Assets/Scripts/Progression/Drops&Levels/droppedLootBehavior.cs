@@ -15,7 +15,9 @@ public class droppedLootBehavior : MonoBehaviour
             {
                 if (droppedLoot.isHealth)
                 {
-                    FindObjectOfType<HealthController>().Heal(droppedLoot.healAmount);
+                    //FindObjectOfType<HealthController>().Heal(droppedLoot.healAmount);
+                    GameObject player = GameObject.FindGameObjectWithTag("Player");
+                    player.GetComponent<HealthController>().Heal(droppedLoot.healAmount);
                     Destroy(this.gameObject);
                 }
                 if (droppedLoot.isXp)

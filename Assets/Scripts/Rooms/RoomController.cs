@@ -35,6 +35,7 @@ public class RoomController : MonoBehaviour
     void Update()
     {
         UpdateRoomQueue();
+        nuke();
     }
 
     void UpdateRoomQueue()
@@ -175,18 +176,41 @@ public class RoomController : MonoBehaviour
         Transform player = GameObject.FindWithTag("Player").transform;
         Vector3 diff = center - player.position;
         diff.Normalize();
-        player.position = new Vector3(player.position.x + diff.x*0.2f, player.position.y + diff.y*0.2f, player.position.z);
+        player.position = new Vector3(player.position.x + diff.x * 0.2f, player.position.y + diff.y * 0.2f, player.position.z);
 
         StartCoroutine(RoomCoroutine());
-        if(!currRoom.GetComponentInChildren<Visit>().visited)
+        if (!currRoom.GetComponentInChildren<Visit>().visited)
             currRoom.GetComponentInChildren<Visit>().VisitRoom();
-        
+
     }
 
     public IEnumerator RoomCoroutine()
     {
         yield return new WaitForSeconds(0.2f);
         UpdateRooms();
+    }
+
+    public void nuke()
+    {
+        if (Input.GetKeyDown(KeyCode.Slash))
+        {
+            foreach (Room room in loadedRooms)
+            {
+                EnemyController[] enemies = room.GetComponentsInChildren<EnemyController>();
+                if (enemies.Length > 0)
+                {
+                    foreach (EnemyController enemy in enemies)
+                    {
+                        if (enemy.inRoom)
+                        {
+                            enemy.GetComponentInParent<HealthController>().Damage(100);
+                        }
+                    }
+
+                }
+            }
+        }
+
     }
 
     public void UpdateRooms()

@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillTreeLong : MonoBehaviour
+public class SkillTreeLong : MonoBehaviour, IDataPersistance
 {
     public static SkillTreeLong skillTreeLong;
     private void Awake() => skillTreeLong = this;
 
     public int[] SkillLevels;
+    public int[] tmpSkillLevels;
     public int[] SkillCaps;
     public string[] SkillNames;
     public string[] SkillDescriptions;
@@ -19,6 +20,23 @@ public class SkillTreeLong : MonoBehaviour
     public GameObject SkillHolder;
 
     public int SkillPoints;
+
+    public void LoadData(GameData data)
+    {
+        tmpSkillLevels = data.SkillLevels;
+        skillTreeLong.UpdateAllSkillUi();
+    }
+    public void SaveData(ref GameData data)
+    {
+        for (int i = 0; i < SkillLevels.Length; i++)
+        {
+            if (data.SkillLevels[i] < SkillLevels[i])
+            {
+                data.SkillLevels[i] = SkillLevels[i];
+
+            }
+        }
+    }
 
     private void Start()
     {
@@ -55,29 +73,41 @@ public class SkillTreeLong : MonoBehaviour
         skillList[6].ConnectedSkills = new[] { 7, 8 };
 
 
-
+        if (tmpSkillLevels[0] > 0)
+            SkillLevels = tmpSkillLevels;
 
         skillTreeLong.UpdateAllSkillUi();
     }
+    public void Update()
+    {
+        skillTreeLong.UpdateAllSkillUi();
+    }
+
     public void UpdateAllSkillUi()
     {
         foreach (var skill in skillList) skill.UpdateUI();
     }
     public void SkillBought(int id)
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (id == 0) return;
-        if (id == 1) { FindAnyObjectByType<PlayerCombat>().damage += 0.2f; ; FindAnyObjectByType<PlayerCombat>().bulletDamage += 0.2f; }
-        if (id == 2) FindAnyObjectByType<PlayerCombat>().knockBackRange += 2;
-        if (id == 3) FindAnyObjectByType<PlayerCombat>().specialPause -= 0.25f;
+        if (id == 1) { FindAnyObjectByType<PlayerCombat>().damage += 1; ; FindAnyObjectByType<PlayerCombat>().bulletDamage += 1; }
+        if (id == 2) FindAnyObjectByType<PlayerCombat>().explosiveDamage += 5;
+        if (id == 3) FindAnyObjectByType<PlayerCombat>().specialPause -= 0.5f;
         if (id == 4) FindAnyObjectByType<PlayerCombat>().knockBackStrength += 0.25f;
-        if (id == 5) FindAnyObjectByType<PlayerCombat>().attackRange += (float)0.2;
-        if (id == 6) FindAnyObjectByType<PlayerMovement>().movementSpeed += (float)0.3;
-        if (id == 7) FindAnyObjectByType<HealthController>().DodgeChance += 5;
-        if (id == 8) FindAnyObjectByType<PlayerMovement>().dashLength += (float)0.5;
-        if (id == 9) FindAnyObjectByType<HealthController>().unlockedHeal += (float)1;
-
-
+        if (id == 5) FindAnyObjectByType<PlayerCombat>().attackRange += (float)0.2f;
+        if (id == 6) FindAnyObjectByType<PlayerMovement>().movementSpeed += (float)0.5f;
+        if (id == 7) {
+            player.GetComponentInParent<HealthController>().DodgeChance += 10;
+        }
+        if (id == 8) FindAnyObjectByType<PlayerMovement>().dashLength += (float)0.5f;
+        if (id == 9)
+        {
+            player.GetComponentInParent<HealthController>().unlockedHeal += 1;
+            player.GetComponentInParent<HealthController>().Heal(1);
+        }
     }
+
     public void AddSkillPoints()
     {
         SkillPoints++;
