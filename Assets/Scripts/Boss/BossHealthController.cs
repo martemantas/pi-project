@@ -15,7 +15,7 @@ public class BossHealthController : MonoBehaviour
     public ParticleSystem deathEffect;
     private float MaxHealth;
     public Slider healthBar;
-
+    public GameObject sc;//scenechanger
 
     // -M
     private Animator anim;
@@ -75,7 +75,7 @@ public class BossHealthController : MonoBehaviour
         }
         if (health <= 0)
         {
-            
+            sc.SetActive(true);
             Destroy(this.gameObject);
 
             if (this.gameObject.CompareTag("Player"))

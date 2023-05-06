@@ -253,14 +253,7 @@ public class RoomController : MonoBehaviour
                         door.doorCollider.SetActive(false);
                     }
                 }
-                else
-                {
-                    foreach (Door door in room.GetComponentsInChildren<Door>())
-                    {
-                        door.doorCollider.SetActive(false);
-                    }
-                }
-                if (boss != null)
+                else if(boss != null)
                 {
                     foreach (BossController b in boss)
                     {
@@ -272,6 +265,32 @@ public class RoomController : MonoBehaviour
                         door.doorCollider.SetActive(false);
                     }
                 }
+                else
+                {
+                    foreach (Door door in room.GetComponentsInChildren<Door>())
+                    {
+                        door.doorCollider.SetActive(false);
+                    }
+                }
+                /*if (boss != null)
+                {
+                    foreach (BossController b in boss)
+                    {
+                        b.inRoom = false;
+                    }
+
+                    foreach (Door door in room.GetComponentsInChildren<Door>())
+                    {
+                        door.doorCollider.SetActive(false);
+                    }
+                }
+                else
+                {
+                    foreach (Door door in room.GetComponentsInChildren<Door>())
+                    {
+                        door.doorCollider.SetActive(false);
+                    }
+                }*/
             }
             else
             {
@@ -282,6 +301,18 @@ public class RoomController : MonoBehaviour
                     foreach (EnemyController enemy in enemies)
                     {
                         enemy.inRoom = true;
+                    }
+
+                    foreach (Door door in room.GetComponentsInChildren<Door>())
+                    {
+                        door.doorCollider.SetActive(true);
+                    }
+                }
+                else if(boss.Length > 0)
+                {
+                    foreach (BossController b in boss)
+                    {
+                        b.inRoom = true;
                     }
 
                     foreach (Door door in room.GetComponentsInChildren<Door>())
@@ -319,7 +350,7 @@ public class RoomController : MonoBehaviour
                         }
                     }
                 }
-                if (boss.Length > 0)
+                /*if (boss.Length > 0)
                 {
                     foreach (BossController b in boss)
                     {
@@ -331,6 +362,36 @@ public class RoomController : MonoBehaviour
                         door.doorCollider.SetActive(true);
                     }
                 }
+                else
+                {
+                    if (!room.IsCleared)
+                    {
+                        room.IsCleared = true;
+                        MoneyManager.MoneyGainOnRun(200);
+
+                        foreach (Door door in room.GetComponentsInChildren<Door>())
+                        {
+                            door.doorCollider.SetActive(false);
+                            if (door != null)
+                            {
+                                SpriteRenderer doorSprite = door.doorSprite.GetComponent<SpriteRenderer>();
+                                doorSprite.color = Color.black;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (Door door in room.GetComponentsInChildren<Door>())
+                        {
+                            door.doorCollider.SetActive(false);
+                            if (door != null)
+                            {
+                                SpriteRenderer doorSprite = door.doorSprite.GetComponent<SpriteRenderer>();
+                                doorSprite.color = Color.black;
+                            }
+                        }
+                    }
+                }*/
             }
         }
     }

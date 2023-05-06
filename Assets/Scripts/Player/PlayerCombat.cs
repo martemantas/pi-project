@@ -142,7 +142,16 @@ public class PlayerCombat : MonoBehaviour//, IDataPersistance
             {
                 if (enemy.gameObject.CompareTag("Enemy") && enemy.name != lastName) //due to enemies having two colliders checks if last hit enemy is not the same
                 {
-                    enemy.GetComponent<HealthController>().Damage(damage);
+                    var enemyHealth = enemy.gameObject.GetComponent<HealthController>();
+                    var bossHealth = enemy.gameObject.GetComponent<BossHealthController>(); //m
+                    if (enemyHealth != null)
+                    {
+                        enemyHealth.Damage(damage);
+                    }
+                    if (bossHealth != null)
+                    {
+                        bossHealth.Damage(damage);
+                    }
                     lastName = enemy.name;
                 }
             }

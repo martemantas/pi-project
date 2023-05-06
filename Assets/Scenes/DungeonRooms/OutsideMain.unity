@@ -2081,6 +2081,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: MenuPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 8537739143763937600, guid: 1352d0286b462ce4bae21b88e2450899, type: 3}
+      propertyPath: m_text
+      value: MAIN HUB
+      objectReference: {fileID: 0}
     - target: {fileID: 8537739144007813912, guid: 1352d0286b462ce4bae21b88e2450899, type: 3}
       propertyPath: PauseMain
       value: 
@@ -2200,6 +2204,14 @@ PrefabInstance:
     - target: {fileID: 8537739144007813919, guid: 1352d0286b462ce4bae21b88e2450899, type: 3}
       propertyPath: m_ReferenceResolution.y
       value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537739144847839030, guid: 1352d0286b462ce4bae21b88e2450899, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadHub
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537739144847839031, guid: 1352d0286b462ce4bae21b88e2450899, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8697883279356880493, guid: 1352d0286b462ce4bae21b88e2450899, type: 3}
       propertyPath: m_AnchorMax.x

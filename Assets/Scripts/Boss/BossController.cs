@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossController : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class BossController : MonoBehaviour
     private Vector3 direction;
     private Vector2 avoidVector;
 
+    public GameObject healthBar;
 
     private bool isInAttackRange;
     public bool inRoom = false;
@@ -60,6 +62,7 @@ public class BossController : MonoBehaviour
     {
         if (inRoom)
         {
+            healthBar.SetActive(true);
             if (!isAiActive && dest != null) {
                 dest.target = target;
                 isAiActive = true;
@@ -91,12 +94,11 @@ public class BossController : MonoBehaviour
                 bulletDamage = 0.5f;
             }
         }
-        float health = GetComponent<BossHealthController>().health;
-        if (health <= 0)
+        else
         {
-            GameObject sc = GameObject.Find("SceneChanger");
-            sc.SetActive(true);
+            healthBar.SetActive(false);
         }
+        
     }
 
     private void FixedUpdate()

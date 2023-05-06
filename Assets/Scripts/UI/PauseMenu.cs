@@ -53,6 +53,14 @@ public class PauseMenu : MonoBehaviour
         MoneyManager.ResetMoney();
         SceneManager.LoadScene("TitleScreen");
     }
+    public void LoadHub()
+    {
+        Resume();
+        MoneyManager.AddMoney(MoneyManager.gottenCoins);
+        Debug.Log(MoneyManager.gottenCoins + "Coins");
+        MoneyManager.ResetMoney();
+        SceneManager.LoadScene("MainHub");
+    }
 
     public void SettingsMenu()
     {

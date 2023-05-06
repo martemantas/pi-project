@@ -422,6 +422,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 3339011567863163900, guid: 7afdc746dbbec734d9fec52df4a49d52, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 643232728}
     - target: {fileID: 4017970874091528558, guid: 7afdc746dbbec734d9fec52df4a49d52, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -430,6 +434,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7965857249661630125, guid: 7afdc746dbbec734d9fec52df4a49d52, type: 3}
+      propertyPath: sc
+      value: 
+      objectReference: {fileID: 5429389072359197515}
     - target: {fileID: 8446156465246683134, guid: 7afdc746dbbec734d9fec52df4a49d52, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -440,6 +448,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7afdc746dbbec734d9fec52df4a49d52, type: 3}
+--- !u!1 &643232728 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8708380223391139233, guid: 7afdc746dbbec734d9fec52df4a49d52, type: 3}
+  m_PrefabInstance: {fileID: 643232727}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &721879945
 GameObject:
   m_ObjectHideFlags: 0
@@ -11231,3 +11244,8 @@ PrefabInstance:
       objectReference: {fileID: 721879947}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0a58ae774335f049be0b6c9170fc831, type: 3}
+--- !u!1 &5429389072359197515 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5429389072482862780, guid: d0a58ae774335f049be0b6c9170fc831, type: 3}
+  m_PrefabInstance: {fileID: 5429389072359197514}
+  m_PrefabAsset: {fileID: 0}
