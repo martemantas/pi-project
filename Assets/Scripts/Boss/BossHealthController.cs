@@ -32,7 +32,11 @@ public class BossHealthController : MonoBehaviour
         {
             anim.SetBool("Evolved", true);
         }
-        //healthBar.value = health;
+        /*if (health <= 0)
+        {
+            gameObject.GetC
+        }*/
+        healthBar.value = health;
     }
     //  
     public void Heal(int healAmount)

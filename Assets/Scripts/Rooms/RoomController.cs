@@ -26,6 +26,8 @@ public class RoomController : MonoBehaviour
     bool updatedRooms = false;
     //public Tile chest;
     //public GameObject openChest;
+    public GameObject screenChanger;
+
 
     void Awake()
     {
@@ -181,7 +183,25 @@ public class RoomController : MonoBehaviour
         StartCoroutine(RoomCoroutine());
         if (!currRoom.GetComponentInChildren<Visit>().visited)
             currRoom.GetComponentInChildren<Visit>().VisitRoom();
+        //SceneChanger[] sceneChanger = room.GetComponentsInChildren<SceneChanger>();
+        screenChanger.SetActive(false);
 
+        // not working
+        GameObject boss = GameObject.Find("Boss");
+        //BossController[] boss = room.GetComponentsInChildren<BossController>();
+
+
+        if (boss.GetComponent<BossHealthController>().health <= 1)
+        {
+            EnablePortal();
+        }
+    }
+    public void EnablePortal()
+    {
+        if (screenChanger.activeInHierarchy == false)
+        {
+            screenChanger.SetActive(true);
+        }
     }
 
     public IEnumerator RoomCoroutine()

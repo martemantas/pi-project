@@ -91,6 +91,12 @@ public class BossController : MonoBehaviour
                 bulletDamage = 0.5f;
             }
         }
+        float health = GetComponent<BossHealthController>().health;
+        if (health <= 0)
+        {
+            GameObject sc = GameObject.Find("SceneChanger");
+            sc.SetActive(true);
+        }
     }
 
     private void FixedUpdate()

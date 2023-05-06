@@ -3435,6 +3435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadedRooms: []
+  screenChanger: {fileID: 5429389072482862780, guid: d0a58ae774335f049be0b6c9170fc831, type: 3}
 --- !u!4 &1264874242
 Transform:
   m_ObjectHideFlags: 0
@@ -4342,6 +4343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillLevels: 
+  tmpSkillLevels: 
   SkillCaps: 
   SkillNames: []
   SkillDescriptions: []
@@ -4363,6 +4365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillLevels: 
+  tmpSkillLevels: 
   SkillCaps: 
   SkillNames: []
   SkillDescriptions: []

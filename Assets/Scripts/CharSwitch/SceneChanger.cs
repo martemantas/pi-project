@@ -25,7 +25,6 @@ public class SceneChanger : MonoBehaviour
 
         if (text.gameObject.activeSelf && Input.GetKeyDown(triggerKey) && IsPlayerInsideMask() && Time.time - lastPressTime > pressDelay)
         {
-            Debug.Log("E pressed");
             lastPressTime = Time.time;
 
             FindObjectOfType<LevelManager>().LoadScene(sceneID);

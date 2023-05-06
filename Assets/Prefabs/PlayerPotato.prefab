@@ -220,6 +220,7 @@ MonoBehaviour:
   dashSpeed: 5
   dashLength: 0.15
   dashCooldown: 0.5
+  activeMovementSpeed: 0
   isDashing: 0
 --- !u!114 &-7258765477466124223
 MonoBehaviour:
@@ -256,7 +257,7 @@ MonoBehaviour:
   attackKey: 0
   specialKey: 0
   isLongRange: 1
-  damage: 2
+  damage: 1
   attackPoint: {fileID: 8962266455185206242}
   attackArea: {fileID: 0}
   attackRange: 0.15
@@ -266,11 +267,19 @@ MonoBehaviour:
   specialPause: 5
   bullet: {fileID: 7686794606472135238, guid: 1b356139b095ad14c8005ae67ff1735e, type: 3}
   bulletSpeed: 5
-  bulletDamage: 1
+  bulletDamage: 2
   explosive: {fileID: 7686794606472135238, guid: 1b356139b095ad14c8005ae67ff1735e, type: 3}
   explosionRadius: 0.5
   explosionTime: 3
   explosiveDamage: 0.5
+  tmp:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!61 &-5951299682004256324
 BoxCollider2D:
   m_ObjectHideFlags: 0
