@@ -134,7 +134,8 @@ public class PlayerCombat : MonoBehaviour//, IDataPersistance
     void ShortRangeAttack() {
         if (attackPauseCounter <= 0)
         {
-            animator.SetTrigger("attack");
+			FindObjectOfType<AudioManager>().Play("CatAttack");
+			animator.SetTrigger("attack");
             //gets all colliders which were in attack point circle
             Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange);
             string lastName = "";
@@ -161,7 +162,8 @@ public class PlayerCombat : MonoBehaviour//, IDataPersistance
     void LongRangeAttack() { 
         if(attackPauseCounter <= 0)
         {
-            animator.SetTrigger("shoot");
+			FindObjectOfType<AudioManager>().Play("potatoShoot");
+			animator.SetTrigger("shoot");
             GameObject newBullet = Instantiate(bullet, this.transform.position, Quaternion.identity);
             newBullet.GetComponent<BulletController>().setDirection(attackDirection*10);
             newBullet.GetComponent<BulletController>().setParent(this.gameObject);
@@ -176,7 +178,8 @@ public class PlayerCombat : MonoBehaviour//, IDataPersistance
         }
     }
     void SpecialKnockAttack() {
-        animator.SetTrigger("special");
+		FindObjectOfType<AudioManager>().Play("catSpecial");
+		animator.SetTrigger("special");
         Collider2D[] enemies = Physics2D.OverlapCircleAll(this.gameObject.transform.position, knockBackRange);
         foreach (Collider2D enemy in enemies)
         {

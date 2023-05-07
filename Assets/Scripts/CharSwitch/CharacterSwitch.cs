@@ -56,7 +56,8 @@ public class CharacterSwitch : MonoBehaviour
         {
             Debug.Log("E pressed");
             lastPressTime = Time.time;
-            SwitchPlayer();
+			FindObjectOfType<AudioManager>().Play("charChosen");
+			SwitchPlayer();
         }
     }
 

@@ -237,7 +237,7 @@ MonoBehaviour:
   health: 5
   unlockedHeal: 3
   gameObject: {fileID: 5912177598210254999}
-  hitSound: PlayerHit
+  hitSound: potatoDmg
   deathSound: PlayerDeath
   sound: 
   DodgeChance: 0

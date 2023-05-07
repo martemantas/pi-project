@@ -13877,6 +13877,18 @@ MonoBehaviour:
           m_StringArgument: MainHub
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1776930573}
+        m_TargetAssemblyTypeName: DontDestroyOnLoad, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: Click
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1456981996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15541,8 +15553,8 @@ MonoBehaviour:
     source: {fileID: 0}
   - audioType: 0
     name: PlayerDash
-    clip: {fileID: 8300000, guid: 8091513d108d7b34da0fffcf02067797, type: 3}
-    volume: 0.5
+    clip: {fileID: 8300000, guid: 5d6c14106b1b6e54f966577c6f90abce, type: 3}
+    volume: 0.4
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -15601,6 +15613,104 @@ MonoBehaviour:
     volume: 0.6
     pitch: 1
     loop: 1
+    source: {fileID: 0}
+  - audioType: 0
+    name: CatAttack
+    clip: {fileID: 8300000, guid: d51aca8cd33f34f42ac3433a5ecda0cc, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioType: 0
+    name: CatDmg
+    clip: {fileID: 8300000, guid: e5c59840cfd64b9429ad43d589f35ed0, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioType: 0
+    name: Explosion
+    clip: {fileID: 8300000, guid: e58b8af5534425b40971e5b4a28c66be, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioType: 0
+    name: CibDmg
+    clip: {fileID: 8300000, guid: 1d2f8c8b45a49f74aaabfa9db8ca1019, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioType: 0
+    name: CibDeath
+    clip: {fileID: 8300000, guid: a35e27388a6e6c5408698b0a76d2b524, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioType: 0
+    name: SlimeDmg
+    clip: {fileID: 8300000, guid: aa753605765cc5549b00bea9e7354822, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioType: 0
+    name: SlimeDeath
+    clip: {fileID: 8300000, guid: aa753605765cc5549b00bea9e7354822, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioType: 0
+    name: Click
+    clip: {fileID: 8300000, guid: d66a3a6bcb551f84b877a0c67bb456b5, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioType: 0
+    name: loot
+    clip: {fileID: 8300000, guid: 70b8dfe7904696f499528490cc90aee6, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioType: 0
+    name: charChosen
+    clip: {fileID: 8300000, guid: 082ee61f00777624b95a20e33b21e692, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioType: 0
+    name: catSpecial
+    clip: {fileID: 8300000, guid: 03b1afa680f07a543a1dced100084479, type: 3}
+    volume: 2
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - audioType: 0
+    name: doorClose
+    clip: {fileID: 8300000, guid: 4e3376b2e6f024942a4ecc31ad0e8df3, type: 3}
+    volume: 2
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - audioType: 0
+    name: potatoShoot
+    clip: {fileID: 8300000, guid: e5d912eb6e802b145ba6a5feefc78bed, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioType: 0
+    name: doorOpen
+    clip: {fileID: 8300000, guid: 4e3376b2e6f024942a4ecc31ad0e8df3, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
     source: {fileID: 0}
   allAudioSources: []
   allAudioSourcesRunningState: 
@@ -15728,6 +15838,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1776930573}
+        m_TargetAssemblyTypeName: TitleScreen, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Click
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1781701487

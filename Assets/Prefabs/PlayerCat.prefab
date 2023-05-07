@@ -237,7 +237,7 @@ MonoBehaviour:
   health: 5
   unlockedHeal: 3
   gameObject: {fileID: 5912177598210254999}
-  hitSound: PlayerHit
+  hitSound: CatDmg
   deathSound: PlayerDeath
   sound: 
   DodgeChance: 0
@@ -257,10 +257,10 @@ MonoBehaviour:
   attackKey: 0
   specialKey: 0
   isLongRange: 0
-  damage: 1
+  damage: 2
   attackPoint: {fileID: 8962266455185206242}
   attackArea: {fileID: 0}
-  attackRange: 0.15
+  attackRange: 1
   knockBackRange: 0.25
   knockBackStrength: 3
   attackPause: 0.5

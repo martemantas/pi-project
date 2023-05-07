@@ -91,7 +91,7 @@ public class HealthController : MonoBehaviour//, IDataPersistance
             }
 
             RoomController.instance.StartCoroutine(RoomController.instance.RoomCoroutine()); ; //
-            if (digit >= 75)
+            if (digit >= 80)
             {
                 FindObjectOfType<AudioManager>().Play(sound);
             }

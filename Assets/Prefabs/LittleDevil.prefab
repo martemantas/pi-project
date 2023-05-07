@@ -184,8 +184,8 @@ MonoBehaviour:
   health: 3
   unlockedHeal: 3
   gameObject: {fileID: 3247833579151692250}
-  hitSound: SwordHitFlesh
-  deathSound: Death
+  hitSound: CibDmg
+  deathSound: CibDeath
   sound: Death2
   DodgeChance: 0
   deathEffect: {fileID: 777854219051035532, guid: 15dbca06961d28e49a32b1d16f5c877f, type: 3}

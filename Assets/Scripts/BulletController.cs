@@ -89,8 +89,8 @@ public class BulletController : MonoBehaviour
         }
     }
     private void Explode() {
-        
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(this.gameObject.transform.position, explosionRadius);
+		FindObjectOfType<AudioManager>().Play("Explosion");
+		Collider2D[] enemies = Physics2D.OverlapCircleAll(this.gameObject.transform.position, explosionRadius);
         string lastName = "";
         foreach (Collider2D enemy in enemies)
         {

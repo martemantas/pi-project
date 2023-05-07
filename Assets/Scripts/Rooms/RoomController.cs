@@ -170,7 +170,7 @@ public class RoomController : MonoBehaviour
 
     public void OnPlayerEnterRoom(Room room)
     {
-        currRoom = room;
+		currRoom = room;
         Vector3 center = currRoom.GetRoomCenter();
 
         CameraController.instance.UpdateCameraData(room);
@@ -336,7 +336,8 @@ public class RoomController : MonoBehaviour
                                 doorSprite.color = Color.black;
                             }
                         }
-                    }
+						FindObjectOfType<AudioManager>().Play("doorOpen");
+					}
                     else
                     {
                         foreach (Door door in room.GetComponentsInChildren<Door>())
@@ -348,7 +349,8 @@ public class RoomController : MonoBehaviour
                                 doorSprite.color = Color.black;
                             }
                         }
-                    }
+						
+					}
                 }
                 /*if (boss.Length > 0)
                 {
