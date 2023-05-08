@@ -165,7 +165,7 @@ MonoBehaviour:
   inRoom: 0
   damage: 0.5
   attackPause: 2
-  bullet: {fileID: 7686794606472135238, guid: 176f9c3647a9ba94f8abf9d8e77ffc45, type: 3}
+  bullet: {fileID: 0}
   bulletSpeed: 1
   bulletDamage: 0
   knockBackTime: 1

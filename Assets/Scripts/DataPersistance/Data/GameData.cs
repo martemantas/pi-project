@@ -18,6 +18,8 @@ public class GameData
     public int experience;
     public int experienceToNextLevel;
 
+    public float time;
+
     public GameData()
     {
         this.money = 0;
@@ -28,6 +30,7 @@ public class GameData
         level = 0;
         experience = 0;
         experienceToNextLevel = 100;
+        time = 0;
     }
     public float[] GetStats()
     {

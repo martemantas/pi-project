@@ -11,14 +11,17 @@ public class GameOverScreen : MonoBehaviour, IDataPersistance
     public TextMeshProUGUI titleText;
     public Button restartButton;
     public TextMeshProUGUI moneyText;
+    public float time;
 
     public void LoadData(GameData data)
     {
         //nothing
+        time = data.time;
     }
     public void SaveData(ref GameData data)
     {
         data.money += MoneyManager.gottenCoins;
+        data.time = 0;
     }
 
     public void Setup() {
@@ -30,7 +33,7 @@ public class GameOverScreen : MonoBehaviour, IDataPersistance
         StartCoroutine(FadeTextToFullAlpha(0.5f, moneyText));
         StartCoroutine(FadeImageToFullAlpha(0.5f, restartButton.image));
 
-        timeText.text = string.Format("You lived for {0:0.00} minutes", Time.timeSinceLevelLoad / 60);
+        timeText.text = string.Format("You lived for {0:0.00} minutes", (Time.timeSinceLevelLoad+time) / 60);
         moneyText.text = string.Format("You've got " + MoneyManager.gottenCoins.ToString() + " coins");
 
     }
