@@ -15712,6 +15712,13 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - audioType: 0
+    name: potatoDmg
+    clip: {fileID: 8300000, guid: 2566b824af30b154a96abf9e2f27b0bb, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   allAudioSources: []
   allAudioSourcesRunningState: 
   Rain: {fileID: 0}
