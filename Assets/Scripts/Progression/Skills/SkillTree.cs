@@ -22,14 +22,17 @@ public class SkillTree : MonoBehaviour, IDataPersistance
     public int SkillPoints;
 
     private bool updated = false;
+    public float time;
 
     public void LoadData(GameData data)
     {
+        time = data.time;
        tmpSkillLevels = data.SkillLevels;
         skillTree.UpdateAllSkillUi();
     }
     public void SaveData(ref GameData data)
     {
+        data.time = (float)Time.timeSinceLevelLoad + (float)time;
         for (int i = 0; i < SkillLevels.Length; i++)
         {
             if (data.SkillLevels[i] < SkillLevels[i]) 

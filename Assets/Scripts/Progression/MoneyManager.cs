@@ -47,6 +47,7 @@ public class MoneyManager : MonoBehaviour, IDataPersistance
     public void SaveData(ref GameData data)
     {
         data.money = playerCoins + gottenCoins;
+        data.time = 0;
         Debug.Log("palyer " + playerCoins + " goten " + gottenCoins);
         data.level = 0;
         data.experience = 0;
