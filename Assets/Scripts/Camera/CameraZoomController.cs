@@ -13,6 +13,14 @@ public class CameraZoomController : MonoBehaviour
     private float zoomFactor = 4f;
     private float zoomSpeed = 10f;
 
+    private KeyCode map;
+    private KeyCode shop;
+
+    private void Awake()
+    {
+        map = ControlManager.CM.map;
+        shop = ControlManager.CM.shop;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +30,7 @@ public class CameraZoomController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(shop))
         {
             if (!GameObject.FindWithTag("Player").GetComponent<PlayerCombat>().isLongRange)
             {
@@ -45,7 +53,7 @@ public class CameraZoomController : MonoBehaviour
 
         }
 
-        if (Input.GetKey(KeyCode.Tab)) {
+        if (Input.GetKey(map)) {
             fc.SetActive(true);
             mc.SetActive(false);
             lwc.SetActive(false);

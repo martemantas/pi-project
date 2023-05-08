@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class MoneyManager : MonoBehaviour
+public class MoneyManager : MonoBehaviour, IDataPersistance
 {
     public UnlockableCharacters[] characters;
     [HideInInspector]
     private static int playerCoins;
-   // public  TMP_Text moneyText;
+    // public  TMP_Text moneyText;
     private GameObject buyStatus;
-   // private GameObject buyingsuccesfull;
+    // private GameObject buyingsuccesfull;
     private float fadeInTime = 0.2f;
     private float fadeOutTime = 0.2f;
     public static MoneyManager instance;
@@ -27,9 +27,74 @@ public class MoneyManager : MonoBehaviour
             return;
         }
 
-    //    DontDestroyOnLoad(gameObject); // makes it so this object would persist trough scenes
-        
+        //    DontDestroyOnLoad(gameObject); // makes it so this object would persist trough scenes
+
     }
+
+    public void LoadData(GameData data)
+    {
+        playerCoins = data.money;
+
+        foreach (UnlockableCharacters foundcharacter in characters)
+        {
+            bool unlocked = false;
+            data.charactersUnlocked.TryGetValue(foundcharacter.name, out unlocked);
+            //Debug.Log("unlocked: " + foundcharacter.name + " " + unlocked);
+            if (unlocked)
+                foundcharacter.isBought = true;
+        }
+    }
+    public void SaveData(ref GameData data)
+    {
+        data.money = playerCoins + gottenCoins;
+        Debug.Log("palyer " + playerCoins + " goten " + gottenCoins);
+        data.level = 0;
+        data.experience = 0;
+        data.experienceToNextLevel = 100;
+        data.SkillLevels = new int[10];
+        data.stats = GetStats();
+
+        foreach (UnlockableCharacters foundcharacter in characters)
+        {
+            if (data.charactersUnlocked.ContainsKey(foundcharacter.name))
+                data.charactersUnlocked.Remove(foundcharacter.name);
+
+            data.charactersUnlocked.Add(foundcharacter.name, foundcharacter.isBought);
+        }
+    }
+
+    public float[] GetStats()
+    {
+        float[] stats = new float[10];
+        stats[0] = 0;
+        stats[1] = 1;
+        stats[2] = 0.5f;
+        stats[3] = 5;
+        stats[4] = 3;
+        stats[5] = 0.15f;
+        stats[6] = 1;
+        stats[7] = 0;
+        stats[8] = 0.15f;
+        stats[9] = 5;
+        return stats;
+    }
+
+    public void SetStats(float[] stats)
+    {
+        FindAnyObjectByType<PlayerCombat>().damage = stats[1];
+        FindAnyObjectByType<PlayerCombat>().bulletDamage = stats[1];
+        FindAnyObjectByType<PlayerCombat>().explosiveDamage = stats[2];
+        FindAnyObjectByType<PlayerCombat>().specialPause = stats[3];
+        FindAnyObjectByType<PlayerCombat>().knockBackStrength = stats[4];
+        FindAnyObjectByType<PlayerCombat>().attackRange = stats[5];
+        FindAnyObjectByType<PlayerMovement>().movementSpeed = stats[6];
+        FindAnyObjectByType<PlayerMovement>().activeMovementSpeed = stats[6];
+        FindAnyObjectByType<HealthController>().DodgeChance = (int)stats[7];
+        FindAnyObjectByType<PlayerMovement>().dashLength = stats[8];
+        FindAnyObjectByType<HealthController>().unlockedHeal = stats[9];
+    }
+
+
     private void Start()
     {
         buyStatus = FindInActiveObjectByTag("buyingText");
@@ -68,7 +133,7 @@ public class MoneyManager : MonoBehaviour
     /// <param name="hero">which hero you are searching for</param>
     /// <returns>true if bought</returns>
     public bool TryBuy(GameObject hero)
-    { 
+    {
         foreach (UnlockableCharacters foundcharacter in characters)
         {
             if (foundcharacter.character == hero && foundcharacter.price <= playerCoins)
@@ -100,7 +165,7 @@ public class MoneyManager : MonoBehaviour
 
     public static int MoneyGainOnRun(int amount)
     {
-       return gottenCoins += amount;
+        return gottenCoins += amount;
     }
     public static void ResetMoney()
     {
@@ -111,7 +176,7 @@ public class MoneyManager : MonoBehaviour
     /// </summary>
     /// <param name="heroNAme">hero you are searching for</param>
     /// <returns>true if bought</returns>
-    public bool TryBuy(string heroNAme) 
+    public bool TryBuy(string heroNAme)
     {
         foreach (UnlockableCharacters foundcharacter in characters)
         {
@@ -134,7 +199,7 @@ public class MoneyManager : MonoBehaviour
 
                 Debug.Log("No money ");
                 return false;
-            }  
+            }
         }
         Debug.Log("No Heroes");
         return false;
@@ -143,6 +208,8 @@ public class MoneyManager : MonoBehaviour
     public static void AddMoney(int amount) //changes your current money by the given amount
     {
         playerCoins += amount;
+        FindObjectOfType<DataPersistanceManager>().SaveGame();
+        Debug.Log(FindObjectOfType<DataPersistanceManager>());
         if (playerCoins < 0)
         {
             playerCoins = 0;
@@ -183,7 +250,7 @@ public class MoneyManager : MonoBehaviour
         {
             if (foundcharacter.name == heroNAme)
             {
-                
+
                 Debug.Log("rastas - " + foundcharacter.name);
                 return foundcharacter;
             }

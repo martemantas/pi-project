@@ -30,7 +30,6 @@ public class CheckPicked : MonoBehaviour
         currentPlayer = GameObject.FindGameObjectWithTag("Player");
         Destroy(currentPlayer);
         GameObject newPlayer = Instantiate(playerPrefabs[prefabID], currentPlayer.transform.position, Quaternion.identity);
-
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
         foreach (GameObject enemy in enemies)

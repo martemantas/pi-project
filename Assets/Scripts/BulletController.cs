@@ -24,16 +24,29 @@ public class BulletController : MonoBehaviour
         parent = obj;
     }
     // Start is called before the first frame update
+    //keitimas :)
     void Start()
     {
+        Vector2 basee = new Vector2(1, 0);
         direction.Normalize();
+        float angle = Vector3.Angle(direction, basee);
+        if (direction.y < 0)
+        {
+
+            angle = -1* angle;
+        }
+        Debug.Log(angle);
+        Debug.Log(direction.x + " " + direction.y);
+        this.transform.Rotate(0.0f, 0.0f, angle, Space.Self);
         rb = this.GetComponent<Rigidbody2D>();
         explosionTimeCounter = explosionTime;
+        //Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaa");
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        
         if (!isExplosive)
             rb.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
         else
@@ -59,25 +72,35 @@ public class BulletController : MonoBehaviour
                         playerHealth.Damage(damage);
                     }
                 }
-                else if (!collision.CompareTag("Enemy"))
+                else if (!collision.CompareTag("Enemy") && !collision.CompareTag("Room") && !collision.CompareTag("bullet"))
+                {
+                    Debug.Log(collision.gameObject.name);
+                    Debug.Log("Bullet diedaaaaaa");
                     Destroy(this.gameObject);
+                }
             }
             else if (parent.CompareTag("Player"))
             {
                 if (collision.CompareTag("Enemy"))
-                {
-                    //Debug.Log("Bullet died");
+                {  
+                    Debug.Log("Bullet diedssssssssssssss");
                     Destroy(this.gameObject);
                     var enemyHealth = collision.GetComponent<HealthController>();
+                    var bossHealth = collision.GetComponent<BossHealthController>(); //m
                     if (enemyHealth != null)
                     {
                         enemyHealth.Damage(damage);
                     }
+                    if (bossHealth != null)
+                    {
+                        bossHealth.Damage(damage);
+                    }
                 }
                 else if (!collision.CompareTag("Enemy") && !collision.CompareTag("Player") && !collision.CompareTag("Room"))
                 {
+                    Debug.Log("Bullet dieddddddddddddd");
                     Destroy(this.gameObject);
-                    //Debug.Log("Bullet died");
+                    
                 }
                 else if (collision.CompareTag("Boss"))
                 {
@@ -92,8 +115,8 @@ public class BulletController : MonoBehaviour
         }
     }
     private void Explode() {
-        PlayParticles();
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(this.gameObject.transform.position, explosionRadius);
+		FindObjectOfType<AudioManager>().Play("Explosion");
+		Collider2D[] enemies = Physics2D.OverlapCircleAll(this.gameObject.transform.position, explosionRadius);
         string lastName = "";
         foreach (Collider2D enemy in enemies)
         {
@@ -103,11 +126,18 @@ public class BulletController : MonoBehaviour
                 lastName = enemy.name;
             }
         }
-        
+        //explosion.GetComponent<ParticleSystem>().Play();
+        Instantiate(expl, transform.position, transform.rotation);
         Destroy(this.gameObject); //fix because no particles
     }
-    private void PlayParticles() {
-        explosion.GetComponent<ParticleSystem>().Play();
-        Debug.Log(explosion.GetComponent<ParticleSystem>().isPlaying);
+
+    private void OnDestroy()
+    {
+        if (isExplosive)
+        {
+            //explosion.GetComponent<ParticleSystem>().Play();
+            
+            Debug.Log(explosion.GetComponent<ParticleSystem>().isPlaying);
+        }
     }
 }

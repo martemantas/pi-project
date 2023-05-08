@@ -10,5 +10,6 @@ public class Visit : MonoBehaviour
     {
         this.GetComponent<SpriteRenderer>().enabled = true;
         visited = true;
-    }
+		FindObjectOfType<AudioManager>().Play("doorClose");
+	}
 }

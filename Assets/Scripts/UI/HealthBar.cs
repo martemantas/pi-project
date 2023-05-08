@@ -12,10 +12,11 @@ public class HealthBar : MonoBehaviour
     private IEnumerator Start() {
         yield return new WaitForSeconds(0.5f);
         playerHealth = GameObject.FindWithTag("Player").GetComponent<HealthController>();
-        totalHealthBar.fillAmount = playerHealth.health / 10;
+        totalHealthBar.fillAmount = playerHealth.unlockedHeal / 10;
     }
     private void FixedUpdate() {
         playerHealth = GameObject.FindWithTag("Player").GetComponent<HealthController>();
         currentHealthBar.fillAmount = playerHealth.health / 10;
+        totalHealthBar.fillAmount = playerHealth.unlockedHeal / 10;
     }
 }

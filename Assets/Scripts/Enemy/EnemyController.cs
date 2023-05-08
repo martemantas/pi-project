@@ -100,11 +100,15 @@ public class EnemyController : MonoBehaviour
         if (bullet != null)
         {
             if (!isInAttackRange)
+            {
                 rangePauseCounter = 0;
+            }
             if (rangePauseCounter > 0)
                 rangePauseCounter -= Time.deltaTime;
             if (rangePauseCounter <= 0 && isInAttackRange)
+            {
                 RangeAttack();
+            }
         }
     }
 
@@ -126,6 +130,7 @@ public class EnemyController : MonoBehaviour
             var playerHealth = other.GetComponent<HealthController>();
             if (playerHealth != null)
             {
+                anim.SetBool("attack", true);
                 playerHealth.Damage(damage);
                 attackPauseCounter = attackPause;
 
@@ -144,6 +149,7 @@ public class EnemyController : MonoBehaviour
     void OnTriggerExit2D(Collider2D other)
     {
         attackPauseCounter = 0;
+        anim.SetBool("attack", false);
     }
 
     void RangeAttack() {

@@ -210,11 +210,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51a92b42b8394247886f234be97e20c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dashKey: 0
+  upKey: 0
+  downKey: 0
+  leftKey: 0
+  rightKey: 0
   movementSpeed: 1
   smoothingTime: 0.1
   dashSpeed: 5
   dashLength: 0.15
   dashCooldown: 0.5
+  activeMovementSpeed: 0
   isDashing: 0
 --- !u!114 &-7258765477466124223
 MonoBehaviour:
@@ -231,10 +237,11 @@ MonoBehaviour:
   health: 5
   unlockedHeal: 3
   gameObject: {fileID: 5912177598210254999}
-  hitSound: PlayerHit
+  hitSound: CatDmg
   deathSound: PlayerDeath
   sound: 
   DodgeChance: 0
+  deathEffect: {fileID: 0}
 --- !u!114 &6169246674185318924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,11 +254,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ea9ace15554b94386ec9c03a0d572b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackKey: 0
+  specialKey: 0
   isLongRange: 0
-  damage: 1
+  damage: 2
   attackPoint: {fileID: 8962266455185206242}
   attackArea: {fileID: 0}
-  attackRange: 0.15
+  attackRange: 1
   knockBackRange: 0.25
   knockBackStrength: 3
   attackPause: 0.5
@@ -263,6 +272,14 @@ MonoBehaviour:
   explosionRadius: 0.5
   explosionTime: 3
   explosiveDamage: 0.5
+  tmp:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!61 &-5951299682004256324
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -276,7 +293,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.085}
+  m_Offset: {x: 0.006346144, y: -0.08373077}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -287,7 +304,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.11, y: 0.06}
+  m_Size: {x: 0.09730771, y: 0.057461545}
   m_EdgeRadius: 0
 --- !u!61 &-6648286126582518642
 BoxCollider2D:
@@ -302,7 +319,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0014164187, y: -0.03}
+  m_Offset: {x: 0.0061989576, y: -0.0344423}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -313,7 +330,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.12, y: 0.18}
+  m_Size: {x: 0.104769245, y: 0.16096157}
   m_EdgeRadius: 0
 --- !u!95 &9025489551221422073
 Animator:

@@ -26,7 +26,8 @@ public class RoomController : MonoBehaviour
     bool updatedRooms = false;
     //public Tile chest;
     //public GameObject openChest;
-    public GameObject Boss;
+    public GameObject screenChanger;
+
 
     void Awake()
     {
@@ -36,6 +37,7 @@ public class RoomController : MonoBehaviour
     void Update()
     {
         UpdateRoomQueue();
+        nuke();
     }
 
     void UpdateRoomQueue()
@@ -81,7 +83,6 @@ public class RoomController : MonoBehaviour
             var roomToRemove = loadedRooms.Single(r => r.X == tempRoom.X && r.Y == tempRoom.Y);
             loadedRooms.Remove(roomToRemove);
             LoadRoom("End", tempRoom.X, tempRoom.Y);
-            //Instantiate(Boss, new Vector3(1, 0, 0), Quaternion.identity);//reikia i vector3 irasyt boss room koordinates
         }
     }
 
@@ -169,7 +170,7 @@ public class RoomController : MonoBehaviour
 
     public void OnPlayerEnterRoom(Room room)
     {
-        currRoom = room;
+		currRoom = room;
         Vector3 center = currRoom.GetRoomCenter();
 
         CameraController.instance.UpdateCameraData(room);
@@ -177,18 +178,59 @@ public class RoomController : MonoBehaviour
         Transform player = GameObject.FindWithTag("Player").transform;
         Vector3 diff = center - player.position;
         diff.Normalize();
-        player.position = new Vector3(player.position.x + diff.x*0.2f, player.position.y + diff.y*0.2f, player.position.z);
+        player.position = new Vector3(player.position.x + diff.x * 0.2f, player.position.y + diff.y * 0.2f, player.position.z);
 
         StartCoroutine(RoomCoroutine());
-        if(!currRoom.GetComponentInChildren<Visit>().visited)
+        if (!currRoom.GetComponentInChildren<Visit>().visited)
             currRoom.GetComponentInChildren<Visit>().VisitRoom();
-        
+        //SceneChanger[] sceneChanger = room.GetComponentsInChildren<SceneChanger>();
+        screenChanger.SetActive(false);
+
+        // not working
+        GameObject boss = GameObject.Find("Boss");
+        //BossController[] boss = room.GetComponentsInChildren<BossController>();
+
+
+        if (boss.GetComponent<BossHealthController>().health <= 1)
+        {
+            EnablePortal();
+        }
+    }
+    public void EnablePortal()
+    {
+        if (screenChanger.activeInHierarchy == false)
+        {
+            screenChanger.SetActive(true);
+        }
     }
 
     public IEnumerator RoomCoroutine()
     {
         yield return new WaitForSeconds(0.2f);
         UpdateRooms();
+    }
+
+    public void nuke()
+    {
+        if (Input.GetKeyDown(KeyCode.Slash))
+        {
+            foreach (Room room in loadedRooms)
+            {
+                EnemyController[] enemies = room.GetComponentsInChildren<EnemyController>();
+                if (enemies.Length > 0)
+                {
+                    foreach (EnemyController enemy in enemies)
+                    {
+                        if (enemy.inRoom)
+                        {
+                            enemy.GetComponentInParent<HealthController>().Damage(100);
+                        }
+                    }
+
+                }
+            }
+        }
+
     }
 
     public void UpdateRooms()
@@ -198,11 +240,24 @@ public class RoomController : MonoBehaviour
             if (currRoom != room)
             {
                 EnemyController[] enemies = room.GetComponentsInChildren<EnemyController>();
+                BossController[] boss = room.GetComponentsInChildren<BossController>();
                 if (enemies != null)
                 {
                     foreach (EnemyController enemy in enemies)
                     {
                         enemy.inRoom = false;
+                    }
+
+                    foreach (Door door in room.GetComponentsInChildren<Door>())
+                    {
+                        door.doorCollider.SetActive(false);
+                    }
+                }
+                else if(boss != null)
+                {
+                    foreach (BossController b in boss)
+                    {
+                        b.inRoom = false;
                     }
 
                     foreach (Door door in room.GetComponentsInChildren<Door>())
@@ -217,16 +272,91 @@ public class RoomController : MonoBehaviour
                         door.doorCollider.SetActive(false);
                     }
                 }
+                /*if (boss != null)
+                {
+                    foreach (BossController b in boss)
+                    {
+                        b.inRoom = false;
+                    }
+
+                    foreach (Door door in room.GetComponentsInChildren<Door>())
+                    {
+                        door.doorCollider.SetActive(false);
+                    }
+                }
+                else
+                {
+                    foreach (Door door in room.GetComponentsInChildren<Door>())
+                    {
+                        door.doorCollider.SetActive(false);
+                    }
+                }*/
             }
             else
             {
-                
                 EnemyController[] enemies = room.GetComponentsInChildren<EnemyController>();
+                BossController[] boss = room.GetComponentsInChildren<BossController>();
                 if (enemies.Length > 0)
                 {
                     foreach (EnemyController enemy in enemies)
                     {
                         enemy.inRoom = true;
+                    }
+
+                    foreach (Door door in room.GetComponentsInChildren<Door>())
+                    {
+                        door.doorCollider.SetActive(true);
+                    }
+                }
+                else if(boss.Length > 0)
+                {
+                    foreach (BossController b in boss)
+                    {
+                        b.inRoom = true;
+                    }
+
+                    foreach (Door door in room.GetComponentsInChildren<Door>())
+                    {
+                        door.doorCollider.SetActive(true);
+                    }
+                }
+                else
+                {
+                    if (!room.IsCleared)
+                    {
+                        room.IsCleared = true;
+                        MoneyManager.MoneyGainOnRun(200);
+
+                        foreach (Door door in room.GetComponentsInChildren<Door>())
+                        {
+                            door.doorCollider.SetActive(false);
+                            if (door != null)
+                            {
+                                SpriteRenderer doorSprite = door.doorSprite.GetComponent<SpriteRenderer>();
+                                doorSprite.color = Color.black;
+                            }
+                        }
+						FindObjectOfType<AudioManager>().Play("doorOpen");
+					}
+                    else
+                    {
+                        foreach (Door door in room.GetComponentsInChildren<Door>())
+                        {
+                            door.doorCollider.SetActive(false);
+                            if (door != null)
+                            {
+                                SpriteRenderer doorSprite = door.doorSprite.GetComponent<SpriteRenderer>();
+                                doorSprite.color = Color.black;
+                            }
+                        }
+						
+					}
+                }
+                /*if (boss.Length > 0)
+                {
+                    foreach (BossController b in boss)
+                    {
+                        b.inRoom = true;
                     }
 
                     foreach (Door door in room.GetComponentsInChildren<Door>())
@@ -263,7 +393,7 @@ public class RoomController : MonoBehaviour
                             }
                         }
                     }
-                }
+                }*/
             }
         }
     }
