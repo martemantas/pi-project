@@ -30,11 +30,13 @@ public class BulletController : MonoBehaviour
         direction.Normalize();
         rb = this.GetComponent<Rigidbody2D>();
         explosionTimeCounter = explosionTime;
+        Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaa");
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        
         if (!isExplosive)
             rb.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
         else
@@ -60,14 +62,18 @@ public class BulletController : MonoBehaviour
                         playerHealth.Damage(damage);
                     }
                 }
-                else if (!collision.CompareTag("Enemy"))
+                else if (!collision.CompareTag("Enemy") && !collision.CompareTag("Room"))
+                {
+                    Debug.Log(collision.gameObject.name);
+                    Debug.Log("Bullet diedaaaaaa");
                     Destroy(this.gameObject);
+                }
             }
             else if (parent.CompareTag("Player"))
             {
                 if (collision.CompareTag("Enemy"))
-                {
-                    //Debug.Log("Bullet died");
+                {  
+                    Debug.Log("Bullet diedssssssssssssss");
                     Destroy(this.gameObject);
                     var enemyHealth = collision.GetComponent<HealthController>();
                     var bossHealth = collision.GetComponent<BossHealthController>(); //m
@@ -82,8 +88,9 @@ public class BulletController : MonoBehaviour
                 }
                 else if (!collision.CompareTag("Enemy") && !collision.CompareTag("Player") && !collision.CompareTag("Room"))
                 {
+                    Debug.Log("Bullet dieddddddddddddd");
                     Destroy(this.gameObject);
-                    //Debug.Log("Bullet died");
+                    
                 }
             }
         }

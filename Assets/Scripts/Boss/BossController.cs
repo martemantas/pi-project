@@ -88,10 +88,10 @@ public class BossController : MonoBehaviour
             } 
             if(anim.GetBool("Evolved") == true)
             {
-                attackRadius = 1;
+                attackRadius = 5;
                 damage = 0;
-                bulletSpeed = 0.1f;
-                bulletDamage = 0.5f;
+                bulletSpeed = 3f;
+                bulletDamage = 1f;
             }
         }
         else
@@ -165,7 +165,7 @@ public class BossController : MonoBehaviour
 
     void RangeAttack() {
         rangePauseCounter = attackPause;
-        GameObject newBullet = Instantiate(bullet, this.transform.position, Quaternion.identity); 
+        GameObject newBullet = Instantiate(bullet, this.transform.position, Quaternion.identity);
         newBullet.GetComponent<BulletController>().setDirection(target.transform.position - this.transform.position);
         newBullet.GetComponent<BulletController>().setParent(this.gameObject);
         if (bulletSpeed > 0)
@@ -173,6 +173,7 @@ public class BossController : MonoBehaviour
         if(bulletDamage > 0)
             newBullet.GetComponent<BulletController>().damage = bulletDamage;
         anim.SetTrigger("Attack");
+        Debug.Log(newBullet);
     }
     public void setKnockBackImunity(bool value) { 
         this.knockBackImunity = value;
