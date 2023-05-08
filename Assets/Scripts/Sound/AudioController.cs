@@ -16,6 +16,7 @@ public class AudioController : MonoBehaviour
     {
         if (m_profiles != null)
             m_profiles.SetProfile(m_profiles);
+        
     }
 
     
@@ -52,8 +53,10 @@ public class AudioController : MonoBehaviour
             if (sliders[i].gameObject.tag == "Sound")
                 m_VolumeSliders.Add(sliders[i]);
         }
-        FindObjectOfType<DropDownFind>().SetValue();
+       FindObjectOfType<DropDownFind>().SetValue();
+        
         FindObjectOfType<ButonFindSound>().SetValue();
+        
     }
  
 

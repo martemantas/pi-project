@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthController : MonoBehaviour
+public class HealthController : MonoBehaviour//, IDataPersistance
 {
     public float health = 3f;
     public float unlockedHeal = 3f;
@@ -11,18 +11,25 @@ public class HealthController : MonoBehaviour
     public string deathSound;
     public string sound;
     public int DodgeChance;
+    public ParticleSystem deathEffect;
 
     // -M
     private Animator anim;
 
-    private void Start()
+    void Start()
     {
         anim = GetComponent<Animator>();
         unlockedHeal = health;
+
+        SkillTree skills = FindObjectOfType<SkillTree>();
+        DodgeChance = skills.SkillLevels[7] * 10 + 0;
+        unlockedHeal = skills.SkillLevels[9] * 1 + 5;
+        health = unlockedHeal;
     }
     //  
     public void Heal(int healAmount)
     {
+
         if (unlockedHeal < healAmount + health)
         {
             health = unlockedHeal;
@@ -32,6 +39,18 @@ public class HealthController : MonoBehaviour
           health += (float)healAmount;
         }
     }
+
+    /*public void LoadData(GameData data)
+    {
+        tmpdodge = (int)data.stats[7];
+        tmpheal = data.stats[9];
+    }
+    public void SaveData(ref GameData data)
+    {
+        data.stats[7] = DodgeChance;
+        data.stats[9] = unlockedHeal;
+    }*/
+
     public void Damage(float damagePoints)
     {
         int digit = Random.Range(0, 100);
@@ -56,15 +75,23 @@ public class HealthController : MonoBehaviour
         }
         if (health <= 0)
         {
-
+            
             Destroy(this.gameObject);
-          
+
             if (this.gameObject.CompareTag("Player"))
+            {
                 GameObject.FindWithTag("GameOverScreen").GetComponent<GameOverScreen>().Setup();
+                Instantiate(deathEffect, transform.position, transform.rotation);
+            }
+
             else
-            GetComponent<LootBag>().InstantiateLoot(transform.position);
+            {
+                Instantiate(deathEffect, transform.position, transform.rotation);
+                GetComponent<LootBag>().InstantiateLoot(transform.position);
+            }
+
             RoomController.instance.StartCoroutine(RoomController.instance.RoomCoroutine()); ; //
-            if (digit >= 75)
+            if (digit >= 80)
             {
                 FindObjectOfType<AudioManager>().Play(sound);
             }

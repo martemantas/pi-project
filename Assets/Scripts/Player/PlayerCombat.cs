@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PlayerCombat : MonoBehaviour
+public class PlayerCombat : MonoBehaviour//, IDataPersistance
 {
+    public KeyCode attackKey;
+    public KeyCode specialKey;
     public bool isLongRange; 
 
     public float damage = 1.0f;
@@ -35,9 +37,59 @@ public class PlayerCombat : MonoBehaviour
 
     private Animator animator; //-M
 
+    public float[] tmp = new float[7];
+
     private void Awake()
     {
         animator = GetComponent<Animator>(); // -M
+        attackKey = ControlManager.CM.attack;
+        specialKey = ControlManager.CM.special;
+        if (tmp[0] > 0)
+        {
+            damage = tmp[0];
+            bulletDamage = tmp[1];
+            explosiveDamage = tmp[2];
+            specialPause = tmp[3];
+            knockBackStrength = tmp[4];
+            attackRange = tmp[5];
+        }
+    }
+
+    /*public void LoadData(GameData data)
+    {
+        tmp[0] = data.stats[1];
+        tmp[1] = data.stats[1];
+        tmp[2] = data.stats[2];
+        tmp[3] = data.stats[3];
+        tmp[4] = data.stats[4];
+        tmp[5] = data.stats[5];
+
+        damage = data.stats[1];
+        Debug.Log("load ::: " + damage + " " + tmp[0]);
+        bulletDamage = data.stats[1];
+        explosiveDamage = data.stats[2];
+        specialPause = data.stats[3];
+        knockBackStrength = data.stats[4];
+        attackRange = data.stats[5];
+    }
+    public void SaveData(ref GameData data)
+    {
+        data.stats[1] = damage;
+        data.stats[2] = explosiveDamage;
+        data.stats[3] = specialPause;
+        data.stats[4] = knockBackStrength;
+        data.stats[5] = attackRange;
+    }*/
+
+    void Start()
+    {
+        SkillTree skills = FindObjectOfType<SkillTree>();
+        damage = skills.SkillLevels[1] * 1+1;
+        bulletDamage = skills.SkillLevels[1] * 1 + 1;
+        explosiveDamage = skills.SkillLevels[2] * 5 + 0.5f;
+        specialPause = skills.SkillLevels[3] * -0.5f + 5;
+        knockBackStrength = skills.SkillLevels[4] * 0.25f + 3;
+        attackRange = skills.SkillLevels[5] * 0.2f + 0.15f;
     }
 
     void Update()
@@ -66,23 +118,24 @@ public class PlayerCombat : MonoBehaviour
 
         if (isLongRange)
         {
-            if (Input.GetKeyDown(KeyCode.N) && bullet != null)
+            if (Input.GetKeyDown(attackKey) && bullet != null)
                 LongRangeAttack();
-            if (Input.GetKeyDown(KeyCode.M) && specialPauseCounter <= 0)
+            if (Input.GetKeyDown(specialKey) && specialPauseCounter <= 0)
                 SpecialBombAttack();
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.N))
+            if (Input.GetKeyDown(attackKey))
                 ShortRangeAttack();
-            if (Input.GetKeyDown(KeyCode.M) && specialPauseCounter <= 0)
+            if (Input.GetKeyDown(specialKey) && specialPauseCounter <= 0)
                 SpecialKnockAttack();
         }
     }
     void ShortRangeAttack() {
         if (attackPauseCounter <= 0)
         {
-            animator.SetTrigger("attack");
+			FindObjectOfType<AudioManager>().Play("CatAttack");
+			animator.SetTrigger("attack");
             //gets all colliders which were in attack point circle
             Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange);
             string lastName = "";
@@ -90,7 +143,16 @@ public class PlayerCombat : MonoBehaviour
             {
                 if (enemy.gameObject.CompareTag("Enemy") && enemy.name != lastName) //due to enemies having two colliders checks if last hit enemy is not the same
                 {
-                    enemy.GetComponent<HealthController>().Damage(damage);
+                    var enemyHealth = enemy.gameObject.GetComponent<HealthController>();
+                    var bossHealth = enemy.gameObject.GetComponent<BossHealthController>(); //m
+                    if (enemyHealth != null)
+                    {
+                        enemyHealth.Damage(damage);
+                    }
+                    if (bossHealth != null)
+                    {
+                        bossHealth.Damage(damage);
+                    }
                     lastName = enemy.name;
                 }
             }
@@ -100,7 +162,8 @@ public class PlayerCombat : MonoBehaviour
     void LongRangeAttack() { 
         if(attackPauseCounter <= 0)
         {
-            animator.SetTrigger("shoot");
+			FindObjectOfType<AudioManager>().Play("potatoShoot");
+			animator.SetTrigger("shoot");
             GameObject newBullet = Instantiate(bullet, this.transform.position, Quaternion.identity);
             newBullet.GetComponent<BulletController>().setDirection(attackDirection*10);
             newBullet.GetComponent<BulletController>().setParent(this.gameObject);
@@ -115,7 +178,8 @@ public class PlayerCombat : MonoBehaviour
         }
     }
     void SpecialKnockAttack() {
-        animator.SetTrigger("special");
+		FindObjectOfType<AudioManager>().Play("catSpecial");
+		animator.SetTrigger("special");
         Collider2D[] enemies = Physics2D.OverlapCircleAll(this.gameObject.transform.position, knockBackRange);
         foreach (Collider2D enemy in enemies)
         {

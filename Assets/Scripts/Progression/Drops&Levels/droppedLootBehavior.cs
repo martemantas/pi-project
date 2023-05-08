@@ -13,15 +13,18 @@ public class droppedLootBehavior : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, collision.transform.position, AttractorSpeed * Time.deltaTime);
             if (transform.position == collision.transform.position)
             {
-                if (droppedLoot.isHealth)
+				FindObjectOfType<AudioManager>().Play("loot");
+				if (droppedLoot.isHealth)
                 {
-                    FindObjectOfType<HealthController>().Heal(droppedLoot.healAmount);
+                    //FindObjectOfType<HealthController>().Heal(droppedLoot.healAmount);
+                    GameObject player = GameObject.FindGameObjectWithTag("Player");
+                    player.GetComponent<HealthController>().Heal(droppedLoot.healAmount);
                     Destroy(this.gameObject);
                 }
                 if (droppedLoot.isXp)
                 {
                     FindObjectOfType<LevelSystem>().AddExperience(droppedLoot.xpAmount);
-                    Destroy(this.gameObject);
+					Destroy(this.gameObject);
                 }
             }
         }
