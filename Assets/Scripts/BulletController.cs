@@ -27,10 +27,20 @@ public class BulletController : MonoBehaviour
     //keitimas :)
     void Start()
     {
+        Vector2 basee = new Vector2(1, 0);
         direction.Normalize();
+        float angle = Vector3.Angle(direction, basee);
+        if (direction.y < 0)
+        {
+
+            angle = -1* angle;
+        }
+        Debug.Log(angle);
+        Debug.Log(direction.x + " " + direction.y);
+        this.transform.Rotate(0.0f, 0.0f, angle, Space.Self);
         rb = this.GetComponent<Rigidbody2D>();
         explosionTimeCounter = explosionTime;
-        Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaa");
+        //Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaa");
     }
 
     // Update is called once per frame
@@ -62,7 +72,7 @@ public class BulletController : MonoBehaviour
                         playerHealth.Damage(damage);
                     }
                 }
-                else if (!collision.CompareTag("Enemy") && !collision.CompareTag("Room"))
+                else if (!collision.CompareTag("Enemy") && !collision.CompareTag("Room") && !collision.CompareTag("bullet"))
                 {
                     Debug.Log(collision.gameObject.name);
                     Debug.Log("Bullet diedaaaaaa");

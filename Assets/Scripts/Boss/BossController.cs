@@ -92,6 +92,7 @@ public class BossController : MonoBehaviour
                 damage = 0;
                 bulletSpeed = 3f;
                 bulletDamage = 1f;
+                speed = 1f;
             }
         }
         else
@@ -166,12 +167,30 @@ public class BossController : MonoBehaviour
     void RangeAttack() {
         rangePauseCounter = attackPause;
         GameObject newBullet = Instantiate(bullet, this.transform.position, Quaternion.identity);
+        GameObject newBullet1 = Instantiate(bullet, this.transform.position, Quaternion.identity);
+        GameObject newBullet2 = Instantiate(bullet, this.transform.position, Quaternion.identity);
+        
+        newBullet1.GetComponent<BulletController>().setDirection(Quaternion.Euler(0, 0, -30) * (target.transform.position - this.transform.position));
         newBullet.GetComponent<BulletController>().setDirection(target.transform.position - this.transform.position);
+        newBullet2.GetComponent<BulletController>().setDirection(Quaternion.Euler(0, 0, 30) * (target.transform.position - this.transform.position));
+
+        newBullet1.GetComponent<BulletController>().setParent(this.gameObject);
+        newBullet2.GetComponent<BulletController>().setParent(this.gameObject);
         newBullet.GetComponent<BulletController>().setParent(this.gameObject);
+
         if (bulletSpeed > 0)
+        {
             newBullet.GetComponent<BulletController>().speed = bulletSpeed;
+            newBullet1.GetComponent<BulletController>().speed = bulletSpeed;
+            newBullet2.GetComponent<BulletController>().speed = bulletSpeed;
+        }
         if(bulletDamage > 0)
+        {
             newBullet.GetComponent<BulletController>().damage = bulletDamage;
+            newBullet1.GetComponent<BulletController>().damage = bulletDamage;
+            newBullet2.GetComponent<BulletController>().damage = bulletDamage;
+
+        }
         anim.SetTrigger("Attack");
         Debug.Log(newBullet);
     }
