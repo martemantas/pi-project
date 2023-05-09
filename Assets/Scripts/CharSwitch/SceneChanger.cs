@@ -16,6 +16,7 @@ public class SceneChanger : MonoBehaviour
 
     private float lastPressTime;
     public float pressDelay = 1f;
+    private bool insideTheMask = false;
 
     private Coroutine currentCoroutine;
 
@@ -23,7 +24,7 @@ public class SceneChanger : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
-        if (text.gameObject.activeSelf && Input.GetKeyDown(triggerKey) && IsPlayerInsideMask() && Time.time - lastPressTime > pressDelay)
+        if (text.gameObject.activeSelf && Input.GetKeyDown(triggerKey) && insideTheMask && Time.time - lastPressTime > pressDelay)
         {
             lastPressTime = Time.time;
 
@@ -45,6 +46,7 @@ public class SceneChanger : MonoBehaviour
             // set the currentPlayer object to the player that entered the collider
             currentPlayer = collision.gameObject;
         }
+        insideTheMask = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -57,6 +59,7 @@ public class SceneChanger : MonoBehaviour
             }
             currentCoroutine = StartCoroutine(FadeOut());
         }
+        insideTheMask = false;
     }
 
     private IEnumerator FadeIn()
